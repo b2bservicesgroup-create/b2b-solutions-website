@@ -104,6 +104,12 @@ const localBusinessSchema = {
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body class="font-sans antialiased text-gray-800 bg-white">
+    <script>
+      const hash = window.location.hash;
+      if (hash.includes('invite_token=') || hash.includes('recovery_token=')) {
+        window.location.replace('/admin/' + hash);
+      }
+    </script>
     <slot />
     <script>
       if (window.netlifyIdentity) {
