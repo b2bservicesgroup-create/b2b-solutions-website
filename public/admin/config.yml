@@ -2,7 +2,7 @@
 backend:
   name: github
   repo: b2bservicesgroup-create/b2b-solutions-website
-  branch: main
+  branch: master
   auth_scope: repo
 
 media_folder: "public/images"
