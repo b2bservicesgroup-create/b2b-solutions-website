@@ -1,9 +1,7 @@
 # UPDATE repo: to your GitHub username/b2b-solutions-website after pushing to GitHub
 backend:
-  name: github
-  repo: b2bservicesgroup-create/b2b-solutions-website
+  name: git-gateway
   branch: master
-  auth_scope: repo
 
 media_folder: "public/images"
 public_folder: "/images"
