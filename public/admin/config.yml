@@ -9,6 +9,20 @@ media_folder: "public/images"
 public_folder: "/images"
 
 collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Author", name: "author", widget: "string", default: "B2B Solutions" }
+      - { label: "Category", name: "category", widget: "select", options: ["Bookkeeping", "HR & Payroll", "Admin Support", "Document Creation", "Small Business Tips"] }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
   - name: "services"
     label: "Services"
     folder: "src/content/services"
