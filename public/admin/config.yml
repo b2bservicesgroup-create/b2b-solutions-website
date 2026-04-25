@@ -1,0 +1,32 @@
+# UPDATE repo: to your GitHub username/b2b-solutions-website after pushing to GitHub
+backend:
+  name: github
+  repo: b2bservicesgroup-create/b2b-solutions-website
+  branch: main
+  auth_scope: repo
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "services"
+    label: "Services"
+    folder: "src/content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Short Description", name: "description", widget: "text" }
+      - { label: "Display Order", name: "order", widget: "number" }
+      - { label: "Full Content", name: "body", widget: "markdown" }
+
+  - name: "network"
+    label: "Network Partners"
+    folder: "src/content/network"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Category Name", name: "category", widget: "string" }
+      - { label: "Short Description", name: "description", widget: "text" }
+      - { label: "Display Order", name: "order", widget: "number" }
+      - { label: "Full Content", name: "body", widget: "markdown" }

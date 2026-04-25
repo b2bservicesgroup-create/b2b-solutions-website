@@ -1,0 +1,444 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Contact Us"
+  description="Get in touch with B2B Solutions. We serve small businesses in Rochester, WA, Cedar Rapids, IA, and nationwide."
+>
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/zoho/form.css" />
+    <script is:inline src="/zoho/validation.js"></script>
+  </Fragment>
+
+  <Header />
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-blue-300 text-sm font-semibold uppercase tracking-wider mb-3">Let's Talk</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Contact B2B Solutions</h1>
+        <p class="text-blue-100 text-lg leading-relaxed">
+          Ready to streamline your business? Fill out the form below or book a free consultation directly on our calendar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="py-14 md:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-10">
+        <h2 class="text-3xl font-bold text-gray-900 mb-3">Send Us a Message</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Have a question or want to learn more about our services? Fill out the form and we'll get back to you within one business day.
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <div class="zf-templateWidth" style="padding: 0; max-width: 100%;">
+          <form
+            action="https://forms.zohopublic.com/b2bservicesgroup1/form/ContactB2B/formperma/xd04oJQol6_1MUwwCmh3KjoFKC9o4F5IvYBzYHEhs58/htmlRecords/submit"
+            name="form"
+            method="POST"
+            onsubmit="document.charset='UTF-8'; return zf_ValidateAndSubmit();"
+            accept-charset="UTF-8"
+            enctype="multipart/form-data"
+            id="form"
+          >
+            <input type="hidden" name="zf_referrer_name" value="" />
+            <input type="hidden" name="zf_redirect_url" value="" />
+            <input type="hidden" name="zc_gad" value="" />
+
+            <div class="zf-templateWrapper">
+              <ul class="zf-tempHeadBdr">
+                <li class="zf-tempHeadContBdr">
+                  <h2 class="zf-frmTitle"><em>Contact Our Office</em></h2>
+                  <p class="zf-frmDesc"></p>
+                  <div class="zf-clearBoth"></div>
+                </li>
+              </ul>
+
+              <div class="zf-subContWrap zf-topAlign">
+                <ul>
+
+                  <!-- Name -->
+                  <div class="zf-tempFrmWrapper zf-name zf-namelarge">
+                    <label class="zf-labelName">
+                      Name
+                      <em class="zf-important"> *</em>
+                    </label>
+                    <div class="zf-tempContDiv zf-twoType">
+                      <div class="zf-nameWrapper">
+                        <span>
+                          <input type="text" maxlength="255" name="Name_First" fieldType="7" placeholder="" />
+                          <label>First Name</label>
+                        </span>
+                        <span>
+                          <input type="text" maxlength="255" name="Name_Last" fieldType="7" placeholder="" />
+                          <label>Last Name</label>
+                        </span>
+                        <div class="zf-clearBoth"></div>
+                      </div>
+                      <p id="Name_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+                    </div>
+                    <div class="zf-clearBoth"></div>
+                  </div>
+
+                  <!-- Company Name -->
+                  <div class="zf-tempFrmWrapper zf-large">
+                    <label class="zf-labelName">
+                      Company Name
+                      <em class="zf-important"> *</em>
+                    </label>
+                    <div class="zf-tempContDiv">
+                      <span>
+                        <input type="text" name="SingleLine" checktype="c1" value="" maxlength="255" fieldType="1" placeholder="" />
+                      </span>
+                      <p id="SingleLine_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+                    </div>
+                    <div class="zf-clearBoth"></div>
+                  </div>
+
+                  <!-- Email -->
+                  <div class="zf-tempFrmWrapper zf-large">
+                    <label class="zf-labelName">Email</label>
+                    <div class="zf-tempContDiv">
+                      <span>
+                        <input type="text" name="Email" checktype="c5" value="" maxlength="255" fieldType="9" placeholder="" />
+                      </span>
+                      <p id="Email_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+                    </div>
+                    <div class="zf-clearBoth"></div>
+                  </div>
+
+                  <!-- Address -->
+                  <div id="Address" class="zf-tempFrmWrapper zf-address zf-addrlarge">
+                    <label class="zf-labelName">Address</label>
+                    <div class="zf-tempContDiv zf-address">
+                      <div class="zf-addrCont">
+                        <div class="address_row_1">
+                          <span class="zf-addresCols">
+                            <input type="text" maxlength="255" name="Address_AddressLine1" checktype="c1" placeholder="" />
+                            <label>Street Address</label>
+                          </span>
+                        </div>
+                        <div class="address_row_2">
+                          <span class="zf-addresCols">
+                            <input type="text" maxlength="255" name="Address_AddressLine2" checktype="c1" placeholder="" />
+                            <label>Address Line 2</label>
+                          </span>
+                        </div>
+                        <div class="address_row_3">
+                          <span class="zf-addresCols">
+                            <input type="text" maxlength="255" name="Address_City" checktype="c1" placeholder="" />
+                            <label>City</label>
+                          </span>
+                          <span class="zf-addresCols">
+                            <input type="text" maxlength="255" name="Address_Region" checktype="c1" placeholder="" />
+                            <label>State / Region / Province</label>
+                          </span>
+                        </div>
+                        <div class="address_row_4">
+                          <span class="zf-addresCols">
+                            <input type="text" maxlength="255" name="Address_ZipCode" checktype="c1" placeholder="" />
+                            <label>Postal / Zip Code</label>
+                          </span>
+                          <span class="zf-addresCols">
+                            <select class="zf-form-sBox" name="Address_Country" checktype="c1">
+                              <option value="-Select-">-Select-</option>
+                              <option>Canada</option>
+                              <option>United States</option>
+                              <option>Afghanistan</option>
+                              <option>Albania</option>
+                              <option>Algeria</option>
+                              <option>Andorra</option>
+                              <option>Angola</option>
+                              <option>Argentina</option>
+                              <option>Armenia</option>
+                              <option>Australia</option>
+                              <option>Austria</option>
+                              <option>Azerbaijan</option>
+                              <option>Bahrain</option>
+                              <option>Bangladesh</option>
+                              <option>Belarus</option>
+                              <option>Belgium</option>
+                              <option>Bolivia</option>
+                              <option>Bosnia and Herzegovina</option>
+                              <option>Brazil</option>
+                              <option>Bulgaria</option>
+                              <option>Cambodia</option>
+                              <option>Chile</option>
+                              <option>China</option>
+                              <option>Colombia</option>
+                              <option>Costa Rica</option>
+                              <option>Croatia</option>
+                              <option>Cuba</option>
+                              <option>Czech Republic</option>
+                              <option>Denmark</option>
+                              <option>Dominican Republic</option>
+                              <option>Ecuador</option>
+                              <option>Egypt</option>
+                              <option>El Salvador</option>
+                              <option>Estonia</option>
+                              <option>Ethiopia</option>
+                              <option>Finland</option>
+                              <option>France</option>
+                              <option>Georgia</option>
+                              <option>Germany</option>
+                              <option>Ghana</option>
+                              <option>Greece</option>
+                              <option>Guatemala</option>
+                              <option>Haiti</option>
+                              <option>Honduras</option>
+                              <option>Hong Kong</option>
+                              <option>Hungary</option>
+                              <option>Iceland</option>
+                              <option>India</option>
+                              <option>Indonesia</option>
+                              <option>Iran</option>
+                              <option>Iraq</option>
+                              <option>Ireland</option>
+                              <option>Israel</option>
+                              <option>Italy</option>
+                              <option>Jamaica</option>
+                              <option>Japan</option>
+                              <option>Jordan</option>
+                              <option>Kazakhstan</option>
+                              <option>Kenya</option>
+                              <option>Kosovo</option>
+                              <option>Kuwait</option>
+                              <option>Latvia</option>
+                              <option>Lebanon</option>
+                              <option>Libya</option>
+                              <option>Lithuania</option>
+                              <option>Luxembourg</option>
+                              <option>Malaysia</option>
+                              <option>Mexico</option>
+                              <option>Moldova</option>
+                              <option>Montenegro</option>
+                              <option>Morocco</option>
+                              <option>Myanmar</option>
+                              <option>Nepal</option>
+                              <option>Netherlands</option>
+                              <option>New Zealand</option>
+                              <option>Nicaragua</option>
+                              <option>Nigeria</option>
+                              <option>Norway</option>
+                              <option>Pakistan</option>
+                              <option>Panama</option>
+                              <option>Paraguay</option>
+                              <option>Peru</option>
+                              <option>Philippines</option>
+                              <option>Poland</option>
+                              <option>Portugal</option>
+                              <option>Romania</option>
+                              <option>Russia</option>
+                              <option>Saudi Arabia</option>
+                              <option>Serbia</option>
+                              <option>Singapore</option>
+                              <option>Slovakia</option>
+                              <option>Slovenia</option>
+                              <option>South Africa</option>
+                              <option>South Korea</option>
+                              <option>Spain</option>
+                              <option>Sri Lanka</option>
+                              <option>Sweden</option>
+                              <option>Switzerland</option>
+                              <option>Syria</option>
+                              <option>Taiwan</option>
+                              <option>Tanzania</option>
+                              <option>Thailand</option>
+                              <option>Tunisia</option>
+                              <option>Turkey</option>
+                              <option>Ukraine</option>
+                              <option>United Arab Emirates</option>
+                              <option>United Kingdom</option>
+                              <option>Uruguay</option>
+                              <option>Uzbekistan</option>
+                              <option>Venezuela</option>
+                              <option>Vietnam</option>
+                            </select>
+                            <label>Country</label>
+                          </span>
+                        </div>
+                        <div class="zf-clearBoth"></div>
+                        <p id="Address_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+                      </div>
+                    </div>
+                    <div class="zf-eclearBoth"></div>
+                  </div>
+
+                  <!-- Phone -->
+                  <div class="zf-tempFrmWrapper zf-large">
+                    <label class="zf-labelName">Phone</label>
+                    <div class="zf-tempContDiv zf-phonefld">
+                      <div class="zf-phwrapper zf-phNumber">
+                        <span>
+                          <input
+                            type="text"
+                            compname="PhoneNumber"
+                            name="PhoneNumber_countrycode"
+                            maxlength="20"
+                            checktype="c7"
+                            value=""
+                            phoneFormat="1"
+                            isCountryCodeEnabled="false"
+                            fieldType="11"
+                            id="international_PhoneNumber_countrycode"
+                            valType="number"
+                            phoneFormatType="1"
+                            placeholder=""
+                          />
+                          <label>Number</label>
+                        </span>
+                        <div class="zf-clearBoth"></div>
+                      </div>
+                      <p id="PhoneNumber_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+                    </div>
+                    <div class="zf-clearBoth"></div>
+                  </div>
+
+                  <!-- SMS Messaging Consent -->
+                  <div class="zf-tempFrmWrapper zf-termsandCond">
+                    <label class="zf-labelName">
+                      SMS Messaging
+                      <em class="zf-important"> *</em>
+                    </label>
+                    <div class="zf-tempContDiv">
+                      <div class="zf-termsContainer">
+                        <div class="zf-termsMsg zf-descFld">
+                          <div>
+                            By checking this box I consent to receive an SMS text message to my cell number provided above for Customer Care and Account Notifications messages from B2B Services Group LLC. I understand that I can opt-out of receiving text messages at any time by responding with STOP. I can reply with HELP to get help. Message frequency may vary. I understand that message and data rates may apply. See B2B Services Group LLC's <a href="/terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Service</a> and <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+                          </div>
+                        </div>
+                        <div class="zf-termsAccept">
+                          <input class="zf-checkBoxType zf-flLeft" name="TermsConditions" type="checkbox" />
+                          <label class="zf-descFld">I accept the Terms and Conditions.</label>
+                        </div>
+                      </div>
+                    </div>
+                    <p id="TermsConditions_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+                    <div class="clearBoth"></div>
+                  </div>
+
+                  <!-- Marketing Consent -->
+                  <div class="zf-tempFrmWrapper zf-termsandCond">
+                    <label class="zf-labelName">
+                      Marketing
+                      <em class="zf-important"> *</em>
+                    </label>
+                    <div class="zf-tempContDiv">
+                      <div class="zf-termsContainer">
+                        <div class="zf-termsMsg zf-descFld">
+                          <div>
+                            By checking this box I consent to receive an SMS text message to my cell number provided above for Marketing messages from B2B Services Group LLC. I understand that I can opt-out of receiving text messages at any time by responding with STOP. I can reply with HELP to get help. Message frequency may vary. I understand that message and data rates may apply. See B2B Services Group LLC's <a href="/terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Service</a> and <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+                          </div>
+                        </div>
+                        <div class="zf-termsAccept">
+                          <input class="zf-checkBoxType zf-flLeft" name="TermsConditions1" type="checkbox" />
+                          <label class="zf-descFld">I accept the Terms and Conditions.</label>
+                        </div>
+                      </div>
+                    </div>
+                    <p id="TermsConditions1_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+                    <div class="clearBoth"></div>
+                  </div>
+
+                  <!-- Services -->
+                  <div class="zf-tempFrmWrapper zf-large">
+                    <label class="zf-labelName">What services can we help you with?</label>
+                    <div class="zf-tempContDiv zf-mSelect">
+                      <select name="MultipleChoice" checktype="c1" multiple="multiple">
+                        <option value="New Business Setup">New Business Setup</option>
+                        <option value="LLC / Corporation Creation">LLC / Corporation Creation</option>
+                        <option value="Bookkeeping">Bookkeeping</option>
+                        <option value="HR/Payroll">HR / Payroll</option>
+                        <option value="Administrative Support">Administrative Support</option>
+                      </select>
+                      <p id="MultipleChoice_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+                    </div>
+                    <div class="zf-clearBoth"></div>
+                  </div>
+
+                </ul>
+              </div>
+
+              <ul>
+                <li class="zf-fmFooter">
+                  <button class="zf-submitColor">Submit</button>
+                </li>
+              </ul>
+            </div>
+          </form>
+        </div>
+
+        <script is:inline>
+          var dateAndMonthRegexFormateArray = zf_SetDateAndMonthRegexBasedOnDateFormate('dd-MMM-yyyy');
+          var zf_DateRegex = new RegExp(dateAndMonthRegexFormateArray[0]);
+          var zf_MonthYearRegex = new RegExp(dateAndMonthRegexFormateArray[1]);
+          var zf_MandArray = ["Name_Last", "SingleLine", "TermsConditions", "TermsConditions1"];
+          var zf_FieldArray = ["Name_First", "Name_Last", "SingleLine", "Email", "Address_AddressLine1", "Address_AddressLine2", "Address_City", "Address_Region", "Address_ZipCode", "Address_Country", "PhoneNumber_countrycode", "TermsConditions", "TermsConditions1", "MultipleChoice"];
+          var isSalesIQIntegrationEnabled = false;
+          var salesIQFieldsArray = [];
+        </script>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Info -->
+  <section class="py-12 bg-gray-50 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-3 gap-8">
+
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 bg-blue-100 rounded-xl flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm mb-1">Email</p>
+            <a href="mailto:info@b2bsolutions.biz" class="text-blue-700 hover:text-blue-800 transition-colors text-sm">
+              info@b2bsolutions.biz
+            </a>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 bg-blue-100 rounded-xl flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm mb-1">Phone</p>
+            <a href="tel:3605292672" class="text-blue-700 hover:text-blue-800 transition-colors block text-sm">360-529-2672 <span class="text-gray-400">(West Coast)</span></a>
+            <a href="tel:3194510501" class="text-blue-700 hover:text-blue-800 transition-colors block text-sm">319-451-0501 <span class="text-gray-400">(Midwest)</span></a>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 bg-blue-100 rounded-xl flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm mb-1">Business Hours</p>
+            <p class="text-gray-600 text-sm">Mon, Wed–Fri: 8:00 AM – 5:00 PM</p>
+            <p class="text-gray-600 text-sm">Tuesday: 7:00 AM – 7:00 PM</p>
+            <p class="text-gray-600 text-sm">Saturday: By Appointment</p>
+            <p class="text-gray-400 text-xs mt-1">WA = Pacific Time &bull; IA = Central Time</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

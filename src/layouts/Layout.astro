@@ -1,0 +1,120 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  ogType?: 'website' | 'article';
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = 'B2B Solutions helps small businesses thrive with professional bookkeeping, HR, payroll, administrative support, LLC formation, and registered agent services in Rochester, WA and Cedar Rapids, IA.',
+  ogType = 'website',
+  ogImage = '/logo.png',
+} = Astro.props;
+
+const siteURL = 'https://b2bsolutions.biz';
+const canonicalURL = new URL(Astro.url.pathname, siteURL).href;
+const ogImageURL = new URL(ogImage, siteURL).href;
+const fullTitle = `${title} | B2B Solutions`;
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'B2B Solutions',
+  url: siteURL,
+  telephone: ['360-529-2672', '319-451-0501'],
+  email: 'info@b2bsolutions.biz',
+  description: 'Professional bookkeeping, HR, payroll, administrative support, LLC formation, and registered agent services for small businesses.',
+  address: [
+    {
+      '@type': 'PostalAddress',
+      addressLocality: 'Rochester',
+      addressRegion: 'WA',
+      addressCountry: 'US',
+    },
+    {
+      '@type': 'PostalAddress',
+      addressLocality: 'Cedar Rapids',
+      addressRegion: 'IA',
+      addressCountry: 'US',
+    },
+  ],
+  areaServed: [
+    { '@type': 'City', name: 'Rochester', containedInPlace: { '@type': 'State', name: 'Washington' } },
+    { '@type': 'City', name: 'Cedar Rapids', containedInPlace: { '@type': 'State', name: 'Iowa' } },
+    { '@type': 'Country', name: 'United States' },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Business Support Services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Bookkeeping' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'HR Solutions' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Payroll Administration' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Administrative Support' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Document Creation & SOPs' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'LLC Formation' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Registered Agent Services' } },
+    ],
+  },
+  sameAs: [
+    'https://www.facebook.com/b2bsolutionsbiz',
+    'https://share.google/ujIOfipPqlPWw3kVa',
+  ],
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '17:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Tuesday', opens: '07:00', closes: '19:00' },
+  ],
+};
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:site_name" content="B2B Solutions" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>{fullTitle}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+    <slot name="head" />
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  </head>
+  <body class="font-sans antialiased text-gray-800 bg-white">
+    <slot />
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', (user: any) => {
+          if (!user) {
+            window.netlifyIdentity.on('login', () => {
+              document.location.href = '/admin/';
+            });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

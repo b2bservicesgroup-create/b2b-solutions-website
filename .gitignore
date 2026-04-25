@@ -1,0 +1,19 @@
+# build output
+dist/
+.output/
+
+# dependencies
+node_modules/
+
+# Astro
+.astro/
+
+# env files
+.env
+.env.production
+
+# Netlify CLI
+.netlify/
+
+# macOS
+.DS_Store

@@ -1,0 +1,90 @@
+---
+const pathname = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/solutions', label: 'Solutions' },
+  { href: '/network', label: 'Our Network' },
+  { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-24">
+
+      <a href="/" class="flex items-center">
+        <img src="/logo.png" alt="B2B Solutions" class="h-20 w-auto" />
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7">
+        {navLinks.map(({ href, label }) => (
+          <a
+            href={href}
+            class={`text-sm font-medium transition-colors hover:text-blue-700 ${
+              pathname === href ? 'text-blue-700' : 'text-gray-600'
+            }`}
+          >
+            {label}
+          </a>
+        ))}
+        <a
+          href="/contact"
+          class="ml-1 bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-900 transition-colors"
+        >
+          Get Started
+        </a>
+      </nav>
+
+      <button
+        id="menu-toggle"
+        class="md:hidden p-2 rounded-md text-gray-600 hover:text-blue-700 hover:bg-gray-100 transition-colors"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg id="icon-open" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+    <nav class="px-4 py-3 space-y-1">
+      {navLinks.map(({ href, label }) => (
+        <a
+          href={href}
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-700 hover:bg-blue-50 transition-colors"
+        >
+          {label}
+        </a>
+      ))}
+      <a
+        href="/contact"
+        class="block mt-2 px-3 py-2 bg-blue-800 text-white rounded-md text-base font-semibold text-center hover:bg-blue-900 transition-colors"
+      >
+        Get Started
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden');
+    iconClose?.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>
