@@ -3,6 +3,7 @@ title: "How Zoho One Saves Small Businesses Hundreds of Dollars a Month (We Know
 description: "We switched to Zoho One at B2B Solutions and haven't looked back. Here's exactly how much small businesses can save — and what they gain — by replacing their scattered software stack with one integrated platform."
 pubDate: 2026-04-27
 heroImage: ""
+category: "Software"
 draft: false
 tags: ["Zoho One", "Small Business", "Business Software", "Cost Savings", "CRM"]
 ---

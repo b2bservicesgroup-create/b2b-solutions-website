@@ -9,6 +9,9 @@ const blog = defineCollection({
     author: z.string().default('B2B Solutions'),
     category: z.string(),
     image: z.string().optional(),
+    heroImage: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    draft: z.boolean().optional(),
   }),
 });
 
