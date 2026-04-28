@@ -1,0 +1,456 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+interface HowItWorksStep {
+  step: number;
+  title: string;
+  description: string;
+}
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface RelatedPost {
+  title: string;
+  slug: string;
+}
+
+interface Solution {
+  slug: string;
+  icon: string;
+  title: string;
+  pageTitle: string;
+  metaDescription: string;
+  tagline: string;
+  description: string;
+  features: string[];
+  whoItIsFor: string[];
+  howItWorks: HowItWorksStep[];
+  faqs: FAQ[];
+  relatedPosts: RelatedPost[];
+}
+
+export async function getStaticPaths() {
+  const allSolutions: Solution[] = [
+    {
+      slug: 'bookkeeping',
+      icon: 'calculator',
+      title: 'Bookkeeping',
+      pageTitle: 'Bookkeeping Services for Small Businesses',
+      metaDescription: 'Professional bookkeeping for small businesses in Rochester, WA and Cedar Rapids, IA. Transaction recording, reconciliation, monthly financial statements, and software management.',
+      tagline: 'Your finances — organized, accurate, and always up to date.',
+      description: 'Keep your business finances in order with our professional bookkeeping services. We handle the day-to-day financial tasks so you have clean, accurate records and the financial clarity to make confident business decisions — without spending hours on it yourself.',
+      features: [
+        'Transaction recording and categorization',
+        'Bank and credit card reconciliation',
+        'Accounts payable and receivable management',
+        'Monthly financial statements and reports',
+        'Software management (QuickBooks, Wave, Xero, and more)',
+        'Year-end preparation for your tax professional',
+      ],
+      whoItIsFor: [
+        'Sole proprietors and small business owners with 1–25 employees',
+        'Businesses mixing personal and business finances that need clean separation',
+        'New LLCs and startups building accurate financial records from day one',
+        'Companies that have fallen behind and need to catch up their books',
+        'Businesses preparing for tax season that need organized, accurate records',
+      ],
+      howItWorks: [
+        { step: 1, title: 'Free Consultation', description: 'We review your current financial situation, software setup, and the state of your books to understand exactly what you need.' },
+        { step: 2, title: 'Onboarding & Setup', description: 'We connect to your accounts, clean up your chart of accounts, and establish a consistent categorization system.' },
+        { step: 3, title: 'Monthly Bookkeeping', description: 'We record, categorize, and reconcile all transactions each month — keeping your books clean and current.' },
+        { step: 4, title: 'Reporting & Review', description: 'You receive monthly financial statements and a plain-language summary of your business\'s financial health.' },
+      ],
+      faqs: [
+        { question: 'Do you prepare tax returns?', answer: 'No — we prepare and organize your books so your tax professional has everything they need. We coordinate directly with your CPA or tax preparer at year-end to make the process as smooth as possible.' },
+        { question: 'What accounting software do you use?', answer: 'We work with QuickBooks Online, Wave, Xero, and FreshBooks. We can work within your existing software or help you choose and set up the right platform for your business.' },
+        { question: 'How do you get access to our financial accounts?', answer: 'We use secure, read-only accounting software integrations to connect to your accounts. We never have direct access to move or transfer funds.' },
+        { question: 'How often will I receive financial reports?', answer: 'Monthly. You\'ll receive a balance sheet, profit & loss statement, and a brief summary each month. If you need more frequent reporting, we can discuss that during setup.' },
+      ],
+      relatedPosts: [
+        { title: '5 Bookkeeping Mistakes Small Businesses Make', slug: '5-bookkeeping-mistakes-small-businesses-make' },
+        { title: 'Bookkeeping vs. Accounting: What Small Businesses Need to Know', slug: 'bookkeeping-vs-accounting-small-business' },
+      ],
+    },
+    {
+      slug: 'hr-solutions',
+      icon: 'users',
+      title: 'HR Solutions',
+      pageTitle: 'Fractional HR Services for Small Businesses',
+      metaDescription: 'Fractional HR services for small businesses in Washington and Iowa. Policy development, recruitment support, compliance guidance, and employee relations — without the full-time cost.',
+      tagline: 'Professional HR support — without the full-time price tag.',
+      description: 'Get the HR expertise your business needs without committing to a full-time HR department. Our fractional HR services scale with your business, providing the right level of support at every stage of growth — from writing your first employee handbook to navigating a complex termination.',
+      features: [
+        'HR policy development and employee handbook creation',
+        'Recruitment support and onboarding processes',
+        'Employee relations and performance management',
+        'HR compliance guidance (federal and state regulations)',
+        'Benefits administration support',
+        'Termination procedures and offboarding',
+      ],
+      whoItIsFor: [
+        'Small businesses with 1–50 employees that don\'t have a dedicated HR person',
+        'Growing companies adding employees for the first time',
+        'Businesses facing a specific HR challenge — a termination, a complaint, or new hire paperwork',
+        'Employers who need an employee handbook but don\'t know where to start',
+        'Business owners who want to ensure they\'re compliant with employment law',
+      ],
+      howItWorks: [
+        { step: 1, title: 'HR Assessment', description: 'We review your current HR practices, documents, and any immediate issues or compliance gaps.' },
+        { step: 2, title: 'Policy Development', description: 'We create or update your employee handbook, job descriptions, offer letters, and core HR policies.' },
+        { step: 3, title: 'Ongoing Support', description: 'We provide HR guidance as situations arise — from hiring and onboarding to performance management and terminations.' },
+        { step: 4, title: 'Compliance Monitoring', description: 'We keep you informed of relevant changes to federal, Washington State, and Iowa employment laws.' },
+      ],
+      faqs: [
+        { question: 'What is fractional HR?', answer: 'Fractional HR means you get professional HR services on a part-time or as-needed basis, without hiring a full-time HR employee. You pay for the level of support your business actually needs — whether that\'s a one-time project or ongoing monthly support.' },
+        { question: 'Do you handle job postings and recruiting?', answer: 'Yes. We can support the full recruitment process including writing job postings, screening applicants, and helping structure your interview process.' },
+        { question: 'Can you help with employee terminations?', answer: 'Yes. We help you document the process correctly, ensure legal compliance, conduct terminations professionally, and handle all offboarding paperwork.' },
+        { question: 'Are you familiar with Washington and Iowa employment laws?', answer: 'Yes. We serve businesses in both Washington State and Iowa and are knowledgeable about the specific employment requirements, leave laws, and minimum wage rules in each state.' },
+      ],
+      relatedPosts: [
+        { title: 'When Does a Small Business Need Fractional HR?', slug: 'when-does-a-small-business-need-fractional-hr' },
+        { title: 'How to Handle Reasonable Accommodation Requests as a Small Business', slug: 'reasonable-accommodations-small-business' },
+      ],
+    },
+    {
+      slug: 'payroll-administration',
+      icon: 'dollar',
+      title: 'Payroll Administration',
+      pageTitle: 'Payroll Administration Services for Small Businesses',
+      metaDescription: 'Complete payroll processing, tax filing, and year-end W-2/1099 services for small businesses. Processed through Cascade Payroll and Gusto.',
+      tagline: 'Accurate, on-time payroll — every pay period.',
+      description: 'Managing payroll is complex, time-consuming, and unforgiving of mistakes. We handle the entire payroll process so your employees are paid correctly and on schedule, every time — while keeping you fully compliant with all federal, state, and local filing requirements.',
+      features: [
+        'Payroll processing (weekly, bi-weekly, semi-monthly, or monthly)',
+        'Federal, state, and local tax withholding and filings',
+        'Direct deposit setup and management',
+        'Detailed payroll reports and record keeping',
+        'New hire reporting requirements',
+        'W-2 and 1099 preparation and filing',
+        'Processed through Cascade Payroll and Gusto',
+      ],
+      whoItIsFor: [
+        'Small businesses running payroll manually or with a DIY tool that\'s become overwhelming',
+        'Companies that have experienced payroll tax errors and need a professional solution',
+        'Businesses adding their first employees and setting up payroll for the first time',
+        'Employers with hourly and salaried staff on different pay schedules',
+        'Companies that need W-2s and 1099s handled correctly at year-end',
+      ],
+      howItWorks: [
+        { step: 1, title: 'Payroll Setup', description: 'We gather employee information, pay rates, and tax details to configure your payroll system in Cascade Payroll or Gusto.' },
+        { step: 2, title: 'Payroll Processing', description: 'Each pay period, you submit any changes (new hires, hours, adjustments) and we process payroll accurately and on schedule.' },
+        { step: 3, title: 'Tax Filing', description: 'We handle all federal, state, and local payroll tax deposits and filings so you stay compliant throughout the year.' },
+        { step: 4, title: 'Year-End Close', description: 'We prepare and distribute W-2s for employees and 1099-NECs for contractors, closing out your payroll year cleanly.' },
+      ],
+      faqs: [
+        { question: 'What payroll systems do you use?', answer: 'We process payroll through Cascade Payroll and Gusto. We\'ll recommend the platform that best fits your business size, budget, and needs.' },
+        { question: 'Do you handle contractor payments and 1099s?', answer: 'Yes. We handle both employee W-2 payroll and independent contractor 1099-NEC preparation and filing.' },
+        { question: 'What if I have employees in multiple states?', answer: 'We can handle multi-state payroll, including registering for payroll tax accounts in each applicable state and managing the associated filings.' },
+        { question: 'How does the payroll submission process work?', answer: 'You submit hours, new hires, terminations, or any other changes by a set cutoff date each pay period. We process payroll so direct deposits are made on your scheduled payday.' },
+      ],
+      relatedPosts: [
+        { title: 'Small Business Payroll: A Complete Guide', slug: 'small-business-payroll-guide' },
+      ],
+    },
+    {
+      slug: 'administrative-support',
+      icon: 'clipboard',
+      title: 'Administrative Support',
+      pageTitle: 'Virtual Administrative Support for Small Businesses',
+      metaDescription: 'Virtual executive and administrative assistance for small businesses. Calendar management, email, data entry, meeting coordination, and more.',
+      tagline: 'Keep operations running smoothly — virtually.',
+      description: 'Free up your time with virtual administrative assistance that handles the operational tasks keeping you from focusing on your business. From scheduling to correspondence to data management, we keep your day-to-day running smoothly so you can focus on what you do best.',
+      features: [
+        'Virtual executive and administrative assistance',
+        'Calendar and schedule management',
+        'Email and correspondence management',
+        'Data entry and database management',
+        'Meeting coordination and minutes documentation',
+        'Travel arrangements and coordination',
+      ],
+      whoItIsFor: [
+        'Business owners who are buried in email, scheduling, and administrative tasks',
+        'Executives who need support with travel, calendar, and correspondence management',
+        'Small teams that need occasional or ongoing admin help without a full-time hire',
+        'Growing businesses that need data entry, records management, or coordination support',
+        'Professionals who want to reclaim hours each week to focus on revenue-generating work',
+      ],
+      howItWorks: [
+        { step: 1, title: 'Needs Assessment', description: 'We identify which tasks are consuming the most of your time and outline what ongoing support would look like.' },
+        { step: 2, title: 'Onboarding', description: 'We get access to the tools you use — email, calendar, project management platforms — and establish your communication preferences.' },
+        { step: 3, title: 'Ongoing Support', description: 'We handle your designated tasks on an agreed schedule, keeping things running smoothly in the background.' },
+        { step: 4, title: 'Regular Check-ins', description: 'We communicate progress, flag priorities, and adjust our support as your needs evolve.' },
+      ],
+      faqs: [
+        { question: 'What hours are you available?', answer: 'Our standard hours are Monday–Friday during business hours (Pacific and Central time). We establish expected response times and turnaround windows during onboarding so you always know what to expect.' },
+        { question: 'How do we communicate with our virtual assistant?', answer: 'We work through whatever communication tools you prefer — email, phone, Slack, Microsoft Teams, or others. We\'ll set up a workflow that fits how you already work.' },
+        { question: 'What tools do you use?', answer: 'We\'re proficient with Microsoft 365, Google Workspace, common calendar platforms, and most project management and CRM tools. If you use something we\'re not yet familiar with, we\'ll learn it.' },
+        { question: 'Is this billed hourly or on a monthly retainer?', answer: 'We offer both hourly and monthly retainer arrangements. During your consultation, we\'ll help you determine which model makes the most sense based on your expected volume of work.' },
+      ],
+      relatedPosts: [
+        { title: 'What a Virtual Administrative Assistant Can Do for Your Small Business', slug: 'virtual-administrative-assistant-small-business' },
+      ],
+    },
+    {
+      slug: 'document-creation',
+      icon: 'document',
+      title: 'Document Creation & SOPs',
+      pageTitle: 'Document Creation & SOP Development for Small Businesses',
+      metaDescription: 'Professional SOP development, employee handbooks, policy manuals, and business document creation for small businesses. Capture your processes and create consistency.',
+      tagline: 'Clear documentation that creates consistency across your business.',
+      description: 'Well-written documentation is the foundation of a scalable business. We create professional SOPs, handbooks, and business documents that capture your processes, reduce errors, and help your team operate consistently — whether you\'re onboarding your first employee or your fiftieth.',
+      features: [
+        'Standard Operating Procedures (SOPs) development',
+        'Policy and procedure manuals',
+        'Employee handbooks and training materials',
+        'Business proposals, reports, and presentations',
+        'Process documentation and workflow design',
+        'Business correspondence templates and forms',
+      ],
+      whoItIsFor: [
+        'Businesses that need to document processes to train new employees consistently',
+        'Growing companies preparing to scale and wanting to capture institutional knowledge',
+        'Owners who find themselves re-explaining the same tasks over and over',
+        'Companies that want to reduce errors and ensure a consistent customer experience',
+        'Businesses that need professional proposals, reports, or correspondence',
+      ],
+      howItWorks: [
+        { step: 1, title: 'Discovery', description: 'We interview you and your team to understand your processes, identify what needs to be documented, and establish scope.' },
+        { step: 2, title: 'Draft Creation', description: 'We write clear, professionally formatted documents in your voice and at the right level of detail for your audience.' },
+        { step: 3, title: 'Review & Revisions', description: 'You review each document and we refine it until it\'s exactly right — typically two rounds of revisions are included.' },
+        { step: 4, title: 'Delivery', description: 'You receive final documents in your preferred format (Word, PDF, or Google Docs) along with an editable master copy.' },
+      ],
+      faqs: [
+        { question: 'How long does it take to create an SOP?', answer: 'A single, straightforward SOP typically takes 3–5 business days. Larger documentation projects — like a full employee handbook or a library of process documents — are scoped individually at the start of the engagement.' },
+        { question: 'Do we own the documents you create?', answer: 'Yes, absolutely. All documents we create belong to you. We retain no rights and do not reuse your content for other clients.' },
+        { question: 'What format do you deliver documents in?', answer: 'We deliver in whatever format works best for you — typically Word (.docx) for editable versions and PDF for final versions. We can also work directly in Google Docs if your team prefers that.' },
+        { question: 'Do you follow our brand guidelines?', answer: 'Yes. If you have brand guidelines — colors, fonts, logos — we incorporate them. If not, we\'ll create clean, professional formatting that reflects your business.' },
+      ],
+      relatedPosts: [
+        { title: 'Why SOPs Matter for Small Businesses', slug: 'why-sops-matter-for-small-businesses' },
+      ],
+    },
+    {
+      slug: 'llc-registration',
+      icon: 'building',
+      title: 'LLC Registration & Registered Agent',
+      pageTitle: 'LLC Registration & Registered Agent Services in Washington State',
+      metaDescription: 'LLC formation and registered agent services in Washington State. B2B Solutions files your Articles of Organization and handles ongoing compliance so you stay in good standing.',
+      tagline: 'Start your business the right way — and stay compliant.',
+      description: 'B2B Solutions is a registered agent in Washington State and can help you form your LLC quickly and correctly. We handle the paperwork, filing, and ongoing compliance requirements so you can focus on building your business from day one — with the liability protection an LLC provides.',
+      features: [
+        'LLC formation and Articles of Organization filing in Washington State',
+        'Registered Agent services in Washington State',
+        'Registered address for official government and legal correspondence',
+        'Annual report reminders and compliance support',
+        'Operating agreement templates and guidance',
+        'Business structure consultation (sole proprietor vs. LLC)',
+      ],
+      whoItIsFor: [
+        'Entrepreneurs starting their first business and unsure of the formation process',
+        'Sole proprietors who want liability protection by converting to an LLC',
+        'Out-of-state businesses that need a registered agent in Washington State',
+        'Business owners who need ongoing compliance support for an existing LLC',
+        'Anyone who wants expert guidance on business structure decisions',
+      ],
+      howItWorks: [
+        { step: 1, title: 'Business Structure Consultation', description: 'We discuss your business goals and help you determine whether an LLC is the right structure, and what that means for taxes and liability.' },
+        { step: 2, title: 'Filing', description: 'We prepare and file your Articles of Organization with the Washington Secretary of State and handle all associated documentation.' },
+        { step: 3, title: 'Registered Agent Setup', description: 'We establish your Registered Agent service so you have a compliant address for official government and legal correspondence.' },
+        { step: 4, title: 'Ongoing Compliance', description: 'We send annual report reminders and can assist with compliance filings to keep your LLC in good standing year after year.' },
+      ],
+      faqs: [
+        { question: 'What is a registered agent?', answer: 'A registered agent is a designated person or company authorized to receive official government, legal, and tax documents on behalf of your business. Washington State requires all LLCs and corporations to maintain a registered agent with a physical address in the state.' },
+        { question: 'How long does it take to form an LLC in Washington?', answer: 'Standard processing with the Washington Secretary of State typically takes 5–10 business days. Expedited processing options are available for an additional state fee if you need it sooner.' },
+        { question: 'Do you provide registered agent services in Iowa?', answer: 'Currently, our registered agent services are only available in Washington State. If you\'re forming a business in Iowa, we can still help with HR, bookkeeping, payroll, and other services.' },
+        { question: 'What ongoing compliance is required after forming my LLC?', answer: 'Washington State LLCs are required to file an annual report with the Secretary of State each year to maintain their active status. We\'ll remind you when it\'s due and can assist with the filing.' },
+      ],
+      relatedPosts: [
+        { title: 'How to Form an LLC in Washington State', slug: 'how-to-form-an-llc-in-washington-state' },
+      ],
+    },
+  ];
+
+  return allSolutions.map((s) => ({
+    params: { slug: s.slug },
+    props: { solution: s },
+  }));
+}
+
+const { solution } = Astro.props;
+---
+
+<Layout title={solution.pageTitle} description={solution.metaDescription}>
+  <Header />
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a href="/solutions" class="inline-flex items-center text-blue-300 hover:text-white text-sm mb-6 transition-colors">
+        <svg class="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        All Solutions
+      </a>
+      <div class="max-w-2xl">
+        <p class="text-blue-300 text-sm font-semibold uppercase tracking-wider mb-3">{solution.title}</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">{solution.pageTitle}</h1>
+        <p class="text-blue-100 text-lg leading-relaxed mb-7">{solution.tagline}</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/contact" class="inline-flex items-center bg-white text-blue-800 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+            Get Started
+            <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="https://b2bservicesgroup.zohobookings.com/#/b2bservicesgroup" target="_blank" rel="noopener noreferrer" class="inline-flex items-center border border-white/40 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">
+            Book a Free Consultation
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">About This Service</h2>
+          <p class="text-gray-600 leading-relaxed text-lg mb-6">{solution.description}</p>
+        </div>
+        <div class="bg-blue-50 rounded-2xl p-7">
+          <h3 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">What's Included</h3>
+          <ul class="space-y-3">
+            {solution.features.map((feature) => (
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 bg-blue-700 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span class="text-gray-700 text-sm leading-relaxed">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who It's For -->
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-10">
+        <h2 class="text-3xl font-bold text-gray-900 mb-3">Is This Right for You?</h2>
+        <p class="text-gray-600 leading-relaxed">Our {solution.title.toLowerCase()} services are a great fit for:</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {solution.whoItIsFor.map((item) => (
+          <div class="bg-white rounded-xl p-5 border border-gray-100 flex items-start gap-3">
+            <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-3">How It Works</h2>
+        <p class="text-gray-600 leading-relaxed">Getting started is straightforward. Here's what to expect:</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {solution.howItWorks.map(({ step, title, description }) => (
+          <div>
+            <div class="w-10 h-10 bg-blue-800 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-4">
+              {step}
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">{title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
+        <p class="text-gray-600 mb-10">Common questions about our {solution.title.toLowerCase()} services.</p>
+        <div class="space-y-3">
+          {solution.faqs.map(({ question, answer }) => (
+            <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden">
+              <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-blue-700 transition-colors list-none">
+                <span>{question}</span>
+                <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-4">
+                {answer}
+              </div>
+            </details>
+          ))}
+        </div>
+        <p class="text-center mt-8 text-gray-500 text-sm">
+          Have more questions? <a href="/faq" class="text-blue-700 font-medium hover:text-blue-800">Browse all FAQs</a> or <a href="/contact" class="text-blue-700 font-medium hover:text-blue-800">contact us directly</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Posts -->
+  {solution.relatedPosts.length > 0 && (
+    <section class="py-14 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Related Resources</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {solution.relatedPosts.map(({ title, slug }) => (
+            <a href={`/blog/${slug}`} class="group flex items-center gap-4 bg-gray-50 rounded-xl p-5 hover:bg-blue-50 transition-colors border border-gray-100">
+              <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-blue-200 transition-colors">
+                <svg class="w-5 h-5 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <span class="text-gray-800 font-medium text-sm group-hover:text-blue-700 transition-colors">{title}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="py-16 bg-blue-800 text-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+      <p class="text-blue-200 text-lg mb-8">
+        Schedule a free consultation and we'll discuss how our {solution.title.toLowerCase()} services can support your business.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="inline-block bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+          Contact Us
+        </a>
+        <a href="https://b2bservicesgroup.zohobookings.com/#/b2bservicesgroup" target="_blank" rel="noopener noreferrer" class="inline-block border border-white/40 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">
+          Book a Free Consultation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

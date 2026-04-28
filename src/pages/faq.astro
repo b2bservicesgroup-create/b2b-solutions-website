@@ -1,0 +1,268 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const categories = [
+  {
+    title: 'General Questions',
+    id: 'general',
+    faqs: [
+      {
+        question: 'What areas do you serve?',
+        answer: 'B2B Solutions is headquartered in Rochester, WA and Cedar Rapids, IA. We serve businesses in Washington State, Iowa, and across the United States. Many of our services — bookkeeping, payroll, HR, administrative support, and document creation — are delivered virtually and available to businesses nationwide.',
+      },
+      {
+        question: 'Do you offer a free consultation?',
+        answer: 'Yes. We offer a free initial consultation to understand your business needs and explain how we can help. You can fill out our contact form, call us directly, or book a time on our calendar using the scheduling link on our contact page.',
+      },
+      {
+        question: 'What size businesses do you typically work with?',
+        answer: 'We primarily work with small businesses — typically sole proprietors, startups, and companies with up to 50 employees. Our services are designed to give small businesses access to professional-level support without the overhead of a full-time hire.',
+      },
+      {
+        question: 'Can I hire B2B Solutions for just one service, or do I need a bundle?',
+        answer: 'You can hire us for any individual service. Many clients start with one service — like bookkeeping or payroll — and add more over time as their needs grow. We\'re flexible and will work with you to build the right level of support.',
+      },
+      {
+        question: 'How are your services priced?',
+        answer: 'Pricing depends on the scope and volume of work for each service. We discuss pricing during your free consultation once we understand what you need. We offer both project-based pricing (for one-time work like LLC formation or document creation) and ongoing monthly arrangements (for bookkeeping, payroll, HR, and admin support).',
+      },
+      {
+        question: 'Do you work with businesses remotely?',
+        answer: 'Yes. Most of our services are delivered virtually. We use secure tools for file sharing, accounting software integrations, and communication platforms that work for clients wherever they are.',
+      },
+    ],
+  },
+  {
+    title: 'Bookkeeping',
+    id: 'bookkeeping',
+    faqs: [
+      {
+        question: 'Do you prepare tax returns?',
+        answer: 'No — we prepare and organize your books so your tax professional has everything they need. We coordinate directly with your CPA or tax preparer at year-end to make the process as smooth as possible.',
+      },
+      {
+        question: 'What accounting software do you work with?',
+        answer: 'We work with QuickBooks Online, Wave, Xero, and FreshBooks. We can work within your existing software or help you choose and set up the right platform for your business.',
+      },
+      {
+        question: 'How do you get access to our financial accounts?',
+        answer: 'We use secure, read-only accounting software integrations to connect to your accounts. We never have direct access to move or transfer funds.',
+      },
+      {
+        question: 'How often will I receive financial reports?',
+        answer: 'Monthly. You\'ll receive a balance sheet, profit & loss statement, and a brief summary each month. If you need more frequent reporting, we can discuss that during onboarding.',
+      },
+      {
+        question: 'Can you catch up books that are behind?',
+        answer: 'Yes. We regularly help businesses get their books current after falling behind. We\'ll assess the scope of the catch-up work, provide a quote, and work through it systematically so your records are accurate and complete.',
+      },
+    ],
+  },
+  {
+    title: 'HR Solutions',
+    id: 'hr',
+    faqs: [
+      {
+        question: 'What is fractional HR?',
+        answer: 'Fractional HR means you get professional HR services on a part-time or as-needed basis, without hiring a full-time HR employee. You pay for the level of support your business actually needs — whether that\'s a one-time project or ongoing monthly support.',
+      },
+      {
+        question: 'Do you handle job postings and recruiting?',
+        answer: 'Yes. We can support the full recruitment process including writing job postings, screening applicants, and helping structure your interview process.',
+      },
+      {
+        question: 'Can you help with employee terminations?',
+        answer: 'Yes. We help you document the process correctly, ensure legal compliance, conduct terminations professionally, and handle all offboarding paperwork.',
+      },
+      {
+        question: 'Are you familiar with Washington and Iowa employment laws?',
+        answer: 'Yes. We serve businesses in both Washington State and Iowa and are knowledgeable about the specific employment requirements, leave laws, and minimum wage rules in each state.',
+      },
+      {
+        question: 'Can you create an employee handbook for us?',
+        answer: 'Yes. Creating employee handbooks is one of our most common HR projects. We write handbooks tailored to your industry, your state\'s employment laws, and your company culture. See our Document Creation & SOPs page for more information.',
+      },
+    ],
+  },
+  {
+    title: 'Payroll Administration',
+    id: 'payroll',
+    faqs: [
+      {
+        question: 'What payroll systems do you use?',
+        answer: 'We process payroll through Cascade Payroll and Gusto. We\'ll recommend the platform that best fits your business size, budget, and needs.',
+      },
+      {
+        question: 'Do you handle payroll tax deposits and filings?',
+        answer: 'Yes. We handle all federal, state, and local payroll tax withholdings, deposits, and quarterly filings on your behalf throughout the year.',
+      },
+      {
+        question: 'Do you handle contractor payments and 1099s?',
+        answer: 'Yes. We handle both employee W-2 payroll and independent contractor 1099-NEC preparation and filing.',
+      },
+      {
+        question: 'What if I have employees in multiple states?',
+        answer: 'We can handle multi-state payroll, including registering for payroll tax accounts in each applicable state and managing the associated filings.',
+      },
+      {
+        question: 'How does the payroll submission process work?',
+        answer: 'You submit hours, new hires, terminations, or any other changes by a set cutoff date each pay period. We process payroll so direct deposits are made on your scheduled payday.',
+      },
+    ],
+  },
+  {
+    title: 'Administrative Support',
+    id: 'admin',
+    faqs: [
+      {
+        question: 'What hours are you available?',
+        answer: 'Our standard hours are Monday–Friday during business hours (Pacific and Central time). We establish expected response times and turnaround windows during onboarding so you always know what to expect.',
+      },
+      {
+        question: 'How do we communicate with our virtual assistant?',
+        answer: 'We work through whatever communication tools you prefer — email, phone, Slack, Microsoft Teams, or others. We\'ll set up a communication workflow that fits how you already work.',
+      },
+      {
+        question: 'What tools do you use?',
+        answer: 'We\'re proficient with Microsoft 365, Google Workspace, common calendar platforms, and most project management and CRM tools. If you use something we\'re not yet familiar with, we\'ll learn it.',
+      },
+      {
+        question: 'Is administrative support billed hourly or on a retainer?',
+        answer: 'We offer both hourly and monthly retainer arrangements. During your consultation, we\'ll help you determine which model makes the most sense based on your expected volume of work.',
+      },
+    ],
+  },
+  {
+    title: 'Document Creation & SOPs',
+    id: 'documents',
+    faqs: [
+      {
+        question: 'How long does it take to create an SOP?',
+        answer: 'A single, straightforward SOP typically takes 3–5 business days. Larger documentation projects — like a full employee handbook or a library of process documents — are scoped individually at the start of the engagement.',
+      },
+      {
+        question: 'Do we own the documents you create?',
+        answer: 'Yes, absolutely. All documents we create belong to you. We retain no rights and do not reuse your content for other clients.',
+      },
+      {
+        question: 'What format do you deliver documents in?',
+        answer: 'We deliver in whatever format works best for you — typically Word (.docx) for editable versions and PDF for final versions. We can also work directly in Google Docs if your team prefers that.',
+      },
+      {
+        question: 'Do you follow our brand guidelines?',
+        answer: 'Yes. If you have brand guidelines — colors, fonts, logos — we incorporate them. If not, we\'ll create clean, professional formatting that reflects your business.',
+      },
+    ],
+  },
+  {
+    title: 'LLC Formation & Registered Agent',
+    id: 'llc',
+    faqs: [
+      {
+        question: 'What is a registered agent and why do I need one?',
+        answer: 'A registered agent is a designated person or company authorized to receive official government, legal, and tax documents on behalf of your business. Washington State requires all LLCs and corporations to maintain a registered agent with a physical address in the state. Without one, your LLC can fall out of good standing.',
+      },
+      {
+        question: 'How long does it take to form an LLC in Washington?',
+        answer: 'Standard processing with the Washington Secretary of State typically takes 5–10 business days. Expedited processing options are available for an additional state fee if you need it sooner.',
+      },
+      {
+        question: 'Do you provide registered agent services in Iowa?',
+        answer: 'Currently, our registered agent services are only available in Washington State. If you\'re forming a business in Iowa, we can still help with HR, bookkeeping, payroll, and other services.',
+      },
+      {
+        question: 'I already have an LLC — can you just serve as my registered agent?',
+        answer: 'Yes. If you already have a Washington LLC and just need a registered agent, we can take on that role without you needing to use any of our other services.',
+      },
+      {
+        question: 'What ongoing compliance is required after forming my LLC?',
+        answer: 'Washington State LLCs are required to file an annual report with the Secretary of State each year to maintain their active status. We\'ll remind you when it\'s due and can assist with the filing.',
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="FAQ"
+  description="Frequently asked questions about B2B Solutions — bookkeeping, HR, payroll, administrative support, document creation, and LLC formation services for small businesses."
+>
+  <Header />
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-blue-300 text-sm font-semibold uppercase tracking-wider mb-3">Got Questions?</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h1>
+        <p class="text-blue-100 text-lg leading-relaxed">
+          Answers to common questions about working with B2B Solutions and the services we provide to small businesses.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Quick Nav -->
+  <div class="bg-white border-b border-gray-200 sticky top-24 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex gap-1 overflow-x-auto py-3 scrollbar-hide" aria-label="FAQ categories">
+        {categories.map(({ title, id }) => (
+          <a
+            href={`#${id}`}
+            class="shrink-0 px-4 py-1.5 rounded-full text-sm font-medium text-gray-600 hover:text-blue-700 hover:bg-blue-50 transition-colors"
+          >
+            {title}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </div>
+
+  <!-- FAQ Sections -->
+  {categories.map(({ title, id, faqs }, i) => (
+    <section id={id} class={`py-14 md:py-16 scroll-mt-36 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl font-bold text-gray-900 mb-8 pb-4 border-b border-gray-200">{title}</h2>
+          <div class="space-y-3">
+            {faqs.map(({ question, answer }) => (
+              <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                <summary class="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-blue-700 transition-colors list-none">
+                  <span>{question}</span>
+                  <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-4">
+                  {answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Still Have Questions CTA -->
+  <section class="py-16 bg-blue-800 text-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-4">Still Have Questions?</h2>
+      <p class="text-blue-200 text-lg mb-8">
+        We're happy to answer any questions about our services. Reach out directly or schedule a free consultation.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="inline-block bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+          Contact Us
+        </a>
+        <a href="https://b2bservicesgroup.zohobookings.com/#/b2bservicesgroup" target="_blank" rel="noopener noreferrer" class="inline-block border border-white/40 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">
+          Book a Free Consultation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

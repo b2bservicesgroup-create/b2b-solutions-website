@@ -1,0 +1,185 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const services = [
+  {
+    slug: 'bookkeeping',
+    icon: 'calculator',
+    title: 'Bookkeeping',
+    tagline: 'Your finances — organized, accurate, and always up to date.',
+    description: 'Professional bookkeeping that gives you clean books, accurate records, and monthly financial statements — so you always know where your business stands.',
+    highlights: [
+      'Transaction recording & reconciliation',
+      'Monthly financial statements',
+      'QuickBooks, Wave, Xero & more',
+    ],
+  },
+  {
+    slug: 'hr-solutions',
+    icon: 'users',
+    title: 'HR Solutions',
+    tagline: 'Professional HR support — without the full-time price tag.',
+    description: 'Fractional HR expertise that scales with your business — from writing your first employee handbook to managing complex employee relations issues.',
+    highlights: [
+      'HR policy & handbook development',
+      'Recruitment & onboarding support',
+      'Federal & state compliance guidance',
+    ],
+  },
+  {
+    slug: 'payroll-administration',
+    icon: 'dollar',
+    title: 'Payroll Administration',
+    tagline: 'Accurate, on-time payroll — every pay period.',
+    description: 'Complete payroll processing and tax filing so your employees are paid correctly and on schedule, with all federal, state, and local requirements covered.',
+    highlights: [
+      'Full payroll processing',
+      'Tax withholding & filings',
+      'W-2 & 1099 preparation',
+    ],
+  },
+  {
+    slug: 'administrative-support',
+    icon: 'clipboard',
+    title: 'Administrative Support',
+    tagline: 'Keep operations running smoothly — virtually.',
+    description: 'Virtual executive and administrative assistance that handles the operational tasks keeping you from focusing on your business.',
+    highlights: [
+      'Calendar & schedule management',
+      'Email & correspondence',
+      'Data entry & coordination',
+    ],
+  },
+  {
+    slug: 'document-creation',
+    icon: 'document',
+    title: 'Document Creation & SOPs',
+    tagline: 'Clear documentation that creates consistency across your business.',
+    description: 'Professional SOPs, handbooks, and business documents that capture your processes, reduce errors, and help your team operate consistently.',
+    highlights: [
+      'Standard Operating Procedures',
+      'Employee handbooks & training materials',
+      'Business proposals & reports',
+    ],
+  },
+  {
+    slug: 'llc-registration',
+    icon: 'building',
+    title: 'LLC Registration & Registered Agent',
+    tagline: 'Start your business the right way — and stay compliant.',
+    description: 'B2B Solutions is a registered agent in Washington State. We handle LLC formation, filings, and ongoing compliance requirements so you can focus on building your business.',
+    highlights: [
+      'LLC formation in Washington State',
+      'Registered Agent services',
+      'Annual compliance support',
+    ],
+  },
+];
+---
+
+<Layout
+  title="Solutions"
+  description="Bookkeeping, fractional HR, payroll administration, administrative support, document creation, LLC formation, and registered agent services for small businesses."
+>
+  <Header />
+
+  <!-- Page Hero -->
+  <section class="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-blue-300 text-sm font-semibold uppercase tracking-wider mb-3">What We Offer</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Solutions</h1>
+        <p class="text-blue-100 text-lg leading-relaxed">
+          From financial management to HR strategy and administrative support, B2B Solutions provides the professional services your small business needs to operate efficiently and grow with confidence.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map(({ slug, icon, title, tagline, description, highlights }) => (
+          <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden flex flex-col">
+            <div class="p-7 flex-1">
+              <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-5">
+                {icon === 'calculator' && (
+                  <svg class="w-6 h-6 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                )}
+                {icon === 'users' && (
+                  <svg class="w-6 h-6 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                )}
+                {icon === 'dollar' && (
+                  <svg class="w-6 h-6 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                )}
+                {icon === 'clipboard' && (
+                  <svg class="w-6 h-6 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                  </svg>
+                )}
+                {icon === 'document' && (
+                  <svg class="w-6 h-6 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                )}
+                {icon === 'building' && (
+                  <svg class="w-6 h-6 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                )}
+              </div>
+              <h2 class="text-xl font-bold text-gray-900 mb-1">{title}</h2>
+              <p class="text-blue-700 font-medium text-sm mb-3">{tagline}</p>
+              <p class="text-gray-600 text-sm leading-relaxed mb-5">{description}</p>
+              <ul class="space-y-2 mb-6">
+                {highlights.map((item) => (
+                  <li class="flex items-center gap-2 text-sm text-gray-600">
+                    <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="px-7 pb-7">
+              <a
+                href={`/solutions/${slug}`}
+                class="flex items-center justify-center w-full bg-blue-800 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-900 transition-colors text-sm"
+              >
+                Learn More
+                <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-blue-800 text-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-4">Not Sure Which Services You Need?</h2>
+      <p class="text-blue-200 text-lg mb-8">
+        Schedule a free consultation and we'll help you identify the right combination of services for your business.
+      </p>
+      <a href="/contact" class="inline-block bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+        Schedule a Free Consultation
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

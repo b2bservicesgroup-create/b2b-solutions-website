@@ -1,11 +1,11 @@
 ---
 const solutions = [
-  'Bookkeeping',
-  'HR Solutions',
-  'Payroll Administration',
-  'Administrative Support',
-  'Document Creation',
-  'LLC Registration',
+  { href: '/solutions/bookkeeping', label: 'Bookkeeping' },
+  { href: '/solutions/hr-solutions', label: 'HR Solutions' },
+  { href: '/solutions/payroll-administration', label: 'Payroll Administration' },
+  { href: '/solutions/administrative-support', label: 'Administrative Support' },
+  { href: '/solutions/document-creation', label: 'Document Creation & SOPs' },
+  { href: '/solutions/llc-registration', label: 'LLC Registration' },
 ];
 
 const quickLinks = [
@@ -13,6 +13,7 @@ const quickLinks = [
   { href: '/solutions', label: 'Solutions' },
   { href: '/network', label: 'Our Network' },
   { href: '/about', label: 'About Us' },
+  { href: '/faq', label: 'FAQ' },
   { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -80,9 +81,9 @@ const quickLinks = [
       <div>
         <h3 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Our Solutions</h3>
         <ul class="space-y-2.5">
-          {solutions.map((s) => (
+          {solutions.map(({ href, label }) => (
             <li>
-              <a href="/solutions" class="text-sm text-gray-400 hover:text-blue-400 transition-colors">{s}</a>
+              <a href={href} class="text-sm text-gray-400 hover:text-blue-400 transition-colors">{label}</a>
             </li>
           ))}
         </ul>
