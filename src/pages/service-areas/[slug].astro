@@ -1,0 +1,167 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { serviceAreas } from '../../data/serviceAreas.js';
+
+export function getStaticPaths() {
+  return serviceAreas.map((area) => ({
+    params: { slug: area.slug },
+    props: { area },
+  }));
+}
+
+const { area } = Astro.props;
+const { city, state, stateAbbr, county, region, blurb, slug } = area;
+
+const phone = region === 'washington' ? '360-529-2672' : '319-451-0501';
+const canonicalURL = `https://b2bsolutions.biz/service-areas/${slug}`;
+const pageDescription = `Looking for a bookkeeper in ${city}, ${state}? B2B Solutions provides professional bookkeeping services for small businesses in ${city} and across ${county}.`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'AccountingService',
+  name: 'B2B Solutions',
+  url: 'https://b2bsolutions.biz',
+  telephone: phone,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: city,
+    addressRegion: stateAbbr,
+    addressCountry: 'US',
+  },
+  areaServed: {
+    '@type': 'City',
+    name: city,
+    containedInPlace: `${county}, ${state}`,
+  },
+  description: `Professional bookkeeping services for small businesses in ${city}, ${stateAbbr}.`,
+};
+---
+
+<Layout
+  title={`Bookkeeper in ${city}, ${stateAbbr}`}
+  description={pageDescription}
+>
+  <Fragment slot="head">
+    <link rel="canonical" href={canonicalURL} />
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </Fragment>
+
+  <Header />
+
+  <main>
+    <!-- Breadcrumb -->
+    <nav class="bg-gray-50 border-b border-gray-200" aria-label="Breadcrumb">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <ol class="flex items-center gap-2 text-sm text-gray-500">
+          <li><a href="/" class="hover:text-blue-700 transition-colors">Home</a></li>
+          <li><span class="mx-1">›</span></li>
+          <li><a href="/service-areas" class="hover:text-blue-700 transition-colors">Service Areas</a></li>
+          <li><span class="mx-1">›</span></li>
+          <li class="text-gray-900 font-medium">{city}, {stateAbbr}</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 bg-white bg-opacity-10 rounded-full px-4 py-1.5 text-blue-100 text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full bg-blue-300 shrink-0"></span>
+            Serving {county}, {stateAbbr}
+          </div>
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+            Bookkeeper in {city}, {stateAbbr}
+          </h1>
+          <p class="text-lg md:text-xl text-blue-100 leading-relaxed mb-8">
+            {blurb}
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="bg-white text-blue-800 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+              Get a Free Consultation
+            </a>
+            <a href={`tel:${phone.replace(/-/g, '')}`} class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-800 transition-colors">
+              Call {phone}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="py-16 md:py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Bookkeeping Services We Offer in {city}
+        </h2>
+        <p class="text-lg text-gray-600 mb-10 max-w-2xl">
+          We provide a full range of bookkeeping and financial support services tailored to small businesses in {city} and the surrounding {county} area.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { title: 'Accounts Payable & Receivable', desc: 'Stay on top of what you owe and what you\'re owed. We track invoices, payments, and vendor bills so nothing falls through the cracks.' },
+            { title: 'Bank Reconciliation', desc: 'Monthly reconciliation of all your accounts ensures your books match your bank statements and errors are caught early.' },
+            { title: 'Payroll Support', desc: 'We administer your payroll needs through our affiliate partner Cascade Payroll, so your team is paid accurately and on time.' },
+            { title: 'Financial Reporting', desc: 'Clear, readable profit & loss statements, balance sheets, and cash flow reports so you always know where your business stands.' },
+            { title: 'QuickBooks Setup & Cleanup', desc: 'Whether you\'re starting fresh or untangling a mess, we set up and clean up QuickBooks so it actually works for your business.' },
+            { title: 'Administrative Support', desc: 'Beyond the books — we offer virtual administrative support to help keep your day-to-day operations running smoothly.' },
+          ].map(({ title, desc }) => (
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+              <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-5 h-5 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-2">{title}</h3>
+              <p class="text-sm text-gray-600 leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Local Matters -->
+    <section class="py-16 md:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Why Work With a Local Bookkeeper?
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-4 text-lg">
+            Working with a bookkeeper who understands {city} means you get more than just numbers — you get someone who knows the local business environment, the seasonal patterns, and the specific challenges that come with operating in {county}.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            At B2B Solutions, we don't believe in one-size-fits-all service packages. We take the time to learn your business, your goals, and your pain points — then build a support plan around what will actually make a difference for you.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            Whether you need ongoing monthly bookkeeping, a one-time cleanup project, or a full back-office support package, we're here for {city} businesses of all shapes and sizes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 md:py-20 bg-blue-800 text-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Ready to Get Your Books in Order?
+        </h2>
+        <p class="text-blue-200 text-lg mb-8">
+          We're currently taking on new clients in {city} and across {county}. Reach out today for a free consultation — no pressure, no commitment.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/contact" class="bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+            Contact Us
+          </a>
+          <a href={`tel:${phone.replace(/-/g, '')}`} class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-800 transition-colors">
+            Call {phone}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
