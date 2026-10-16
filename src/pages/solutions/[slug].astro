@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import HrPayrollPricing from '../../components/HrPayrollPricing.astro';
 
 interface HowItWorksStep {
   step: number;
@@ -384,6 +385,9 @@ const { solution } = Astro.props;
       </div>
     </div>
   </section>
+
+  <!-- HR & Payroll pricing -->
+  {(solution.slug === 'hr-solutions' || solution.slug === 'payroll-administration') && <HrPayrollPricing />}
 
   <!-- FAQ -->
   <section class="py-16 md:py-20 bg-gray-50">

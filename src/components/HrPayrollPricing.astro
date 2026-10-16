@@ -1,0 +1,104 @@
+---
+const included = [
+  'Payroll administration for every scheduled run',
+  'Employee onboarding and offboarding',
+  'L&I quarterly reports and compliance',
+  'ESD unemployment, PFML and WA Cares reports',
+  'Washington law monitoring and handbook updates',
+  'Year-end W-2 review',
+  'HR advisory: 2 hrs/month (3 hrs at 11–25 employees, 4 hrs at 26+)',
+];
+
+const examples = [
+  { employees: '1–2', monthly: '$250' },
+  { employees: '6', monthly: '$450' },
+  { employees: '10', monthly: '$650' },
+  { employees: '25', monthly: '$1,400' },
+];
+
+const extras = [
+  { name: 'Onboarding (one-time)', fee: '$500' },
+  { name: 'Employee handbook from our Washington template', fee: '$500 or included with a 12-month commitment' },
+  { name: 'Weekly payroll', fee: '+$75/month' },
+  { name: 'Custom policies and other out-of-scope work', fee: '$100/hour' },
+];
+---
+
+<section id="pricing" class="py-16 md:py-20 bg-blue-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mb-10">
+      <p class="text-blue-700 text-sm font-semibold uppercase tracking-wider mb-2">Pricing</p>
+      <h2 class="text-3xl font-bold text-gray-900 mb-3">HR &amp; Payroll: one flat monthly fee</h2>
+      <p class="text-gray-600 leading-relaxed">
+        $250 a month covers your first 2 employees, plus $50 for each additional employee. Payroll provider fees for Cascade Payroll or Gusto are paid directly to the provider.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6">
+      <!-- Price card -->
+      <div class="bg-white rounded-2xl border border-gray-200 p-7 flex flex-col">
+        <div class="flex items-baseline gap-1 mb-1">
+          <span class="text-5xl font-bold text-gray-900">$250</span>
+          <span class="text-gray-500">/month</span>
+        </div>
+        <p class="text-gray-600 text-sm mb-6">Includes 2 employees &middot; +$50 per additional employee</p>
+        <h3 class="font-bold text-gray-900 mb-3 text-sm uppercase tracking-wider">Included every month</h3>
+        <ul class="space-y-2.5 mb-6">
+          {included.map((item) => (
+            <li class="flex items-start gap-2.5 text-sm text-gray-700">
+              <svg class="w-4 h-4 text-blue-700 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <a href="https://b2bservicesgroup.zohobookings.com/#/b2bservicesgroup" target="_blank" rel="noopener noreferrer" class="mt-auto inline-flex justify-center bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-900 transition-colors">Book a free consultation</a>
+      </div>
+
+      <!-- Examples -->
+      <div class="bg-white rounded-2xl border border-gray-200 p-7">
+        <h3 class="font-bold text-gray-900 mb-4">What it costs</h3>
+        <table class="w-full text-left">
+          <thead>
+            <tr class="border-b-2 border-blue-800">
+              <th scope="col" class="py-2 text-xs font-bold uppercase tracking-wider text-gray-500">Employees</th>
+              <th scope="col" class="py-2 text-xs font-bold uppercase tracking-wider text-gray-500 text-right">Monthly</th>
+            </tr>
+          </thead>
+          <tbody>
+            {examples.map(({ employees, monthly }) => (
+              <tr class="border-b border-gray-100">
+                <td class="py-3 text-gray-700">{employees}</td>
+                <td class="py-3 text-right font-semibold text-gray-900">{monthly}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <h3 class="font-bold text-gray-900 mt-7 mb-3">Other fees</h3>
+        <ul class="space-y-3">
+          {extras.map(({ name, fee }) => (
+            <li class="flex justify-between gap-4 text-sm">
+              <span class="text-gray-700">{name}</span>
+              <span class="font-semibold text-gray-900 text-right">{fee}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Bookkeeping clients -->
+      <div class="bg-blue-800 text-white rounded-2xl p-7 flex flex-col">
+        <p class="text-blue-200 text-sm font-semibold uppercase tracking-wider mb-2">Bookkeeping clients</p>
+        <h3 class="text-2xl font-bold mb-3">Special pricing on our $750+ bookkeeping plans</h3>
+        <ul class="space-y-2.5 text-blue-50 text-sm mb-6">
+          <li>&bull; $250/month includes your first <strong class="text-white">5 employees</strong></li>
+          <li>&bull; $50 for each employee after the 5th</li>
+          <li>&bull; Onboarding fee waived and handbook included with a 12-month commitment</li>
+        </ul>
+        <p class="text-blue-100 text-sm mt-auto">Example: a $750 bookkeeping client with 5 employees pays $1,000/month for bookkeeping, HR and payroll combined.</p>
+      </div>
+    </div>
+
+    <p class="text-gray-500 text-xs mt-6">
+      12-month commitments canceled early owe the waived onboarding and handbook fees. Final scope is set in your service agreement.
+    </p>
+  </div>
+</section>
