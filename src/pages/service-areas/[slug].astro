@@ -15,7 +15,6 @@ const { area } = Astro.props;
 const { city, state, stateAbbr, county, region, blurb, slug } = area;
 
 const phone = region === 'washington' ? '360-529-2672' : '319-451-0501';
-const canonicalURL = `https://b2bsolutions.biz/service-areas/${slug}`;
 const pageDescription = `Looking for a bookkeeper in ${city}, ${state}? B2B Solutions provides professional bookkeeping services for small businesses in ${city} and across ${county}.`;
 
 const schema = {
@@ -44,7 +43,6 @@ const schema = {
   description={pageDescription}
 >
   <Fragment slot="head">
-    <link rel="canonical" href={canonicalURL} />
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </Fragment>
 
