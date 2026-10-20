@@ -207,6 +207,11 @@ const faqSchema = {
         <p class="text-sm text-gray-500 mt-6 max-w-3xl">
           We don't prepare tax returns — we keep your books and payroll records accurate and organized so you and your tax professional can file with confidence.
         </p>
+        {isWA && (
+          <p class="text-gray-700 mt-4 max-w-3xl">
+            Want to learn more about Washington bookkeeping? Visit <a href="https://washingtonbookkeeper.com" class="text-blue-700 font-semibold hover:text-blue-800">WashingtonBookkeeper.com</a> for plan details, a bookkeeping glossary, and guides for {state} small business owners.
+          </p>
+        )}
       </div>
     </section>
 
