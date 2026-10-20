@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import HrPayrollPricing from '../../components/HrPayrollPricing.astro';
+import BookkeepingPricing from '../../components/BookkeepingPricing.astro';
 
 interface HowItWorksStep {
   step: number;
@@ -42,7 +43,7 @@ export async function getStaticPaths() {
       icon: 'calculator',
       title: 'Bookkeeping',
       pageTitle: 'Small Business Bookkeeping Services in Thurston County, WA & Cedar Rapids, IA',
-      metaDescription: 'Small business bookkeeping in Olympia, Lacey, Tumwater and Thurston County, WA and Cedar Rapids, IA — remote nationwide. Reconciliation, monthly financial statements, cleanup and catch-up.',
+      metaDescription: 'Small business bookkeeping in Olympia, Lacey, Tumwater and Thurston County, WA and Cedar Rapids, IA — remote nationwide. Flat monthly plans from $250/month. Reconciliation, financial statements, cleanup.',
       tagline: 'Your finances — organized, accurate, and always up to date.',
       description: 'Keep your business finances in order with our professional bookkeeping services. We handle the day-to-day financial tasks so you have clean, accurate records and the financial clarity to make confident business decisions — without spending hours on it yourself.',
       features: [
@@ -70,6 +71,7 @@ export async function getStaticPaths() {
         { question: 'Do you prepare tax returns?', answer: 'No — we prepare and organize your books so your tax professional has everything they need. We coordinate directly with your CPA or tax preparer at year-end to make the process as smooth as possible.' },
         { question: 'What accounting software do you use?', answer: 'We work with QuickBooks Online, Wave, Xero, and FreshBooks. We can work within your existing software or help you choose and set up the right platform for your business.' },
         { question: 'How do you get access to our financial accounts?', answer: 'We use secure, read-only accounting software integrations to connect to your accounts. We never have direct access to move or transfer funds.' },
+        { question: 'How much does bookkeeping cost?', answer: 'Monthly plans start at $250/month for a business with one bank account and one credit card. Plans step up to $500, $750, and $1,000/month as you add accounts, loans, payroll, and accounts receivable/payable. High-volume businesses get a custom quote, and catch-up work is quoted separately.' },
         { question: 'How often will I receive financial reports?', answer: 'Monthly. You\'ll receive a balance sheet, profit & loss statement, and a brief summary each month. If you need more frequent reporting, we can discuss that during setup.' },
       ],
       relatedPosts: [
@@ -268,7 +270,7 @@ export async function getStaticPaths() {
         { question: 'What is a registered agent?', answer: 'A registered agent is a designated person or company authorized to receive official government, legal, and tax documents on behalf of your business. Washington State requires all LLCs and corporations to maintain a registered agent with a physical address in the state.' },
         { question: 'How long does it take to form an LLC in Washington?', answer: 'Standard processing with the Washington Secretary of State typically takes 5–10 business days. Expedited processing options are available for an additional state fee if you need it sooner.' },
         { question: 'Do you provide registered agent services in Iowa?', answer: 'Currently, our registered agent services are only available in Washington State. If you\'re forming a business in Iowa, we can still help with HR, bookkeeping, payroll, and other services.' },
-        { question: 'What ongoing compliance is required after forming my LLC?', answer: 'Washington State LLCs are required to file an annual report with the Secretary of State each year to maintain their active status. We\'ll remind you when it\'s due and can assist with the filing.' },
+        { question: 'What ongoing compliance is required after forming my LLC?', answer: 'Washington State LLCs are required to file an annual report with the Secretary of State each year to maintain their active status. We\'ll remind you when it\'s due, and we can file it for you for $75 plus the state fee.' },
       ],
       relatedPosts: [
         { title: 'How to Form an LLC in Washington State', slug: 'how-to-form-an-llc-in-washington-state' },
@@ -428,6 +430,9 @@ const { solution } = Astro.props;
 
   <!-- HR & Payroll pricing -->
   {(solution.slug === 'hr-solutions' || solution.slug === 'payroll-administration') && <HrPayrollPricing />}
+
+  <!-- Bookkeeping pricing -->
+  {solution.slug === 'bookkeeping' && <BookkeepingPricing />}
 
   <!-- FAQ -->
   <section class="py-16 md:py-20 bg-gray-50">

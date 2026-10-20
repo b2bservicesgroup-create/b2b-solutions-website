@@ -1,0 +1,94 @@
+---
+const plans = [
+  {
+    name: 'Basic',
+    price: '$250',
+    fit: 'For simple businesses',
+    items: ['1 bank account', '1 credit card', 'No loans or other liabilities'],
+  },
+  {
+    name: 'Standard',
+    price: '$500',
+    fit: 'For a few accounts and a loan or two',
+    items: ['A couple of bank accounts', '1–2 liability accounts (loans, lines of credit)'],
+  },
+  {
+    name: 'Advanced',
+    price: '$750',
+    fit: 'For busier businesses',
+    items: [
+      'Several bank, credit card, and liability accounts',
+      'Biweekly payroll management for up to 5 employees',
+      'Discounted HR & Payroll pricing',
+    ],
+    featured: true,
+  },
+  {
+    name: 'Complete',
+    price: '$1,000',
+    fit: 'Full back-office bookkeeping',
+    items: [
+      'More accounts and more volume than Advanced',
+      'Accounts receivable and accounts payable management',
+      'Biweekly payroll management for up to 5 employees',
+      'Discounted HR & Payroll pricing',
+    ],
+  },
+];
+
+const everyPlan = [
+  'Transactions recorded throughout the month',
+  'Bank and credit card reconciliation',
+  'Monthly financial statements',
+  'Year-end package for your tax professional',
+];
+---
+
+<section id="pricing" class="py-16 md:py-20 bg-blue-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mb-10">
+      <p class="text-blue-700 text-sm font-semibold uppercase tracking-wider mb-2">Pricing</p>
+      <h2 class="text-3xl font-bold text-gray-900 mb-3">Monthly bookkeeping plans</h2>
+      <p class="text-gray-600 leading-relaxed">
+        Flat monthly pricing based on how many accounts we keep reconciled. Every plan includes:
+      </p>
+      <ul class="mt-4 grid sm:grid-cols-2 gap-2">
+        {everyPlan.map((item) => (
+          <li class="flex items-start gap-2 text-sm text-gray-700">
+            <svg class="w-4 h-4 text-blue-700 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {plans.map(({ name, price, fit, items, featured }) => (
+        <div class={`rounded-2xl p-7 flex flex-col ${featured ? 'bg-blue-800 text-white' : 'bg-white border border-gray-200'}`}>
+          <h3 class={`font-bold text-lg ${featured ? 'text-white' : 'text-gray-900'}`}>{name}</h3>
+          <p class={`text-sm mb-4 ${featured ? 'text-blue-200' : 'text-gray-500'}`}>{fit}</p>
+          <div class="flex items-baseline gap-1 mb-5">
+            <span class={`text-4xl font-bold ${featured ? 'text-white' : 'text-gray-900'}`}>{price}</span>
+            <span class={featured ? 'text-blue-200' : 'text-gray-500'}>/month</span>
+          </div>
+          <ul class="space-y-2.5">
+            {items.map((item) => (
+              <li class={`flex items-start gap-2.5 text-sm ${featured ? 'text-blue-50' : 'text-gray-700'}`}>
+                <svg class={`w-4 h-4 shrink-0 mt-0.5 ${featured ? 'text-blue-200' : 'text-blue-700'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-6 grid md:grid-cols-2 gap-4 text-sm text-gray-600">
+      <p><span class="font-semibold text-gray-900">High volume?</span> Businesses with more accounts or transactions than the Complete plan covers get a custom quote.</p>
+      <p><span class="font-semibold text-gray-900">Behind on your books?</span> Catch-up and cleanup projects are quoted separately before monthly service begins.</p>
+    </div>
+    <p class="text-gray-500 text-xs mt-6">
+      Payroll included in Advanced and Complete covers up to 5 employees; larger teams need our <a href="/solutions/payroll-administration#pricing" class="underline hover:text-blue-700">HR &amp; Payroll package</a>. Payroll provider fees (Cascade Payroll or Gusto) are paid directly to the provider. Final scope is set in your service agreement.
+    </p>
+  </div>
+</section>

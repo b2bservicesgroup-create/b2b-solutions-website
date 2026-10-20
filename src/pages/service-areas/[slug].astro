@@ -17,7 +17,7 @@ const { city, state, stateAbbr, county, region, blurb, slug } = area;
 const isWA = region === 'washington';
 const phone = isWA ? '360-529-2672' : '319-451-0501';
 const office = isWA ? { city: 'Rochester', abbr: 'WA' } : { city: 'Cedar Rapids', abbr: 'IA' };
-const pageDescription = `Small business bookkeeping and payroll in ${city}, ${stateAbbr}. B2B Solutions keeps ${county} businesses' books reconciled, reports current, and ${state} filings on track. Free consultation.`;
+const pageDescription = `Small business bookkeeping and payroll in ${city}, ${stateAbbr}, with flat monthly plans from $250/month. B2B Solutions keeps ${county} businesses' books reconciled and ${state} filings on track.`;
 
 const nearby = serviceAreas.filter((a) => a.region === region && a.slug !== slug);
 
@@ -41,7 +41,7 @@ const faqs = [
   },
   {
     question: `How much does a bookkeeper cost in ${city}?`,
-    answer: `It depends on your transaction volume and how current your books are. We offer monthly bookkeeping plans for small businesses and quote one-time cleanup or catch-up projects separately. Call ${phone} or book a free consultation for a quote.`,
+    answer: `Our monthly bookkeeping plans start at $250/month for a business with one bank account and one credit card, with plans at $500, $750, and $1,000/month as you add accounts, loans, payroll, and receivables/payables. Catch-up work is quoted separately. Call ${phone} or book a free consultation for an exact quote.`,
   },
   {
     question: 'Can you catch up books that are months (or years) behind?',
