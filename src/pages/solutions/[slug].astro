@@ -95,7 +95,8 @@ export async function getStaticPaths() {
       metaDescription: 'Fractional HR for small businesses in Washington and Iowa: handbooks, onboarding, compliance, and employee relations — without a full-time HR hire.',
       overviewParagraphs: [
         'B2B Solutions provides fractional HR services for small businesses that need professional human resources support without hiring a full-time HR manager. We help with employee handbooks, hiring and onboarding, job descriptions, employee relations, performance management, and HR compliance.',
-        'Whether you\'re hiring your first employee, updating workplace policies, or need ongoing HR guidance as your team grows, we provide flexible support tailored to your business. We serve businesses in Washington and Iowa, with remote support available nationwide.',
+        'Whether you\'re hiring your first employee, updating workplace policies, or need ongoing HR guidance as your team grows, we provide flexible support tailored to your business. We serve businesses in Washington and Iowa.',
+        'Our monthly HR & Payroll plan covers ongoing support: payroll administration, employee onboarding and offboarding, required state reporting, and a set number of HR advisory hours each month. Projects outside that scope — like a new employee handbook, custom policies, or extra advisory time — have their own fees, listed in the pricing below.',
       ],
       tagline: 'Professional HR support — without the full-time price tag.',
       description: 'Get the HR expertise your business needs without committing to a full-time HR department. Our fractional HR services scale with your business, providing the right level of support at every stage of growth — from writing your first employee handbook to navigating a complex termination.',
@@ -505,6 +506,9 @@ const { solution } = Astro.props;
   <!-- Service Areas -->
   <ServiceAreasSection
     heading={`${solution.title} — Areas We Serve`}
+    intro={solution.slug === 'hr-solutions'
+      ? 'We provide HR services to small businesses in Washington and Iowa, with offices in Rochester, WA and Cedar Rapids, IA.'
+      : undefined}
     bg={solution.relatedPosts.length > 0 ? 'bg-gray-50' : 'bg-white'}
   />
 
