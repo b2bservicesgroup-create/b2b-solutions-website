@@ -34,6 +34,9 @@ interface Solution {
   howItWorks: HowItWorksStep[];
   faqs: FAQ[];
   relatedPosts: RelatedPost[];
+  /** Optional custom overview; replaces the default "About This Service" heading and description. */
+  overviewHeading?: string;
+  overviewParagraphs?: string[];
 }
 
 export async function getStaticPaths() {
@@ -165,6 +168,11 @@ export async function getStaticPaths() {
       title: 'Administrative Support',
       pageTitle: 'Virtual Administrative Support for Small Businesses',
       metaDescription: 'Virtual executive and administrative support for small businesses. Calendar, email, data entry and meeting coordination, so you can focus on your business.',
+      overviewHeading: 'Virtual Administrative Support for Businesses in Washington and Iowa',
+      overviewParagraphs: [
+        'Running a small business takes time, and routine administrative tasks can pull your attention away from customers and growth. B2B Solutions provides virtual administrative support to small businesses in Washington and Iowa, helping owners and teams stay organized without the cost of hiring a full-time administrative employee.',
+        'From calendar and email management to data entry, meeting coordination, and records organization, we tailor our support to your needs. Whether you need help with a specific project or ongoing assistance, we can discuss a flexible arrangement that fits your business.',
+      ],
       tagline: 'Keep operations running smoothly — virtually.',
       description: 'Free up your time with virtual administrative assistance that handles the operational tasks keeping you from focusing on your business. From scheduling to correspondence to data management, we keep your day-to-day running smoothly so you can focus on what you do best.',
       features: [
@@ -363,8 +371,10 @@ const { solution } = Astro.props;
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-2 gap-10 items-start">
         <div>
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">About This Service</h2>
-          <p class="text-gray-600 leading-relaxed text-lg mb-6">{solution.description}</p>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">{solution.overviewHeading ?? 'About This Service'}</h2>
+          {(solution.overviewParagraphs ?? [solution.description]).map((para) => (
+            <p class="text-gray-600 leading-relaxed text-lg mb-6">{para}</p>
+          ))}
         </div>
         <div class="bg-blue-50 rounded-2xl p-7">
           <h3 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">What's Included</h3>
