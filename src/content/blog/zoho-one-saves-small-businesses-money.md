@@ -79,4 +79,6 @@ When you're ready to add a new channel, launch a new product, or hire your first
 
 At B2B Solutions, we help small businesses implement Zoho One the right way — configured to fit your actual workflows, not a generic template. We've done it for our own business, and we do it every day for our clients.
 
+Need help keeping your business finances organized? B2B Solutions offers [small business bookkeeping services](/solutions/bookkeeping), including transaction categorization, account reconciliation, and monthly financial reporting. Learn more about our bookkeeping services and find the right level of support for your business.
+
 If you want to know what your current software stack is actually costing you — and what switching to Zoho One would look like — [reach out for a free consultation](/contact). We'll walk you through it.
