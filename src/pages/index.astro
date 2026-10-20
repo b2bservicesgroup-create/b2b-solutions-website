@@ -41,6 +41,12 @@ const services = [
     href: '/solutions/llc-registration',
   },
   {
+    icon: 'cog',
+    title: 'Zoho One Consulting',
+    description: 'Zoho CRM, Books, and Flow setup, customization, and automation — built around how your business actually works.',
+    href: '/solutions/zoho-consulting',
+  },
+  {
     icon: 'network',
     title: 'Professional Network',
     description: 'Access our trusted network of attorneys, tax pros, marketing experts, and print specialists.',
@@ -68,7 +74,11 @@ const reasons = [
 ];
 ---
 
-<Layout title="Home">
+<Layout
+  title="Home"
+  fullTitle="Bookkeeping, Payroll & HR for Small Businesses | Olympia & Thurston County, WA | B2B Solutions"
+  description="Small business bookkeeping, payroll, fractional HR, and Zoho One consulting in Olympia, Lacey, Tumwater and Thurston County, WA and Cedar Rapids, IA. Remote service nationwide. Free consultation."
+>
   <Header />
 
   <!-- Hero -->
@@ -77,14 +87,14 @@ const reasons = [
       <div class="max-w-3xl">
         <div class="inline-flex items-center gap-2 bg-white bg-opacity-10 rounded-full px-4 py-1.5 text-blue-100 text-sm font-medium mb-6">
           <span class="w-2 h-2 rounded-full bg-blue-300 shrink-0"></span>
-          Serving Rochester, WA &amp; Cedar Rapids, IA
+          Serving Olympia &amp; Thurston County, WA · Cedar Rapids, IA · Remote nationwide
         </div>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-          Big Business Solutions<br />
-          <span class="text-blue-300">for Small Business Success</span>
+          Bookkeeping, Payroll &amp; HR<br />
+          <span class="text-blue-300">for Small Businesses</span>
         </h1>
         <p class="text-lg md:text-xl text-blue-100 mb-8 leading-relaxed max-w-2xl">
-          B2B Solutions partners with small businesses to provide the professional services they need — bookkeeping, HR, payroll, administrative support, and more — so you can focus on what you do best.
+          Big business solutions for small business success. B2B Solutions handles bookkeeping, payroll, fractional HR, administrative support, and Zoho One setup for small businesses in Thurston County, WA and the Cedar Rapids, IA area — so you can focus on what you do best.
         </p>
         <div class="flex flex-wrap gap-4">
           <a href="/solutions" class="bg-white text-blue-800 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
@@ -140,6 +150,12 @@ const reasons = [
               {icon === 'building' && (
                 <svg class="w-6 h-6 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              )}
+              {icon === 'cog' && (
+                <svg class="w-6 h-6 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               )}
               {icon === 'network' && (
@@ -224,7 +240,7 @@ const reasons = [
       <div class="text-center mb-10">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Areas We Serve</h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          We serve small businesses across Washington and Iowa, with offices in Rochester, WA and Cedar Rapids, IA.
+          We serve small businesses across Thurston and Lewis Counties in Washington and the Cedar Rapids corridor in Iowa, with offices in Rochester, WA and Cedar Rapids, IA — and remotely nationwide.
         </p>
       </div>
       <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -233,7 +249,7 @@ const reasons = [
           <p class="text-sm text-gray-600 mb-4">Thurston County, Lewis County, and surrounding communities.</p>
           <div class="flex flex-wrap gap-2">
             {['Olympia', 'Lacey', 'Tumwater', 'Rochester', 'Centralia', 'Chehalis', 'Yelm', 'Tenino'].map((city) => (
-              <span class="bg-blue-50 text-blue-700 text-xs font-medium px-3 py-1 rounded-full">{city}</span>
+              <a href={`/service-areas/${city.toLowerCase().replace(/ /g, '-')}-wa`} class="bg-blue-50 text-blue-700 text-xs font-medium px-3 py-1 rounded-full hover:bg-blue-100 transition-colors">{city}</a>
             ))}
           </div>
         </div>
@@ -242,7 +258,7 @@ const reasons = [
           <p class="text-sm text-gray-600 mb-4">Cedar Rapids metro, Iowa City corridor, and Waterloo/Cedar Falls area.</p>
           <div class="flex flex-wrap gap-2">
             {['Cedar Rapids', 'Marion', 'Hiawatha', 'Iowa City', 'Coralville', 'North Liberty', 'Waterloo', 'Cedar Falls'].map((city) => (
-              <span class="bg-blue-50 text-blue-700 text-xs font-medium px-3 py-1 rounded-full">{city}</span>
+              <a href={`/service-areas/${city.toLowerCase().replace(/ /g, '-')}-ia`} class="bg-blue-50 text-blue-700 text-xs font-medium px-3 py-1 rounded-full hover:bg-blue-100 transition-colors">{city}</a>
             ))}
           </div>
         </div>

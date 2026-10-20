@@ -1,6 +1,8 @@
 ---
 interface Props {
   title: string;
+  /** Full <title> override. When omitted, the title is "{title} | B2B Solutions". */
+  fullTitle?: string;
   description?: string;
   ogType?: 'website' | 'article';
   ogImage?: string;
@@ -8,7 +10,8 @@ interface Props {
 
 const {
   title,
-  description = 'B2B Solutions helps small businesses thrive with professional bookkeeping, HR, payroll, administrative support, LLC formation, and registered agent services in Rochester, WA and Cedar Rapids, IA.',
+  fullTitle: fullTitleOverride,
+  description = 'Bookkeeping, payroll, fractional HR, and Zoho One consulting for small businesses in Olympia, Lacey, Tumwater and Thurston County, WA, and Cedar Rapids, IA — plus remote service nationwide.',
   ogType = 'website',
   ogImage = '/og-image.png',
 } = Astro.props;
@@ -23,7 +26,7 @@ const siteURL = 'https://b2bsolutions.biz';
 const cleanPath = Astro.url.pathname.replace(/(\/index)?\.html$/, '') || '/';
 const canonicalURL = new URL(cleanPath, siteURL).href;
 const ogImageURL = new URL(ogImage, siteURL).href;
-const fullTitle = `${title} | B2B Solutions`;
+const fullTitle = fullTitleOverride ?? `${title} | B2B Solutions`;
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
@@ -32,7 +35,7 @@ const localBusinessSchema = {
   url: siteURL,
   telephone: ['360-529-2672', '319-451-0501'],
   email: 'info@b2bsolutions.biz',
-  description: 'Professional bookkeeping, HR, payroll, administrative support, LLC formation, and registered agent services for small businesses.',
+  description: 'Professional bookkeeping, HR, payroll, administrative support, Zoho One consulting, LLC formation, and registered agent services for small businesses.',
   address: [
     {
       '@type': 'PostalAddress',
@@ -48,6 +51,11 @@ const localBusinessSchema = {
     },
   ],
   areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Thurston County, Washington' },
+    { '@type': 'AdministrativeArea', name: 'Lewis County, Washington' },
+    { '@type': 'City', name: 'Olympia', containedInPlace: { '@type': 'State', name: 'Washington' } },
+    { '@type': 'City', name: 'Lacey', containedInPlace: { '@type': 'State', name: 'Washington' } },
+    { '@type': 'City', name: 'Tumwater', containedInPlace: { '@type': 'State', name: 'Washington' } },
     { '@type': 'City', name: 'Rochester', containedInPlace: { '@type': 'State', name: 'Washington' } },
     { '@type': 'City', name: 'Cedar Rapids', containedInPlace: { '@type': 'State', name: 'Iowa' } },
     { '@type': 'Country', name: 'United States' },
@@ -63,11 +71,13 @@ const localBusinessSchema = {
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Document Creation & SOPs' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'LLC Formation' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Registered Agent Services' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Zoho One Consulting & Implementation' } },
     ],
   },
   sameAs: [
     'https://www.facebook.com/b2bsolutionsbiz',
     'https://share.google/ujIOfipPqlPWw3kVa',
+    'https://www.linkedin.com/company/b2bsolutions',
   ],
   openingHoursSpecification: [
     { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '17:00' },
