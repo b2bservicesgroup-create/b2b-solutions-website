@@ -35,6 +35,8 @@ interface Solution {
   howItWorks: HowItWorksStep[];
   faqs: FAQ[];
   relatedPosts: RelatedPost[];
+  /** How the service reads mid-sentence: "our {serviceLabel} services". */
+  serviceLabel: string;
   /** Optional custom overview; replaces the default "About This Service" heading and description. */
   overviewHeading?: string;
   overviewParagraphs?: string[];
@@ -44,6 +46,7 @@ export async function getStaticPaths() {
   const allSolutions: Solution[] = [
     {
       slug: 'bookkeeping',
+      serviceLabel: 'bookkeeping',
       icon: 'calculator',
       title: 'Bookkeeping',
       pageTitle: 'Small Business Bookkeeping Services in Thurston County, WA & Cedar Rapids, IA',
@@ -89,6 +92,7 @@ export async function getStaticPaths() {
     },
     {
       slug: 'hr-solutions',
+      serviceLabel: 'HR',
       icon: 'users',
       title: 'HR Solutions',
       pageTitle: 'Fractional HR Services for Small Businesses',
@@ -134,6 +138,7 @@ export async function getStaticPaths() {
     },
     {
       slug: 'payroll-administration',
+      serviceLabel: 'payroll',
       icon: 'dollar',
       title: 'Payroll Administration',
       pageTitle: 'Payroll Administration Services for Small Businesses',
@@ -174,6 +179,7 @@ export async function getStaticPaths() {
     },
     {
       slug: 'administrative-support',
+      serviceLabel: 'administrative support',
       icon: 'clipboard',
       title: 'Administrative Support',
       pageTitle: 'Virtual Administrative Support for Small Businesses',
@@ -218,6 +224,7 @@ export async function getStaticPaths() {
     },
     {
       slug: 'document-creation',
+      serviceLabel: 'document creation and SOP',
       icon: 'document',
       title: 'Document Creation & SOPs',
       pageTitle: 'Document Creation & SOP Development for Small Businesses',
@@ -257,6 +264,7 @@ export async function getStaticPaths() {
     },
     {
       slug: 'llc-registration',
+      serviceLabel: 'LLC formation and registered agent',
       icon: 'building',
       title: 'LLC Registration & Registered Agent',
       pageTitle: 'LLC Registration & Registered Agent Services in Washington State',
@@ -296,6 +304,7 @@ export async function getStaticPaths() {
     },
     {
       slug: 'zoho-consulting',
+      serviceLabel: 'Zoho One consulting',
       icon: 'cog',
       title: 'Zoho One Consulting',
       pageTitle: 'Zoho One Consulting & Implementation for Small Businesses',
@@ -410,7 +419,7 @@ const { solution } = Astro.props;
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl mb-10">
         <h2 class="text-3xl font-bold text-gray-900 mb-3">Is This Right for You?</h2>
-        <p class="text-gray-600 leading-relaxed">Our {solution.title.toLowerCase()} services are a great fit for:</p>
+        <p class="text-gray-600 leading-relaxed">Our {solution.serviceLabel} services are a great fit for:</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {solution.whoItIsFor.map((item) => (
@@ -459,7 +468,7 @@ const { solution } = Astro.props;
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto">
         <h2 class="text-3xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
-        <p class="text-gray-600 mb-10">Common questions about our {solution.title.toLowerCase()} services.</p>
+        <p class="text-gray-600 mb-10">Common questions about our {solution.serviceLabel} services.</p>
         <div class="space-y-3">
           {solution.faqs.map(({ question, answer }) => (
             <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden">
@@ -517,7 +526,7 @@ const { solution } = Astro.props;
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
       <p class="text-blue-200 text-lg mb-8">
-        Schedule a free consultation and we'll discuss how our {solution.title.toLowerCase()} services can support your business.
+        Schedule a free consultation and we'll discuss how our {solution.serviceLabel} services can support your business.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/contact" class="inline-block bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
