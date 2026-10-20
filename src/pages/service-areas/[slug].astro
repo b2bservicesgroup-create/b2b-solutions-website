@@ -17,7 +17,7 @@ const { city, state, stateAbbr, county, region, blurb, slug } = area;
 const isWA = region === 'washington';
 const phone = isWA ? '360-529-2672' : '319-451-0501';
 const office = isWA ? { city: 'Rochester', abbr: 'WA' } : { city: 'Cedar Rapids', abbr: 'IA' };
-const pageDescription = `Small business bookkeeping and payroll in ${city}, ${stateAbbr}, with flat monthly plans from $250/month. B2B Solutions keeps ${county} businesses' books reconciled and ${state} filings on track.`;
+const pageDescription = `Bookkeeping and payroll for ${city}, ${stateAbbr} small businesses. Flat monthly plans from $250. Books reconciled and ${state} filings on track.`;
 
 const nearby = serviceAreas.filter((a) => a.region === region && a.slug !== slug);
 
