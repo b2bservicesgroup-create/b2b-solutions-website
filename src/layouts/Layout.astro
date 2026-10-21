@@ -125,10 +125,10 @@ const localBusinessSchema = {
     <title>{fullTitle}</title>
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
     <slot name="head" />
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
     <!-- Facebook Pixel -->
-    <script>
+    <script is:inline>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -146,7 +146,7 @@ const localBusinessSchema = {
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PTRZD6QP45"></script>
-    <script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -154,16 +154,16 @@ const localBusinessSchema = {
     </script>
   </head>
   <body class="font-sans antialiased text-gray-800 bg-white">
-    <script>
+    <script is:inline>
       const hash = window.location.hash;
       if (hash.includes('invite_token=') || hash.includes('recovery_token=')) {
         window.location.replace('/admin/' + hash);
       }
     </script>
     <slot />
-    <script>
+    <script is:inline>
       if (window.netlifyIdentity) {
-        window.netlifyIdentity.on('init', (user: any) => {
+        window.netlifyIdentity.on('init', (user) => {
           if (!user) {
             window.netlifyIdentity.on('login', () => {
               document.location.href = '/admin/';
