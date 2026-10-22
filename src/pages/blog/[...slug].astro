@@ -46,7 +46,7 @@ const blogPostingSchema = {
 };
 ---
 
-<Layout title={post.data.title} description={post.data.description} ogType="article">
+<Layout title={post.data.title} fullTitle={post.data.seoTitle} description={post.data.description} ogType="article">
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
   </Fragment>

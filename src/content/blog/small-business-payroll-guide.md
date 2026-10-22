@@ -98,4 +98,4 @@ For most small businesses, the real question isn't whether payroll is hard — i
 
 Outsourcing payroll to a professional doesn't just save time — it transfers a significant chunk of compliance risk. When a professional processes your payroll, they're responsible for accurate calculations and on-time filings.
 
-B2B Solutions processes payroll through Cascade Payroll and Gusto, handles all federal and state tax deposits and filings, and ensures your employees are paid accurately and on time — every pay period. [Learn more about our payroll services](/solutions#payroll) or [get in touch](/contact) to discuss your needs.
+B2B Solutions processes payroll through Cascade Payroll and Gusto, handles all federal and state tax deposits and filings, and ensures your employees are paid accurately and on time — every pay period. [Learn more about our payroll services](/solutions/payroll-administration) or [get in touch](/contact) to discuss your needs.

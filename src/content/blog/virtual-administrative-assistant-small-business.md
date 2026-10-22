@@ -92,4 +92,4 @@ For most small businesses — especially those with variable admin needs, limite
 
 If your admin needs grow to the point where someone needs to be on-site full-time, making that hire at that point is the right call.
 
-B2B Solutions provides virtual administrative support tailored to small businesses. Whether you need a few hours a week or ongoing retainer support, we keep your operations organized and your schedule manageable. [Learn more about our administrative support services](/solutions#admin) or [contact us](/contact) to discuss your needs.
+B2B Solutions provides virtual administrative support tailored to small businesses. Whether you need a few hours a week or ongoing retainer support, we keep your operations organized and your schedule manageable. [Learn more about our administrative support services](/solutions/administrative-support) or [contact us](/contact) to discuss your needs.
