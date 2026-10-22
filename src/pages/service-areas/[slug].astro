@@ -12,53 +12,53 @@ export function getStaticPaths() {
 }
 
 const { area } = Astro.props;
-const { city, state, stateAbbr, county, region, blurb, slug } = area;
+const {
+  city, state, stateAbbr, county, region, slug, inPerson, wbSlug,
+  title, metaDescription, h1, intro, localRules, faqs, sources,
+} = area;
 
 const isWA = region === 'washington';
 const phone = isWA ? '360-529-2672' : '319-451-0501';
 const office = isWA ? { city: 'Rochester', abbr: 'WA' } : { city: 'Cedar Rapids', abbr: 'IA' };
-const pageDescription = `Bookkeeping and payroll for ${city}, ${stateAbbr} small businesses. Flat monthly plans from $250. Books reconciled and ${state} filings on track.`;
-
 const nearby = serviceAreas.filter((a) => a.region === region && a.slug !== slug);
+const wbCityURL = wbSlug ? `https://washingtonbookkeeper.com/service-areas/${wbSlug}` : null;
 
-// State-specific obligations — what makes a WA page different from an IA page.
-const stateItems = isWA
-  ? [
-      { title: 'B&O and Sales Tax', desc: `Washington has no state income tax, but most ${city} businesses owe Business & Occupation (B&O) tax and file excise tax returns with the Department of Revenue. Clean books make those returns accurate and on time.` },
-      { title: 'L&I Workers’ Comp Reporting', desc: 'Washington employers report hours and pay workers’ compensation premiums to the Department of Labor & Industries each quarter — something we keep reconciled with your payroll.' },
-      { title: 'ESD, Paid Leave & WA Cares', desc: 'Unemployment insurance, Paid Family & Medical Leave, and WA Cares premiums all run through payroll. We make sure the withholdings and quarterly reports line up with your books.' },
-    ]
-  : [
-      { title: 'Iowa Withholding & Income Tax', desc: `Iowa employers withhold state income tax and file with the Iowa Department of Revenue. We keep payroll and your books in sync so ${city} filings match.` },
-      { title: 'Sales Tax & Local Option Tax', desc: 'Many Iowa businesses collect state sales tax plus local option sales tax. We track what you collect and owe so returns are accurate.' },
-      { title: 'Iowa Workforce Development', desc: 'Iowa unemployment insurance contributions are reported quarterly to Iowa Workforce Development. We keep those reports tied to your payroll records.' },
-    ];
-
-const faqs = [
+// Washington pages lead with HR, payroll and Zoho (bookkeeping lives on WashingtonBookkeeper.com).
+// Iowa pages include bookkeeping.
+const services = [
+  ...(isWA ? [] : [{
+    title: 'Monthly Bookkeeping',
+    desc: `Reconciled accounts and monthly statements for ${city} businesses, on flat plans starting at $250 a month.`,
+    href: '/solutions/bookkeeping',
+  }]),
   {
-    question: `Do you work with ${city} businesses in person or remotely?`,
-    answer: `Most of our ${city} clients work with us remotely — you send documents to a secure inbox and we handle the rest. Our ${state} office is in ${office.city}, ${office.abbr}. If you'd prefer to meet, ask during your free consultation.`,
+    title: 'Payroll Administration',
+    desc: `On-time payroll through Cascade Payroll or Gusto, with ${isWA ? 'L&I, ESD, Paid Leave and WA Cares reporting' : 'Iowa withholding and Iowa Workforce Development reporting'} handled.`,
+    href: '/solutions/payroll-administration',
   },
   {
-    question: `How much does a bookkeeper cost in ${city}?`,
-    answer: `Our monthly bookkeeping plans start at $250/month for a business with one bank account and one credit card, with plans at $500, $750, and $1,000/month as you add accounts, loans, payroll, and receivables/payables. Catch-up work is quoted separately. Call ${phone} or book a free consultation for an exact quote.`,
+    title: 'Fractional HR',
+    desc: 'Offer letters, handbooks, leave policies and employee questions — HR expertise without a full-time hire.',
+    href: '/solutions/hr-solutions',
   },
   {
-    question: 'Can you catch up books that are months (or years) behind?',
-    answer: `Yes. Catch-up and cleanup work is common for ${county} businesses. We reconcile every account back to where things went off track, then keep you current month to month.`,
-  },
-  {
-    question: `Do you handle payroll for ${city} employers?`,
-    answer: `Yes. We administer payroll through our partners Cascade Payroll and Gusto, including ${isWA ? 'Washington L&I, ESD, and Paid Leave reporting' : 'Iowa withholding and Iowa Workforce Development reporting'}.`,
+    title: 'Zoho One Consulting',
+    desc: 'Zoho CRM, Books, People and Flow set up around how your business actually runs.',
+    href: '/solutions/zoho-consulting',
   },
 ];
 
+const stateBasics = isWA
+  ? 'Washington basics for 2026: the minimum wage is $17.13 an hour, Paid Family & Medical Leave premiums are 1.13% of wages (employers with fewer than 50 employees owe only the employee share), and L&I workers’ comp is reported quarterly by hours worked.'
+  : 'Iowa basics for 2026: income tax is withheld at a flat 3.8%, the state minimum wage remains $7.25 an hour, and unemployment insurance is reported quarterly to Iowa Workforce Development.';
+
 const schema = {
   '@context': 'https://schema.org',
-  '@type': 'AccountingService',
+  '@type': 'ProfessionalService',
   name: 'B2B Solutions',
-  url: 'https://b2bsolutions.biz',
+  url: `https://b2bsolutions.biz/service-areas/${slug}`,
   telephone: phone,
+  email: 'info@b2bsolutions.biz',
   address: {
     '@type': 'PostalAddress',
     addressLocality: office.city,
@@ -70,7 +70,7 @@ const schema = {
     name: city,
     containedInPlace: { '@type': 'AdministrativeArea', name: `${county}, ${state}` },
   },
-  description: `Professional bookkeeping and payroll services for small businesses in ${city}, ${stateAbbr}.`,
+  description: metaDescription,
 };
 
 const faqSchema = {
@@ -84,10 +84,7 @@ const faqSchema = {
 };
 ---
 
-<Layout
-  title={`Bookkeeping & Payroll Services in ${city}, ${stateAbbr}`}
-  description={pageDescription}
->
+<Layout title={title} description={metaDescription}>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
@@ -115,15 +112,13 @@ const faqSchema = {
         <div class="max-w-3xl">
           <div class="inline-flex items-center gap-2 bg-white bg-opacity-10 rounded-full px-4 py-1.5 text-blue-100 text-sm font-medium mb-6">
             <span class="w-2 h-2 rounded-full bg-blue-300 shrink-0"></span>
-            Serving {county}, {stateAbbr}
+            {county}, {stateAbbr} · {inPerson ? 'In person & remote' : 'Remote service'}
           </div>
-          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
-            Bookkeeper in {city}, {stateAbbr}
-          </h1>
-          <p class="text-lg md:text-xl text-blue-100 leading-relaxed mb-8">
-            {blurb}
-          </p>
-          <div class="flex flex-wrap gap-4">
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">{h1}</h1>
+          {intro.map((p) => (
+            <p class="text-lg md:text-xl text-blue-100 leading-relaxed mb-4">{p}</p>
+          ))}
+          <div class="flex flex-wrap gap-4 mt-8">
             <a href="/contact" class="bg-white text-blue-800 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
               Get a Free Consultation
             </a>
@@ -135,106 +130,57 @@ const faqSchema = {
       </div>
     </section>
 
+    <!-- Local rules -->
+    <section class="py-16 md:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          What's different about running a business in {city}
+        </h2>
+        <p class="text-lg text-gray-600 mb-10 max-w-2xl">
+          The local rules and situations we see most with {city} employers.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {localRules.map(({ title, desc }) => (
+            <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+              <h3 class="font-bold text-gray-900 mb-2">{title}</h3>
+              <p class="text-sm text-gray-600 leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-sm text-gray-500 mt-6 max-w-3xl">{stateBasics}</p>
+      </div>
+    </section>
+
     <!-- Services -->
     <section class="py-16 md:py-20 bg-gray-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          Bookkeeping Services We Offer in {city}
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-10">
+          How we help {city} businesses
         </h2>
-        <p class="text-lg text-gray-600 mb-10 max-w-2xl">
-          We provide a full range of bookkeeping and financial support services tailored to small businesses in {city} and the surrounding {county} area.
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { title: 'Accounts Payable & Receivable', desc: 'Stay on top of what you owe and what you\'re owed. We track invoices, payments, and vendor bills so nothing falls through the cracks.' },
-            { title: 'Bank Reconciliation', desc: 'Monthly reconciliation of all your accounts ensures your books match your bank statements and errors are caught early.' },
-            { title: 'Payroll Support', desc: 'We administer your payroll needs through our affiliate partner Cascade Payroll, so your team is paid accurately and on time.' },
-            { title: 'Financial Reporting', desc: 'Clear, readable profit & loss statements, balance sheets, and cash flow reports so you always know where your business stands.' },
-            { title: 'QuickBooks Setup & Cleanup', desc: 'Whether you\'re starting fresh or untangling a mess, we set up and clean up QuickBooks so it actually works for your business.' },
-            { title: 'Administrative Support', desc: 'Beyond the books — we offer virtual administrative support to help keep your day-to-day operations running smoothly.' },
-          ].map(({ title, desc }) => (
-            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-              <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
-                <svg class="w-5 h-5 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
+        <div class={`grid grid-cols-1 sm:grid-cols-2 ${services.length === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-6`}>
+          {services.map(({ title, desc, href }) => (
+            <a href={href} class="block bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all">
               <h3 class="font-bold text-gray-900 mb-2">{title}</h3>
               <p class="text-sm text-gray-600 leading-relaxed">{desc}</p>
-            </div>
+            </a>
           ))}
         </div>
-      </div>
-    </section>
-
-    <!-- Why Local Matters -->
-    <section class="py-16 md:py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Why Work With a Local Bookkeeper?
-          </h2>
-          <p class="text-gray-600 leading-relaxed mb-4 text-lg">
-            Working with a bookkeeper who understands {city} means you get more than just numbers — you get someone who knows the local business environment, the seasonal patterns, and the specific challenges that come with operating in {county}.
-          </p>
-          <p class="text-gray-600 leading-relaxed mb-4">
-            At B2B Solutions, we don't believe in one-size-fits-all service packages. We take the time to learn your business, your goals, and your pain points — then build a support plan around what will actually make a difference for you.
-          </p>
-          <p class="text-gray-600 leading-relaxed">
-            Whether you need ongoing monthly bookkeeping, a one-time cleanup project, or a full back-office support package, we're here for {city} businesses of all shapes and sizes.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- State-specific -->
-    <section class="py-16 md:py-20 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          What {city} Businesses Need to Stay on Top Of
-        </h2>
-        <p class="text-lg text-gray-600 mb-10 max-w-2xl">
-          Running a business in {state} comes with its own filings and deadlines. Here's where bookkeeping and payroll overlap with {state} requirements:
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {stateItems.map(({ title, desc }) => (
-            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-              <h3 class="font-bold text-gray-900 mb-2">{title}</h3>
-              <p class="text-sm text-gray-600 leading-relaxed">{desc}</p>
-            </div>
-          ))}
-        </div>
-        <p class="text-sm text-gray-500 mt-6 max-w-3xl">
-          We don't prepare tax returns — we keep your books and payroll records accurate and organized so you and your tax professional can file with confidence.
-        </p>
-        {isWA && (
-          <p class="text-gray-700 mt-4 max-w-3xl">
-            Want to learn more about Washington bookkeeping? Visit <a href="https://washingtonbookkeeper.com" class="text-blue-700 font-semibold hover:text-blue-800">WashingtonBookkeeper.com</a> for plan details, a bookkeeping glossary, and guides for {state} small business owners.
-          </p>
+        {wbCityURL && (
+          <div class="mt-8 bg-white rounded-xl p-6 border border-blue-100 max-w-3xl">
+            <h3 class="font-bold text-gray-900 mb-2">Looking for a bookkeeper in {city}?</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Our Washington bookkeeping service has its own home.
+              <a href={wbCityURL} class="text-blue-700 font-semibold hover:text-blue-800">See bookkeeping in {city} on WashingtonBookkeeper.com</a>.
+            </p>
+          </div>
         )}
       </div>
     </section>
 
-    <!-- More services -->
-    <section class="py-14 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">More Services for {city} Businesses</h2>
-        <div class="flex flex-wrap gap-3">
-          <a href="/solutions/payroll-administration" class="bg-blue-50 text-blue-800 font-medium px-4 py-2 rounded-lg hover:bg-blue-100 transition-colors">Payroll Administration</a>
-          <a href="/solutions/hr-solutions" class="bg-blue-50 text-blue-800 font-medium px-4 py-2 rounded-lg hover:bg-blue-100 transition-colors">Fractional HR</a>
-          <a href="/solutions/zoho-consulting" class="bg-blue-50 text-blue-800 font-medium px-4 py-2 rounded-lg hover:bg-blue-100 transition-colors">Zoho One Consulting</a>
-          <a href="/solutions/administrative-support" class="bg-blue-50 text-blue-800 font-medium px-4 py-2 rounded-lg hover:bg-blue-100 transition-colors">Administrative Support</a>
-          {isWA && (
-            <a href="/solutions/llc-registration" class="bg-blue-50 text-blue-800 font-medium px-4 py-2 rounded-lg hover:bg-blue-100 transition-colors">LLC Formation &amp; Registered Agent</a>
-          )}
-        </div>
-      </div>
-    </section>
-
     <!-- FAQ -->
-    <section class="py-16 md:py-20 bg-gray-50">
+    <section class="py-16 md:py-20 bg-white">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-gray-900 mb-8">{city} Bookkeeping FAQ</h2>
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Questions from {city} business owners</h2>
         <div class="space-y-3">
           {faqs.map(({ question, answer }) => (
             <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden">
@@ -248,39 +194,46 @@ const faqSchema = {
             </details>
           ))}
         </div>
-      </div>
-    </section>
 
-    <!-- Nearby -->
-    <section class="py-14 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Also Serving Nearby</h2>
-        <div class="flex flex-wrap gap-2">
-          {nearby.map((a) => (
-            <a href={`/service-areas/${a.slug}`} class="bg-gray-100 text-gray-700 text-sm font-medium px-3 py-1.5 rounded-full hover:bg-blue-50 hover:text-blue-700 transition-colors">
-              Bookkeeper in {a.city}, {a.stateAbbr}
-            </a>
-          ))}
+        <div class="mt-10 text-xs text-gray-500">
+          <p class="mb-2">Local rules checked October 2026. Rules change — confirm with the agency before acting. We don't prepare tax returns.</p>
+          <ul class="space-y-1">
+            {sources.map(({ label, url }) => (
+              <li><a href={url} class="underline hover:text-blue-700" rel="noopener">{label}</a></li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
 
+    <!-- Nearby -->
+    {nearby.length > 0 && (
+      <section class="py-14 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Also serving {isWA ? 'Washington' : 'Linn County'}</h2>
+          <div class="flex flex-wrap gap-2">
+            {nearby.map((a) => (
+              <a href={`/service-areas/${a.slug}`} class="bg-white text-gray-700 text-sm font-medium px-3 py-1.5 rounded-full border border-gray-200 hover:bg-blue-50 hover:text-blue-700 transition-colors">
+                {a.city}, {a.stateAbbr}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
     <!-- CTA -->
     <section class="py-16 md:py-20 bg-blue-800 text-white">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">
-          Ready to Get Your Books in Order?
-        </h2>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Talk to us about your {city} business</h2>
         <p class="text-blue-200 text-lg mb-8">
-          We're currently taking on new clients in {city} and across {county}. Reach out today for a free consultation — no pressure, no commitment.
+          {inPerson
+            ? `Free consultation — at your place, ours in ${office.city}, or by video.`
+            : 'Free consultation by phone or video.'}
         </p>
         <div class="flex flex-wrap justify-center gap-4">
-          <a href="/contact" class="bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
-            Contact Us
-          </a>
-          <a href={`tel:${phone.replace(/-/g, '')}`} class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-800 transition-colors">
-            Call {phone}
-          </a>
+          <a href="/contact" class="bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">Contact Us</a>
+          <a href={`tel:${phone.replace(/-/g, '')}`} class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-800 transition-colors">Call {phone}</a>
         </div>
       </div>
     </section>
