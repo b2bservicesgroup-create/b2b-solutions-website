@@ -1,6 +1,7 @@
 ---
 title: "Hiring Your First Employee in Washington State: What You Actually Need to Do"
-description: "Bringing on your first employee makes you an employer in the eyes of the state and federal government. Here's everything you need to register, onboard, and stay compliant in Washington."
+seoTitle: "Hiring Your First Employee in WA: 2026 Employer Checklist"
+description: "Your 2026 checklist for a first hire in Washington: EIN, ESD, L&I, PFML, WA Cares, new hire reporting, minimum wage and overtime rules."
 pubDate: 2026-07-28
 author: "B2B Solutions"
 category: "HR"
@@ -10,7 +11,7 @@ Bringing on your first employee is a milestone worth celebrating. It usually mea
 
 It's also the moment your business becomes an *employer* in the eyes of the state and federal government, and that comes with a stack of registrations, filings, and ongoing obligations that most first-time owners don't see coming. Washington is one of the more employer-heavy states in the country, with its own minimum wage, salary rules, paid leave programs, and reporting deadlines layered on top of the federal requirements.
 
-Here's a clear walkthrough of what's required before, during, and after that first hire — plus an honest look at how a fractional HR partner keeps the whole thing off your plate.
+Here's a clear walkthrough of what's required before, during, and after that first hire — plus an honest look at how a [fractional HR partner](/solutions/hr-solutions) keeps the whole thing off your plate.
 
 ## Before the First Day: Get Registered
 
@@ -76,7 +77,7 @@ A full-time HR manager is a six-figure commitment that a business making its fir
 Fractional HR is the middle path — and with **B2B Solutions**, you don't get a single generalist stretched thin. You get an immediate team of experts across HR, payroll, bookkeeping, and compliance the day you start, sized and priced for where your business actually is. Here's what that looks like in practice:
 
 - **We get you registered — correctly and on time.** EIN, Department of Revenue employer registration, ESD, L&I, PFML, and WA Cares, all in place before your first paycheck. We coordinate these directly with our payroll partner, **Cascade Payroll**, so nothing slips through the cracks.
-- **We administer your payroll through Cascade Payroll.** Washington's PFML, WA Cares, and L&I rates are configured correctly, withholdings are accurate, and your quarterly filings are handled — no default-setting errors, no missed deadlines.
+- **We [administer your payroll](/solutions/payroll-administration) through Cascade Payroll.** Washington's PFML, WA Cares, and L&I rates are configured correctly, withholdings are accurate, and your quarterly filings are handled — no default-setting errors, no missed deadlines.
 - **We keep you compliant as the rules change.** When Washington updates its minimum wage, salary thresholds, or premium rates each year, your payroll and policies get updated — you don't have to track it.
 - **We build your onboarding the right way.** Offer letters, I-9 and W-4 collection, new hire reporting, employee handbook, and workplace policies, so every hire follows the same compliant process.
 - **We reduce your risk.** Proper worker classification, documented policies, and on-time reporting keep you clear of the penalties that catch new employers off guard.

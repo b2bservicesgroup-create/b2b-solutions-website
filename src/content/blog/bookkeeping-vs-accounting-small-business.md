@@ -120,4 +120,4 @@ For most small businesses, you're looking for a CPA — a licensed accountant wh
 
 Bookkeeping and accounting are both essential — and both achievable for small businesses without a large budget. The key is knowing what each does, finding professionals who are honest about the scope of their work, and not trying to get one to do the other's job.
 
-At B2B Solutions, we provide professional bookkeeping services so your financial records are always accurate and ready for your accountant. We also have a network of trusted CPAs we work alongside and can refer you to when you need tax and advisory services. [Learn more about our bookkeeping services](/solutions#bookkeeping) or [get in touch](/contact) to talk about what you need.
+At B2B Solutions, we provide professional bookkeeping services so your financial records are always accurate and ready for your accountant. We also have a network of trusted CPAs we work alongside and can refer you to when you need tax and advisory services. [Learn more about our bookkeeping services](/solutions/bookkeeping) or [get in touch](/contact) to talk about what you need.

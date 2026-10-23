@@ -5,6 +5,8 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    /** Optional full <title> for search results (used verbatim). The H1 still uses `title`. */
+    seoTitle: z.string().optional(),
     pubDate: z.date(),
     author: z.string().default('B2B Solutions'),
     category: z.string(),
