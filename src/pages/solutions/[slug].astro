@@ -141,13 +141,14 @@ export async function getStaticPaths() {
       serviceLabel: 'payroll',
       icon: 'dollar',
       title: 'Payroll Administration',
-      pageTitle: 'Small Business Payroll Services',
-      metaDescription: 'Small business payroll services: pay runs, payroll tax filings, and W-2/1099s through Cascade Payroll or Gusto. From $250/month for your first 2 employees.',
+      pageTitle: 'Small Business Payroll Services in Olympia & Rochester, WA',
+      metaDescription: 'Payroll services for Olympia, Rochester and Thurston County small businesses: pay runs, WA payroll tax filings, L&I and Paid Leave, W-2s. From $250/month.',
       overviewHeading: 'Payroll Services for Small Businesses in Washington and Iowa',
       overviewParagraphs: [
         'B2B Solutions provides small business payroll services that take payroll completely off your plate. We process every pay run, handle federal and state payroll tax deposits and filings, set up direct deposit, and prepare W-2s and 1099s at year-end — so your employees are paid correctly and on time, every time.',
         'Payroll for a small business is unforgiving: one missed deposit or wrong withholding rate can mean penalties and unhappy employees. We set up your payroll in Cascade Payroll or Gusto with the right state rates from day one, including Washington L&I, ESD unemployment, Paid Family & Medical Leave, and WA Cares, and Iowa withholding and unemployment.',
         'Payroll is included in our flat-rate HR & Payroll plan for businesses with up to 15 employees, so you get payroll processing and HR support from one team. We work with small businesses in Thurston, Lewis, and Pierce counties in Washington and the Cedar Rapids area in Iowa.',
+        'Our Washington office is in Rochester, so we meet payroll clients in person in Olympia, Rochester, Centralia and Chehalis, and work with Tacoma employers remotely. We know the Washington programs local employers report to: L&I workers\' comp by hours worked, ESD unemployment, Paid Family & Medical Leave, WA Cares, and the Olympia city business license and B&O tax that sit alongside them. In Iowa, our Cedar Rapids office handles payroll for Cedar Rapids and Marion businesses.',
       ],
       tagline: 'Accurate, on-time payroll — every pay period.',
       description: 'Managing payroll is complex, time-consuming, and unforgiving of mistakes. We handle the entire payroll process so your employees are paid correctly and on schedule, every time — while keeping you fully compliant with all federal, state, and local filing requirements.',
@@ -179,6 +180,7 @@ export async function getStaticPaths() {
         { question: 'What if I have employees in multiple states?', answer: 'We can handle multi-state payroll, including registering for payroll tax accounts in each applicable state and managing the associated filings.' },
         { question: 'How does the payroll submission process work?', answer: 'You submit hours, new hires, terminations, or any other changes by a set cutoff date each pay period. We process payroll so direct deposits are made on your scheduled payday.' },
         { question: 'How much do small business payroll services cost?', answer: 'Payroll is part of our HR & Payroll plan: $250/month covers your first 2 employees, plus $50 for each additional employee, up to 15. Weekly payroll is +$75/month. Payroll provider fees for Cascade Payroll or Gusto are paid directly to the provider.' },
+        { question: 'Do you offer payroll services in Olympia and Rochester, WA?', answer: 'Yes. Our Washington office is in Rochester, and we provide payroll services to small businesses across Thurston County, including Olympia, Lacey, Tumwater and Rochester, plus Centralia and Chehalis in Lewis County. We can meet at your business, at our Rochester office, or by video.' },
         { question: 'Can you take over payroll I\'m already running myself?', answer: 'Yes. We review your current setup, confirm your state employer accounts and tax rates are correct, and move you to Cascade Payroll or Gusto so the switch happens cleanly between pay periods.' },
       ],
       relatedPosts: [
@@ -550,7 +552,9 @@ const faqSchema = {
     heading={`${solution.title} — Areas We Serve`}
     intro={solution.slug === 'hr-solutions'
       ? 'We provide HR services to small businesses in Washington and Iowa, with offices in Rochester, WA and Cedar Rapids, IA.'
-      : undefined}
+      : solution.slug === 'payroll-administration'
+        ? 'We run payroll for small businesses in Olympia, Rochester and the rest of Thurston County, Lewis County, Tacoma, and the Cedar Rapids, IA area. Pick your city for local payroll and tax details.'
+        : undefined}
     bg={solution.relatedPosts.length > 0 ? 'bg-gray-50' : 'bg-white'}
   />
 

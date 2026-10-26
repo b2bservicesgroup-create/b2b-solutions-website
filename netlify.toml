@@ -4,3 +4,24 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+# ── One address per page ──────────────────────────────────────────────
+# Google was indexing the home page under https://b2bsolutions.biz,
+# http://www and https://www as separate URLs. Send every variant to the
+# main https://b2bsolutions.biz address with a permanent redirect.
+# (Plain http on the main domain is already upgraded by Netlify's HTTPS.)
+[[redirects]]
+  from = "https://www.b2bsolutions.biz/*"
+  to = "https://b2bsolutions.biz/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.b2bsolutions.biz/*"
+  to = "https://b2bsolutions.biz/:splat"
+  status = 301
+  force = true
+
+# Trailing slashes (/faq/ -> /faq) are handled by the edge function in
+# netlify/edge-functions/trailing-slash.ts, because Netlify redirect rules
+# treat /faq and /faq/ as the same path and would loop.

@@ -48,6 +48,17 @@ const services = [
   },
 ];
 
+const payrollPrograms = isWA
+  ? 'L&I workers’ comp (reported by hours worked), ESD unemployment, Paid Family & Medical Leave and WA Cares'
+  : 'Iowa income tax withholding and Iowa Workforce Development unemployment insurance';
+const payrollWhere = !inPerson
+  ? null
+  : city === office.city
+    ? `Our office is right here in ${city}, so we can meet at your business, at our office, or by video.`
+    : `We can meet at your ${city} business, at our ${office.city} office, or by video.`;
+const payrollWhereText = payrollWhere
+  ?? `We work with ${city} employers remotely by phone, video and secure upload.`;
+
 const stateBasics = isWA
   ? 'Washington basics for 2026: the minimum wage is $17.13 an hour, Paid Family & Medical Leave premiums are 1.13% of wages (employers with fewer than 50 employees owe only the employee share), and L&I workers’ comp is reported quarterly by hours worked.'
   : 'Iowa basics for 2026: income tax is withheld at a flat 3.8%, the state minimum wage remains $7.25 an hour, and unemployment insurance is reported quarterly to Iowa Workforce Development.';
@@ -177,8 +188,27 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- Payroll -->
     <section class="py-16 md:py-20 bg-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Payroll services in {city}, {stateAbbr}</h2>
+        <p class="text-lg text-gray-600 leading-relaxed mb-4">
+          We run payroll for {city} small businesses through Cascade Payroll or Gusto: every pay run, direct deposit, federal and {state} payroll tax filings, and W-2s and 1099s at year-end. We also handle {payrollPrograms}, so nothing slips between pay periods.
+        </p>
+        <p class="text-lg text-gray-600 leading-relaxed mb-6">
+          Payroll is part of our HR & Payroll plan, from $250 a month for your first 2 employees. {payrollWhereText}
+        </p>
+        <a href="/solutions/payroll-administration" class="inline-flex items-center text-blue-700 font-semibold hover:text-blue-800 transition-colors">
+          See our payroll services
+          <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-20 bg-gray-50">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl font-bold text-gray-900 mb-8">Questions from {city} business owners</h2>
         <div class="space-y-3">
@@ -208,7 +238,7 @@ const faqSchema = {
 
     <!-- Nearby -->
     {nearby.length > 0 && (
-      <section class="py-14 bg-gray-50">
+      <section class="py-14 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 class="text-2xl font-bold text-gray-900 mb-6">Also serving {isWA ? 'Washington' : 'Linn County'}</h2>
           <div class="flex flex-wrap gap-2">
