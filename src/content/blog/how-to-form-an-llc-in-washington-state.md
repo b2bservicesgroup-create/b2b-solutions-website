@@ -120,7 +120,7 @@ You'll typically need your EIN, Certificate of Formation, and operating agreemen
 
 Forming your LLC is a one-time process, but maintaining it requires ongoing attention:
 
-**Annual Report:** Washington State LLCs must file an annual report with the Secretary of State each year. The fee is $60 and is due on the anniversary of your LLC formation. Missing it can result in your LLC being dissolved.
+**Annual Report:** Washington State LLCs must file an annual report with the Secretary of State each year. The state fee is $70 and the report is due by the end of your anniversary month. Watch out for look-alike notices — see [Just Formed an LLC? The Mail You Can Ignore](/blog/llc-solicitations-what-to-ignore). Missing it can result in your LLC being dissolved.
 
 **Registered Agent:** You must maintain an active registered agent with a current Washington address at all times. If your registered agent changes, you must update the Secretary of State.
 
