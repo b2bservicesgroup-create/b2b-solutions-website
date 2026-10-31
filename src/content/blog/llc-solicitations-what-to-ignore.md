@@ -56,7 +56,7 @@ When we form your Washington LLC, we don't just file the paperwork and wish you 
 
 **We get your EIN for you.** Obtaining your federal EIN is included in our LLC formation service. No separate fee, and no need to wonder whether that $150 "EIN filing service" letter is legitimate. (It isn't necessary.)
 
-**We file your annual report every year.** If you're a B2B Solutions client, we track your deadline and file your annual report with the Secretary of State for you. **You pay the state filing fee only.** No guessing which notice is real, and no risk of your LLC being administratively dissolved because a reminder got lost in a pile of junk mail.
+**We file your annual report every year.** We track your deadline and file your annual report with the Secretary of State for you. **If you're a current B2B Solutions client with $500 or more a month in ongoing services, you pay the state filing fee only — no fee to us.** Otherwise, our filing fee is $75 plus the state fee. No guessing which notice is real, and no risk of your LLC being administratively dissolved because a reminder got lost in a pile of junk mail.
 
 **We're your registered agent.** As your Washington registered agent, official legal and government notices come to us, and we forward what matters. That also keeps your home address off the public record.
 
