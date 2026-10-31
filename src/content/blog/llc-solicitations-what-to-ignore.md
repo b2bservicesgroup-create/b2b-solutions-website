@@ -5,6 +5,7 @@ description: "New Washington LLC owners and annual report filers get official-lo
 pubDate: 2026-10-31
 author: "B2B Solutions"
 category: "LLC & Business Formation"
+heroImage: "/blog/llc-solicitations-og.png"
 tags: ["LLC", "annual report", "scams", "Washington State", "registered agent"]
 ---
 

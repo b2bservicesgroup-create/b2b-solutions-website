@@ -46,7 +46,7 @@ const blogPostingSchema = {
 };
 ---
 
-<Layout title={post.data.title} fullTitle={post.data.seoTitle} description={post.data.description} ogType="article">
+<Layout title={post.data.title} fullTitle={post.data.seoTitle} description={post.data.description} ogType="article" ogImage={post.data.heroImage || undefined}>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
   </Fragment>
@@ -76,6 +76,9 @@ const blogPostingSchema = {
   <!-- Content -->
   <section class="py-14 md:py-20 bg-white">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      {post.data.heroImage && (
+        <img src={post.data.heroImage} alt={post.data.title} width="1200" height="630" class="w-full rounded-2xl mb-10 border border-gray-100" />
+      )}
       <article class="prose prose-lg prose-blue max-w-none
         prose-headings:font-bold prose-headings:text-gray-900
         prose-p:text-gray-600 prose-p:leading-relaxed
