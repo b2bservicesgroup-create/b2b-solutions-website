@@ -40,6 +40,8 @@ interface Solution {
   /** Optional custom overview; replaces the default "About This Service" heading and description. */
   overviewHeading?: string;
   overviewParagraphs?: string[];
+  /** Optional Get Started destination; defaults to /contact. */
+  getStartedUrl?: string;
 }
 
 export async function getStaticPaths() {
@@ -281,6 +283,7 @@ export async function getStaticPaths() {
     },
     {
       slug: 'llc-registration',
+      getStartedUrl: 'https://youragentwa.com/llc',
       serviceLabel: 'LLC formation and registered agent',
       icon: 'building',
       title: 'LLC Registration & Registered Agent',
@@ -375,6 +378,7 @@ export async function getStaticPaths() {
 }
 
 const { solution } = Astro.props;
+const getStartedUrl = solution.getStartedUrl ?? '/contact';
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -407,7 +411,7 @@ const faqSchema = {
         <h1 class="text-4xl md:text-5xl font-bold mb-4">{solution.pageTitle}</h1>
         <p class="text-blue-100 text-lg leading-relaxed mb-7">{solution.tagline}</p>
         <div class="flex flex-wrap gap-3">
-          <a href="/contact" class="inline-flex items-center bg-white text-blue-800 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+          <a href={getStartedUrl} class="inline-flex items-center bg-white text-blue-800 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
             Get Started
             <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -567,8 +571,8 @@ const faqSchema = {
         Schedule a free consultation and we'll discuss how our {solution.serviceLabel} services can support your business.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contact" class="inline-block bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
-          Contact Us
+        <a href={getStartedUrl} class="inline-block bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+          {solution.getStartedUrl ? 'Get Started' : 'Contact Us'}
         </a>
         <a href="https://b2bservicesgroup.zohobookings.com/#/b2bservicesgroup" target="_blank" rel="noopener noreferrer" class="inline-block border border-white/40 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">
           Book a Free Consultation
