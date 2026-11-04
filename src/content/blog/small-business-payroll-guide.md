@@ -45,9 +45,9 @@ Misclassifying workers is one of the most common — and expensive — payroll m
 
 **Employees** receive W-2s and have taxes withheld from every paycheck. You pay employer FICA taxes on their wages.
 
-**Independent contractors** receive 1099-NECs if you pay them $600 or more in a year. They handle their own taxes. You don't withhold anything.
+**Independent contractors** receive 1099-NECs if you pay them $2,000 or more in a year (the threshold was $600 before 2026). They handle their own taxes. You don't withhold anything.
 
-The key factors the IRS considers: how much control you have over how the work is done, whether the worker provides services to multiple clients, and whether the relationship is ongoing or project-based. When in doubt, consult a professional — misclassification audits are expensive.
+The key factors the IRS considers: how much control you have over how the work is done, whether the worker provides services to multiple clients, and whether the relationship is ongoing or project-based. Washington's L&I and ESD tests are stricter still — see our guide to [independent contractor vs. employee in Washington](/blog/independent-contractor-vs-employee-washington). When in doubt, consult a professional — misclassification audits are expensive.
 
 ## Federal Payroll Tax Deadlines
 
