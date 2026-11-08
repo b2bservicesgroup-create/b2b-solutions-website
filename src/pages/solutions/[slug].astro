@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import HrPayrollPricing from '../../components/HrPayrollPricing.astro';
 import BookkeepingPricing from '../../components/BookkeepingPricing.astro';
 import ServiceAreasSection from '../../components/ServiceAreasSection.astro';
+import ReviewsSection from '../../components/ReviewsSection.astro';
 
 interface HowItWorksStep {
   step: number;
@@ -97,11 +98,12 @@ export async function getStaticPaths() {
       serviceLabel: 'HR',
       icon: 'users',
       title: 'HR Solutions',
-      pageTitle: 'Fractional HR Services for Small Businesses',
-      metaDescription: 'Fractional HR for small businesses in Washington and Iowa: handbooks, onboarding, compliance, and employee relations — without a full-time HR hire.',
+      pageTitle: 'Fractional HR Services in Olympia, WA & Cedar Rapids, IA',
+      metaDescription: 'Fractional HR for Olympia, Thurston County and Cedar Rapids small businesses: handbooks, onboarding, WA and Iowa compliance, and employee relations.',
       overviewParagraphs: [
         'B2B Solutions provides fractional HR services for small businesses that need professional human resources support without hiring a full-time HR manager. We help with employee handbooks, hiring and onboarding, job descriptions, employee relations, performance management, and HR compliance.',
         'Whether you\'re hiring your first employee, updating workplace policies, or need ongoing HR guidance as your team grows, we provide flexible support tailored to your business. We serve businesses in Washington and Iowa.',
+        'Our Washington office is in Rochester, so we meet HR clients in person in Olympia, Lacey, Tumwater, Rochester, Centralia and Chehalis, and work with Tacoma employers remotely. In Iowa, our Cedar Rapids office supports employers in Cedar Rapids and Marion.',
         'Our monthly HR & Payroll plan covers ongoing support: payroll administration, employee onboarding and offboarding, required state reporting, and a set number of HR advisory hours each month. Projects outside that scope — like a new employee handbook, custom policies, or extra advisory time — have their own fees, listed in the pricing below.',
       ],
       tagline: 'Professional HR support — without the full-time price tag.',
@@ -131,6 +133,7 @@ export async function getStaticPaths() {
         { question: 'What is fractional HR?', answer: 'Fractional HR means you get professional HR services on a part-time or as-needed basis, without hiring a full-time HR employee. You pay for the level of support your business actually needs — whether that\'s a one-time project or ongoing monthly support.' },
         { question: 'Do you handle job postings and recruiting?', answer: 'Yes. We can support the full recruitment process including writing job postings, screening applicants, and helping structure your interview process.' },
         { question: 'Can you help with employee terminations?', answer: 'Yes. We help you document the process correctly, ensure legal compliance, conduct terminations professionally, and handle all offboarding paperwork.' },
+        { question: 'Do you offer HR services in Olympia, WA?', answer: 'Yes. Our Washington office is in Rochester, and we provide fractional HR to small businesses across Thurston County, including Olympia, Lacey, Tumwater and Rochester, plus Centralia and Chehalis in Lewis County. We can meet at your business, at our Rochester office, or by video.' },
         { question: 'Are you familiar with Washington and Iowa employment laws?', answer: 'Yes. We serve businesses in both Washington State and Iowa and are knowledgeable about the specific employment requirements, leave laws, and minimum wage rules in each state.' },
       ],
       relatedPosts: [
@@ -502,6 +505,9 @@ const faqSchema = {
 
   <!-- Bookkeeping pricing -->
   {solution.slug === 'bookkeeping' && <BookkeepingPricing />}
+
+  <!-- Reviews -->
+  <ReviewsSection service={solution.slug} heading="What Clients Say" />
 
   <!-- FAQ -->
   <section class="py-16 md:py-20 bg-gray-50">
