@@ -1,0 +1,38 @@
+---
+import { reviews as allReviews, GOOGLE_REVIEWS_URL, type Review } from '../data/reviews';
+
+interface Props {
+  /** Solution slug; when set, only reviews tagged for that service are shown. */
+  service?: string;
+  heading?: string;
+  bg?: string;
+}
+
+const { service, heading = 'What Our Clients Say', bg = 'bg-white' } = Astro.props;
+const reviews: Review[] = service ? allReviews.filter((r) => r.services.includes(service)) : allReviews;
+---
+
+{reviews.length > 0 && (
+  <section class={`py-16 md:py-20 ${bg}`}>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-10 text-center">{heading}</h2>
+      <div class={`grid gap-6 ${reviews.length > 1 ? 'md:grid-cols-2 lg:grid-cols-3' : 'max-w-2xl mx-auto'}`}>
+        {reviews.map(({ name, text }) => (
+          <figure class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex flex-col">
+            <div class="text-yellow-500 mb-3" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="text-gray-700 leading-relaxed flex-1">“{text}”</blockquote>
+            <figcaption class="mt-4 text-sm">
+              <span class="font-semibold text-gray-900">{name}</span>
+              <span class="text-gray-500"> · Google review</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      {GOOGLE_REVIEWS_URL && (
+        <p class="text-center mt-8">
+          <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" class="text-blue-700 font-semibold hover:text-blue-800">Read all our reviews on Google</a>
+        </p>
+      )}
+    </div>
+  </section>
+)}

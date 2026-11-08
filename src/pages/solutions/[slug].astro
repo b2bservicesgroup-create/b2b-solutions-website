@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import HrPayrollPricing from '../../components/HrPayrollPricing.astro';
 import BookkeepingPricing from '../../components/BookkeepingPricing.astro';
 import ServiceAreasSection from '../../components/ServiceAreasSection.astro';
+import ReviewsSection from '../../components/ReviewsSection.astro';
 
 interface HowItWorksStep {
   step: number;
@@ -504,6 +505,9 @@ const faqSchema = {
 
   <!-- Bookkeeping pricing -->
   {solution.slug === 'bookkeeping' && <BookkeepingPricing />}
+
+  <!-- Reviews -->
+  <ReviewsSection service={solution.slug} heading="What Clients Say" />
 
   <!-- FAQ -->
   <section class="py-16 md:py-20 bg-gray-50">
