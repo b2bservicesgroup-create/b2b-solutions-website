@@ -24,6 +24,11 @@ export const reviews: Review[] = [
     services: [],
   },
   {
+    name: 'Liza Michelle',
+    text: 'Derek was extremely helpful in taking over our Zoho One build out and created a really great architecture that will serve my business for years to come. He was receptive to feedback and took all my questions and revisions in stride, and provided a vital service in building the work flows of our CRM. Highly recommend!',
+    services: ['zoho-consulting'],
+  },
+  {
     name: 'L.',
     text: 'I really appreciate B2B Solutions for helping me set up my CRM system and everything associated with Zoho One. Showing and explaining how the system work and the automation associated with CRM system. They were very patient with me and made on the fly adjustment to meet my need for my notary business. Thank you soo much for being very attentive to my business.',
     services: ['zoho-consulting'],
