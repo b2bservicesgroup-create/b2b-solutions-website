@@ -1,5 +1,6 @@
 ---
 title: "When Does a Small Business Need HR Solutions?"
+seoTitle: "When Does a Small Business Need Fractional HR?"
 description: "You don't need a full-time HR department to get professional HR support. Here's how to know when fractional HR makes sense for your business."
 pubDate: 2026-04-10
 author: "B2B Solutions"

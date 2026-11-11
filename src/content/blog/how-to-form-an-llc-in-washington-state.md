@@ -9,7 +9,7 @@ category: "LLC & Business Formation"
 
 Starting a business in Washington State is an exciting step. Forming a Limited Liability Company (LLC) is one of the first and most important decisions you'll make — and for good reason. An LLC separates your personal finances from your business, protects your personal assets from business debts and lawsuits, and gives your business a professional structure that clients, banks, and partners take seriously.
 
-Here's a complete walkthrough of how to form an LLC in Washington State, what you'll need, and what to watch for along the way.
+Here's a complete walkthrough of how to form an LLC in Washington State, what you'll need, and what to watch for along the way. For the current state fees in one table, see our [Washington LLC cost guide](https://youragentwa.com/washington-llc-cost) on YourAgentWA.com.
 
 ## Why Form an LLC?
 
@@ -132,8 +132,8 @@ Forming your LLC is a one-time process, but maintaining it requires ongoing atte
 
 Forming an LLC involves more steps than most people expect — and the details matter. B2B Solutions helps small business owners in Washington State with:
 
-- **[LLC formation](/solutions/llc-registration)** — we handle the Certificate of Formation filing so it's done correctly the first time
+- **[Washington LLC formation for $400 flat](https://youragentwa.com)** — through YourAgentWA.com we file your Certificate of Formation, business license, trade name and EIN, state fees included
 - **[Registered agent services](/solutions/llc-registration)** — we serve as your registered agent in Washington State, protecting your privacy and ensuring you never miss official correspondence
 - **Bookkeeping and payroll** — once your LLC is formed, we help you keep the financial records clean and the payroll running
 
-[Get in touch](/contact) to discuss forming your LLC or to learn more about our registered agent services in Washington State.
+[Start your LLC at YourAgentWA.com](https://youragentwa.com/llc), read our [step-by-step Washington LLC guide](https://youragentwa.com/how-to-form-an-llc-in-washington), or [get in touch](/contact) to discuss forming your LLC or to learn more about our registered agent services in Washington State.

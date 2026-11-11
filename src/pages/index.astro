@@ -74,13 +74,23 @@ const reasons = [
     description: 'One relationship unlocks a full network of vetted specialists for any business need.',
   },
 ];
+
+// Tells Google which name to show above our results (the "site name").
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'B2B Solutions',
+  alternateName: ['b2bsolutions.biz', 'B2B Services Group'],
+  url: 'https://b2bsolutions.biz',
+};
 ---
 
 <Layout
   title="Home"
-  fullTitle="Bookkeeping, Payroll & HR in Rochester, WA & Cedar Rapids, IA | B2B Solutions"
+  fullTitle="Bookkeeping, Payroll & HR | Rochester, WA & Cedar Rapids, IA"
   description="Bookkeeping, payroll & HR for small businesses in Olympia & Thurston County, WA and Cedar Rapids, IA. Flat monthly plans from $250. Free consultation."
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
   <Header />
 
   <!-- Hero -->

@@ -1,5 +1,6 @@
 ---
 title: "Profit First Bookkeeping: A Simple Cash System That Actually Leaves You With Profit"
+seoTitle: "Profit First Bookkeeping: How It Works for Small Business"
 description: "What Profit First is, why it works so well for service and B2B businesses, and how B2B Solutions can set it up and run it for you."
 pubDate: 2026-08-25
 author: "B2B Solutions"

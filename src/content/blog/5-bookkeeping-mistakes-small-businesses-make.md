@@ -1,5 +1,6 @@
 ---
 title: "5 Bookkeeping Mistakes Small Businesses Make (And How to Avoid Them)"
+seoTitle: "5 Bookkeeping Mistakes Small Businesses Make (and Fixes)"
 description: "Accurate books are the foundation of a healthy business. Here are the most common bookkeeping mistakes small business owners make and how to fix them."
 pubDate: 2026-04-01
 author: "B2B Solutions"

@@ -26,7 +26,10 @@ const siteURL = 'https://b2bsolutions.biz';
 const cleanPath = Astro.url.pathname.replace(/(\/index)?\.html$/, '') || '/';
 const canonicalURL = new URL(cleanPath, siteURL).href;
 const ogImageURL = new URL(ogImage, siteURL).href;
-const fullTitle = fullTitleOverride ?? `${title} | B2B Solutions`;
+// Google cuts titles off around 60 characters. Add the brand only when it
+// fits, so the words that earn the click aren't hidden behind "...".
+const brandedTitle = `${title} | B2B Solutions`;
+const fullTitle = fullTitleOverride ?? (brandedTitle.length <= 60 ? brandedTitle : title);
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',

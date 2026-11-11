@@ -1,6 +1,6 @@
 ---
 title: "Why Zoho Is a Quiet Powerhouse for Small Businesses"
-description: "Customization and integrations are where Zoho really earns its keep for small businesses. Here's how the right setup turns a tangle of apps into one system that actually fits how you work."
+description: "Customization and integrations are where Zoho earns its keep. How the right setup turns a tangle of apps into one system that fits how you work."
 pubDate: 2026-06-15
 heroImage: ""
 category: "Software"
