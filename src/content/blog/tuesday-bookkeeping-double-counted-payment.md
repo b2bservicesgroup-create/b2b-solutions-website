@@ -1,5 +1,6 @@
 ---
 title: "Tuesday Bookkeeping: When a Payment Gets Counted Twice"
+seoTitle: "Stripe & Jobber Payments Counted Twice? How to Fix It"
 description: "A common mix-up with Stripe and Jobber payments that can quietly inflate your revenue — and the simple fix that keeps your books clean."
 pubDate: 2026-09-01
 author: "B2B Solutions"

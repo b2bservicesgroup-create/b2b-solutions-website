@@ -1,6 +1,6 @@
 ---
 title: "Small Business Payroll: A Complete Guide to Getting It Right"
-description: "Payroll errors cost small businesses time, money, and employee trust. Here's everything you need to know to run payroll correctly — from tax withholding to direct deposit."
+description: "Payroll mistakes cost time, money and employee trust. How to run small business payroll correctly, from tax withholding to direct deposit."
 pubDate: 2026-04-22
 author: "B2B Solutions"
 category: "Payroll"

@@ -1,6 +1,7 @@
 ---
 title: "Reasonable Accommodations for Employees with Disabilities: What Small Business Owners Need to Know"
-description: "Federal and state law require employers to provide reasonable accommodations for employees with disabilities. Here's what small business owners need to know — and why doing the right thing is also good business."
+seoTitle: "Reasonable Accommodations: A Small Business Employer Guide"
+description: "What federal and Washington law require when an employee with a disability asks for an accommodation, and how small employers can handle it right."
 pubDate: 2024-08-01
 author: "B2B Solutions"
 category: "HR"

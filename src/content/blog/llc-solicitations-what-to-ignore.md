@@ -1,7 +1,7 @@
 ---
 title: "Just Formed an LLC? The Mail You Can Ignore (and the Mail You Can't)"
 seoTitle: "Washington LLC Solicitations & Scam Notices: What to Ignore"
-description: "New Washington LLC owners and annual report filers get official-looking mailers for posters, EINs, certificates, and annual reports. Here's what's real, what's free, and what to toss."
+description: "New Washington LLCs get official-looking mail for posters, EINs, certificates and annual reports. Here's what's real, what's free and what to toss."
 pubDate: 2026-10-31
 author: "B2B Solutions"
 category: "LLC & Business Formation"

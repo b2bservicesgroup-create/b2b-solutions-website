@@ -1,6 +1,7 @@
 ---
 title: "Sole Proprietorship vs. LLC vs. S Corp: What's the Difference?"
-description: "LLC or S corp? They aren't really alternatives. Here's how sole proprietorships, LLCs and S corps differ, with a side-by-side payroll and self-employment tax example."
+seoTitle: "Sole Proprietor vs LLC vs S Corp: Tax Example Compared"
+description: "LLC or S corp? They aren't really alternatives. How the three differ, with a side-by-side payroll and self-employment tax example."
 pubDate: 2026-10-21
 author: "B2B Solutions"
 category: "LLC & Business Formation"

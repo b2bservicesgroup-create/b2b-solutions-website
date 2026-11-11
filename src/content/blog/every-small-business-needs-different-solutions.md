@@ -1,6 +1,7 @@
 ---
 title: "Every Small Business Needs Different Solutions — That's Kind of Our Thing"
-description: "No two small businesses are alike. At B2B Solutions, we help owners streamline operations, improve systems, and keep things running smoothly — whatever that looks like for you."
+seoTitle: "Solutions That Fit Your Small Business | B2B Solutions"
+description: "No two small businesses are alike. We help owners streamline operations, fix their systems and keep things running smoothly, whatever that looks like for you."
 pubDate: 2026-05-07
 author: "B2B Solutions"
 category: "Small Business"
