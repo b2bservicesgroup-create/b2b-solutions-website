@@ -87,7 +87,7 @@ Iowa has protected trainees for years.
 Both states punish people who pass off a pet as a service animal:
 
 - **Washington:** Misrepresenting an animal as a service animal or trainee is a **civil infraction of up to $500** (RCW 49.60.214). A violation occurs when someone represents an animal as a service animal to get access rights and knew or should have known it didn't qualify. **Businesses may post a sign** warning that misrepresentation can result in a civil infraction of up to $500 (RCW 49.60.215(6)(c)). If a person refuses to answer the two questions when asked by an enforcement officer, the law presumes the animal is not a service animal.
-- **Iowa:** Intentionally misrepresenting an animal as a service animal or service-animal-in-training to obtain rights under state or federal law is a **simple misdemeanor** (Iowa Code § 216C.11(3)). The legislature updated this offense in 2025.
+- **Iowa:** Intentionally misrepresenting an animal as a service animal or service-animal-in-training to obtain rights under state or federal law is a **simple misdemeanor** (Iowa Code § 216C.11(3)), punishable by up to 30 days in jail and a fine of $105 to $855. A 2025 amendment (2025 Iowa Acts, ch. 111) made this much easier to enforce. The law used to require proof that the person had **already been warned** that faking a service animal is illegal, and that they **knew** the animal wasn't a service animal. Both requirements are gone: intentionally passing off an animal as a service animal to get access is now enough.
 
 **Important:** enforcement is for law enforcement, not your front counter. Your job is to ask the two questions, watch behavior, and remove an out-of-control animal — not to accuse anyone of fraud.
 
@@ -138,3 +138,4 @@ B2B Solutions provides fractional HR support to small businesses in Washington a
 - RCW 49.60.040, 49.60.214, 49.60.215 — Washington Law Against Discrimination
 - ESSB 5788, Laws of 2024, ch. 161 (Washington)
 - Iowa Code § 216C.11 (2026)
+- 2025 Iowa Acts, ch. 111 (House File 615)
