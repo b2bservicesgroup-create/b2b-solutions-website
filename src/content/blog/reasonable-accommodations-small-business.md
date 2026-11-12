@@ -55,6 +55,8 @@ That small expense is the difference between *"This is a great company to work f
 
 Take care of your team so they can take care of your business.
 
+**Related:** When an employee asks to bring a service animal to work, that's an accommodation request too, and it follows different rules than a customer walking in with a service dog. See [Service Dogs in Your Business: What You Can Ask, What the Law Says](/blog/service-animals-small-business).
+
 ---
 
 If you have questions about managing employee accommodations, HR policies, or compliance for your small business, [B2B Solutions can help](/contact). Our fractional HR services are designed to give small businesses the professional guidance they need without the cost of a full-time HR department.
