@@ -43,6 +43,34 @@ const beforeAfter = [
   },
 ];
 
+// Zoho Mail features we rely on.
+const mailFeatures = [
+  {
+    title: 'Attachments file themselves',
+    text: 'Mail filters save incoming emails and their attachments straight to the right WorkDrive folder — bank statements, receipts, and signed forms land in the client\'s folder without anyone downloading a thing.',
+  },
+  {
+    title: 'Every email on the client\'s record',
+    text: 'Emails to and from a client show up on their CRM record, so anyone on our team can see the full conversation before they pick up the phone.',
+  },
+  {
+    title: 'Shared team inboxes',
+    text: 'Group addresses like client@b2bsolutions.biz reach the whole team, so client requests never sit in one person\'s inbox while they\'re out.',
+  },
+  {
+    title: 'Send files as links, not attachments',
+    text: 'Files go out straight from WorkDrive as secure links, so clients always open the latest version and nothing bloats their inbox.',
+  },
+  {
+    title: 'Team notes on emails',
+    text: 'Streams lets us comment on an email internally and loop in a teammate without forwarding it around.',
+  },
+  {
+    title: 'Your other apps, inside the inbox',
+    text: 'CRM, WorkDrive, tasks, and calendar open in a side panel right next to the email you\'re reading.',
+  },
+];
+
 // Onboarding a new bookkeeping client — estimated hands-on staff time.
 const onboarding = [
   {
@@ -155,7 +183,7 @@ const capabilities = [
   {
     area: 'Team & Operations',
     apps: [
-      { name: 'Zoho Mail & Calendar', what: 'Business email and shared calendars', using: true },
+      { name: 'Zoho Mail & Calendar', what: 'Business email that auto-files attachments to WorkDrive and logs to the CRM, plus shared calendars', using: true },
       { name: 'Zoho Learn', what: 'Internal knowledge base and training for your team', using: true },
       { name: 'Zoho Projects', what: 'Task lists, timelines, and time tracking for client projects', using: false },
       { name: 'Zoho Cliq & Meeting', what: 'Team chat, video calls, and client meetings', using: false },
@@ -218,6 +246,27 @@ const capabilities = [
               <h3 class="font-bold text-blue-900 text-lg mb-2">{row.after}</h3>
               <p class="text-gray-700 text-sm leading-relaxed">{row.afterNote}</p>
             </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Zoho Mail -->
+  <section class="py-16 md:py-20 bg-blue-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <p class="text-blue-300 text-sm font-semibold uppercase tracking-wider mb-3">Zoho Mail</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Email That Files Itself</h2>
+        <p class="text-blue-100 text-lg leading-relaxed">
+          In Outlook, email was a dead end: documents arrived, and someone had to download, rename, and save every one. Zoho Mail is connected to the rest of our business, so email feeds our client files and records automatically.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {mailFeatures.map(({ title, text }) => (
+          <div class="bg-white/10 border border-white/15 rounded-xl p-6">
+            <h3 class="font-bold text-white text-lg mb-2">{title}</h3>
+            <p class="text-blue-100 text-sm leading-relaxed">{text}</p>
           </div>
         ))}
       </div>
