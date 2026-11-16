@@ -1,0 +1,366 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// What we used before Zoho, and what replaced it.
+const beforeAfter = [
+  {
+    before: 'DocuSign Standard',
+    beforeNote: 'A separate subscription just for signatures. Every agreement was built in Word, uploaded, tagged, and sent by hand.',
+    after: 'Zoho Sign',
+    afterNote: 'Proposals and agreements go out from templates, pre-filled with the client\'s details from the CRM. Signed copies file themselves.',
+  },
+  {
+    before: 'Monday.com',
+    beforeNote: 'Client work lived on boards that knew nothing about our contacts, our billing, or our documents.',
+    after: 'Zoho CRM + Creator',
+    afterNote: 'Every client, deal, and task sits on one record, with custom apps built around how we actually onboard and deliver.',
+  },
+  {
+    before: 'Office 365',
+    beforeNote: 'Outlook, Word, Excel, and OneDrive — good tools, but walled off from the rest of our systems.',
+    after: 'Zoho Mail, Writer, Sheet & WorkDrive',
+    afterNote: 'Email, documents, and files live in the same platform as our clients, so nothing has to be downloaded and re-saved.',
+  },
+  {
+    before: 'Back-and-forth scheduling',
+    beforeNote: 'Three or four emails to find a time for a consultation, then entering it on the calendar by hand.',
+    after: 'Zoho Bookings',
+    afterNote: 'Clients pick an open time themselves. The appointment lands on our calendar and on the client\'s CRM record.',
+  },
+  {
+    before: 'Separate billing software',
+    beforeNote: 'Our own invoicing lived in another system, so every new client meant setting them up twice.',
+    after: 'Zoho Books',
+    afterNote: 'New clients become billing customers automatically when they sign — no second round of data entry.',
+  },
+  {
+    before: 'Copy, paste, repeat',
+    beforeNote: 'The glue between all of those systems was us: re-typing names, emails, and addresses from one app to the next.',
+    after: 'Zoho Flow',
+    afterNote: 'Automations pass information between apps the moment something happens, so we type it once.',
+  },
+];
+
+// Onboarding a new bookkeeping client — estimated hands-on staff time.
+const onboarding = [
+  {
+    step: 'Collect business and contact details',
+    before: 'Phone call and emails, then re-typed into a spreadsheet and Monday.com',
+    beforeMin: 20,
+    after: 'Client fills out our online intake form; the CRM record is created automatically',
+    afterMin: 2,
+  },
+  {
+    step: 'Schedule the consultation',
+    before: 'Emails back and forth to find a time, then added to Outlook by hand',
+    beforeMin: 15,
+    after: 'Intro email with a Zoho Bookings link; the client books an open slot',
+    afterMin: 0,
+  },
+  {
+    step: 'Prepare and send the proposal',
+    before: 'Drafted in Word, uploaded to DocuSign, signature fields placed by hand',
+    beforeMin: 30,
+    after: 'Built from a Zoho Sign template that pulls client details from the CRM',
+    afterMin: 10,
+  },
+  {
+    step: 'Send terms & conditions',
+    before: 'A second DocuSign envelope, prepared and sent separately',
+    beforeMin: 10,
+    after: 'Sent automatically as soon as the proposal is signed',
+    afterMin: 0,
+  },
+  {
+    step: 'Create the client\'s file folders',
+    before: 'Folder and ten subfolders created by hand in OneDrive',
+    beforeMin: 10,
+    after: 'Zoho Flow builds the full WorkDrive folder structure on signature',
+    afterMin: 0,
+  },
+  {
+    step: 'Set the client up for billing',
+    before: 'Customer re-entered in separate billing software',
+    beforeMin: 10,
+    after: 'Customer created in Zoho Books automatically',
+    afterMin: 0,
+  },
+  {
+    step: 'Request access and statements',
+    before: 'Individual emails written for software access and bank statements',
+    beforeMin: 15,
+    after: 'Template emails sent automatically from the client\'s record',
+    afterMin: 0,
+  },
+  {
+    step: 'File the documents clients email us',
+    before: 'Attachments downloaded from Outlook and saved to OneDrive one at a time',
+    beforeMin: 20,
+    after: 'Emails and attachments are saved straight to the client\'s WorkDrive folder',
+    afterMin: 2,
+  },
+];
+
+const beforeTotal = onboarding.reduce((sum, s) => sum + s.beforeMin, 0);
+const afterTotal = onboarding.reduce((sum, s) => sum + s.afterMin, 0);
+const savedPct = Math.round(((beforeTotal - afterTotal) / beforeTotal) * 100);
+const fmt = (min: number) =>
+  min === 0 ? 'Automatic' : min >= 60 ? `${Math.floor(min / 60)} hr ${min % 60 ? `${min % 60} min` : ''}`.trim() : `${min} min`;
+
+// What Zoho One can do, grouped by area. `using` marks the apps we run on today.
+const capabilities = [
+  {
+    area: 'Sales & Clients',
+    apps: [
+      { name: 'Zoho CRM', what: 'Contacts, companies, deals, and custom modules for any process', using: true },
+      { name: 'Zoho Bookings', what: 'Online appointment scheduling tied to your calendar', using: true },
+      { name: 'Zoho SalesIQ', what: 'Live chat and visitor tracking on your website', using: false },
+    ],
+  },
+  {
+    area: 'Finance',
+    apps: [
+      { name: 'Zoho Books', what: 'Invoicing, bills, bank feeds, and full accounting', using: true },
+      { name: 'Zoho Expense', what: 'Receipt capture, mileage, and expense reports', using: false },
+      { name: 'Zoho Billing', what: 'Recurring subscriptions and automated billing', using: false },
+    ],
+  },
+  {
+    area: 'Documents & Files',
+    apps: [
+      { name: 'Zoho WorkDrive', what: 'Shared team folders, file storage, and client file requests', using: true },
+      { name: 'Zoho Sign', what: 'Legally binding e-signatures with templates', using: true },
+      { name: 'Zoho Writer & Sheet', what: 'Word processing and spreadsheets, including mail-merge templates', using: true },
+      { name: 'Zoho Vault', what: 'Secure, shared password management for the team', using: false },
+    ],
+  },
+  {
+    area: 'Marketing',
+    apps: [
+      { name: 'Zoho Campaigns', what: 'Email newsletters and drip campaigns', using: true },
+      { name: 'Zoho Social', what: 'Schedule and publish to every social channel from one place', using: true },
+      { name: 'Zoho Survey', what: 'Client feedback and satisfaction surveys', using: false },
+    ],
+  },
+  {
+    area: 'Automation & Custom Apps',
+    apps: [
+      { name: 'Zoho Flow', what: 'Connects Zoho and outside apps without code', using: true },
+      { name: 'Zoho Creator', what: 'Custom apps and public forms built around your process', using: true },
+      { name: 'Zia', what: 'Zoho\'s AI assistant for answers, predictions, and summaries across your data', using: true },
+    ],
+  },
+  {
+    area: 'Team & Operations',
+    apps: [
+      { name: 'Zoho Mail & Calendar', what: 'Business email and shared calendars', using: true },
+      { name: 'Zoho Learn', what: 'Internal knowledge base and training for your team', using: true },
+      { name: 'Zoho Projects', what: 'Task lists, timelines, and time tracking for client projects', using: false },
+      { name: 'Zoho Cliq & Meeting', what: 'Team chat, video calls, and client meetings', using: false },
+    ],
+  },
+  {
+    area: 'Support & Insights',
+    apps: [
+      { name: 'Zoho Desk', what: 'A client help desk with tickets and a self-service portal', using: false },
+      { name: 'Zoho Analytics', what: 'Dashboards and reports that combine data from every app', using: false },
+      { name: 'Zoho Assist', what: 'Remote screen-sharing support', using: false },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Why We Run on Zoho One"
+  description="How B2B Solutions replaced DocuSign, Monday.com, and Office 365 with Zoho One — what Zoho can do, and how it cut our new-client onboarding time."
+>
+  <Header />
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <p class="text-blue-300 text-sm font-semibold uppercase tracking-wider mb-3">About Zoho</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Why We Run B2B Solutions on Zoho One</h1>
+        <p class="text-blue-100 text-lg leading-relaxed">
+          We used to juggle a signature service, a project board, an office suite, and a handful of other tools that didn't talk to each other. Today our whole business runs on one connected platform — and our clients feel the difference.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before & After -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Before Zoho</h2>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          Each tool we used was good at its one job. The problem was everything in between: the same client typed into four systems, documents saved in three places, and a separate bill for every login.
+        </p>
+      </div>
+      <div class="space-y-4">
+        {beforeAfter.map((row) => (
+          <div class="grid md:grid-cols-[1fr_auto_1fr] gap-4 items-stretch">
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Before</p>
+              <h3 class="font-bold text-gray-700 text-lg mb-2">{row.before}</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">{row.beforeNote}</p>
+            </div>
+            <div class="hidden md:flex items-center justify-center">
+              <svg class="w-8 h-8 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </div>
+            <div class="bg-blue-50 border border-blue-100 rounded-xl p-6">
+              <p class="text-xs font-semibold uppercase tracking-wider text-blue-500 mb-1">Now</p>
+              <h3 class="font-bold text-blue-900 text-lg mb-2">{row.after}</h3>
+              <p class="text-gray-700 text-sm leading-relaxed">{row.afterNote}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Onboarding time savings -->
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Onboarding a New Client: Then vs. Now</h2>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          Bringing on a new bookkeeping client used to mean a couple of hours of setup before any real work started. Here's where that time went — and where it goes now.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-6 mb-10">
+        <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100">
+          <div class="text-4xl font-bold text-gray-500 mb-1">{fmt(beforeTotal)}</div>
+          <div class="text-gray-600 text-sm font-medium">Before Zoho</div>
+        </div>
+        <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-gray-100">
+          <div class="text-4xl font-bold text-blue-800 mb-1">{fmt(afterTotal)}</div>
+          <div class="text-gray-600 text-sm font-medium">With Zoho One</div>
+        </div>
+        <div class="bg-blue-800 text-white rounded-xl p-6 text-center">
+          <div class="text-4xl font-bold mb-1">{savedPct}%</div>
+          <div class="text-blue-200 text-sm font-medium">Less hands-on time per client</div>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto bg-white rounded-xl shadow-sm border border-gray-100">
+        <table class="w-full text-sm text-left">
+          <thead class="bg-blue-900 text-white">
+            <tr>
+              <th class="px-4 py-3 font-semibold">Step</th>
+              <th class="px-4 py-3 font-semibold">Before</th>
+              <th class="px-4 py-3 font-semibold text-right">Time</th>
+              <th class="px-4 py-3 font-semibold">With Zoho One</th>
+              <th class="px-4 py-3 font-semibold text-right">Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {onboarding.map((s, i) => (
+              <tr class={i % 2 ? 'bg-gray-50' : 'bg-white'}>
+                <td class="px-4 py-3 font-semibold text-gray-900 align-top">{s.step}</td>
+                <td class="px-4 py-3 text-gray-500 align-top">{s.before}</td>
+                <td class="px-4 py-3 text-gray-500 text-right whitespace-nowrap align-top">{fmt(s.beforeMin)}</td>
+                <td class="px-4 py-3 text-gray-700 align-top">{s.after}</td>
+                <td class="px-4 py-3 text-blue-800 font-semibold text-right whitespace-nowrap align-top">{fmt(s.afterMin)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-gray-400 text-xs mt-3">Times are our own estimates of staff time per new bookkeeping client.</p>
+
+      <div class="mt-10 bg-white rounded-xl p-6 md:p-8 border border-gray-100 shadow-sm">
+        <h3 class="font-bold text-gray-900 text-xl mb-3">The part clients notice</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Faster setup is only half of it. Because every email, signed agreement, and document a client sends us lands in their own WorkDrive folder, nothing gets lost in an inbox. When a client calls, we can see their history, their files, and where their work stands — on one screen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Zoho One Can Do</h2>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          Zoho One is a single subscription that includes more than 45 business apps, all sharing one login and one set of data. Here are the ones that matter most to a small business — including several we haven't put to work yet.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-5 text-sm">
+          <span class="inline-flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-blue-800"></span> We use it today</span>
+          <span class="inline-flex items-center gap-2"><span class="w-3 h-3 rounded-full border-2 border-gray-400"></span> On our roadmap</span>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {capabilities.map(({ area, apps }) => (
+          <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+            <h3 class="font-bold text-blue-900 text-lg mb-4">{area}</h3>
+            <ul class="space-y-3">
+              {apps.map((app) => (
+                <li class="flex gap-3">
+                  <span
+                    class={`mt-1.5 w-3 h-3 flex-shrink-0 rounded-full ${app.using ? 'bg-blue-800' : 'border-2 border-gray-400'}`}
+                    aria-label={app.using ? 'In use' : 'On our roadmap'}
+                  ></span>
+                  <div>
+                    <p class="font-semibold text-gray-900 text-sm">{app.name}</p>
+                    <p class="text-gray-600 text-sm leading-relaxed">{app.what}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What's next -->
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Still Finding More</h2>
+          <p class="text-gray-600 leading-relaxed text-lg mb-4">
+            Most businesses use a fraction of what Zoho One includes — and honestly, so do we. We keep adding pieces as they earn their place: a client help desk, dashboards that pull from every app, shared password management, and AI that reads incoming requests and routes them to the right person.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            Everything we build for ourselves, we test on our own business first. That's the experience we bring to every Zoho client.
+          </p>
+        </div>
+        <div class="bg-blue-50 rounded-2xl p-8">
+          <blockquote class="text-blue-900 text-xl font-medium leading-relaxed italic">
+            "We don't recommend Zoho from a brochure. We recommend it because we run our own business on it every day."
+          </blockquote>
+          <p class="mt-4 text-blue-700 font-semibold text-sm">— B2B Solutions</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-white border-t border-gray-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Want Zoho to Work This Way for You?</h2>
+      <p class="text-gray-600 text-lg mb-8">
+        We set up and customize Zoho One for small businesses anywhere in the U.S. — or clean up a setup that never quite got finished.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/solutions/zoho-consulting" class="bg-blue-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-900 transition-colors">
+          Zoho One Consulting
+        </a>
+        <a href="/contact" class="border-2 border-blue-800 text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 hover:text-white transition-colors">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
