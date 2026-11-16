@@ -7,7 +7,10 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
-      filter: (page) => !/\/(privacy-policy|terms-of-service)$/.test(page),
+      // Pages whose canonical points to another site stay out of this sitemap.
+      filter: (page) =>
+        !/\/(privacy-policy|terms-of-service)$/.test(page) &&
+        !page.endsWith('/blog/how-to-form-an-llc-in-washington-state'),
     }),
   ],
   trailingSlash: 'never',

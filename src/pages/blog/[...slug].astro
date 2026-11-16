@@ -46,7 +46,7 @@ const blogPostingSchema = {
 };
 ---
 
-<Layout title={post.data.title} fullTitle={post.data.seoTitle} description={post.data.description} ogType="article" ogImage={post.data.heroImage || undefined}>
+<Layout title={post.data.title} fullTitle={post.data.seoTitle} description={post.data.description} ogType="article" ogImage={post.data.heroImage || undefined} canonical={post.data.canonicalUrl}>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
   </Fragment>
@@ -93,6 +93,14 @@ const blogPostingSchema = {
         <div class="mt-10 bg-gray-50 border border-gray-200 rounded-2xl p-6">
           <p class="text-gray-700">
             <span class="font-semibold text-gray-900">More bookkeeping help for Washington businesses:</span> plan details, a quick glossary, and guides at <a href="https://washingtonbookkeeper.com" class="text-blue-700 font-semibold hover:text-blue-800">WashingtonBookkeeper.com</a>.
+          </p>
+        </div>
+      )}
+
+      {post.data.category === 'LLC & Business Formation' && (
+        <div class="mt-10 bg-gray-50 border border-gray-200 rounded-2xl p-6">
+          <p class="text-gray-700">
+            <span class="font-semibold text-gray-900">Forming a Washington LLC?</span> See the step-by-step guide, real costs, and our flat-fee filing at <a href="https://youragentwa.com" class="text-blue-700 font-semibold hover:text-blue-800">YourAgentWA.com</a>.
           </p>
         </div>
       )}

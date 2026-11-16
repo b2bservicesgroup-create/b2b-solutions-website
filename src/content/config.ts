@@ -7,6 +7,8 @@ const blog = defineCollection({
     description: z.string(),
     /** Optional full <title> for search results (used verbatim). The H1 still uses `title`. */
     seoTitle: z.string().optional(),
+    /** Optional canonical URL when the main version of this topic lives on another site. */
+    canonicalUrl: z.string().url().optional(),
     pubDate: z.date(),
     author: z.string().default('B2B Solutions'),
     category: z.string(),

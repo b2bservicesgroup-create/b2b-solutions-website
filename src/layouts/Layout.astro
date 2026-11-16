@@ -6,6 +6,8 @@ interface Props {
   description?: string;
   ogType?: 'website' | 'article';
   ogImage?: string;
+  /** Canonical URL override, e.g. when the main version of this content lives on another site. */
+  canonical?: string;
 }
 
 const {
@@ -14,6 +16,7 @@ const {
   description = 'Bookkeeping, payroll, HR, and Zoho One consulting for small businesses in Olympia & Thurston County, WA and Cedar Rapids, IA — and remotely nationwide.',
   ogType = 'website',
   ogImage = '/og-image.png',
+  canonical,
 } = Astro.props;
 
 // Default share image is 1200x630 (the size Facebook, LinkedIn and X expect),
@@ -24,7 +27,7 @@ const siteURL = 'https://b2bsolutions.biz';
 // build.format 'file' makes pathname end in .html (and /index.html); strip it so
 // canonicals match the clean URLs Netlify serves and the sitemap lists.
 const cleanPath = Astro.url.pathname.replace(/(\/index)?\.html$/, '') || '/';
-const canonicalURL = new URL(cleanPath, siteURL).href;
+const canonicalURL = canonical ?? new URL(cleanPath, siteURL).href;
 const ogImageURL = new URL(ogImage, siteURL).href;
 // Google cuts titles off around 60 characters. Add the brand only when it
 // fits, so the words that earn the click aren't hidden behind "...".
