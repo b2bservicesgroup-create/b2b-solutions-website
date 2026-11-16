@@ -294,6 +294,7 @@ export const serviceAreas = [
     intro: [
       "Cedar Rapids is Iowa's second-largest city and a manufacturing town at heart — aerospace, food processing and the suppliers and service firms around them. Small businesses here range from machine shops and contractors to professional offices and family restaurants.",
       'Our Iowa office is in Cedar Rapids, and here we offer everything: monthly bookkeeping, payroll, fractional HR and Zoho One — one team for the whole back office.',
+      'We record your transactions throughout the month instead of in one end-of-month rush, so your numbers are current when you need to quote a job, talk to your banker or plan a hire. We also work with businesses next door in Marion and across Linn County.',
     ],
     localRules: [
       {
@@ -325,11 +326,17 @@ export const serviceAreas = [
         answer:
           "No — Iowa has no state paid sick leave law, unlike Washington. Many Cedar Rapids employers still offer PTO to compete for workers. We'll help you write a policy that fits your budget and is applied consistently.",
       },
+      {
+        question: 'Is one Iowa tax permit enough for my business?',
+        answer:
+          "Not always. Iowa issues a separate permit number for each tax type — sales and use tax, withholding, hotel and motel, automobile rental and a few others — all registered through GovConnectIowa. A Cedar Rapids business that sells taxable goods and has employees needs at least a sales tax permit and a withholding permit. We make sure each account is set up before your first sale or paycheck.",
+      },
     ],
     sources: [
       { label: 'City of Cedar Rapids — business licenses and permits', url: 'https://cedar-rapids.org/business/licenses_permits_and_taxes/business_licenses_and_permits/' },
       { label: 'City of Cedar Rapids — local option sales tax', url: 'https://www.cedar-rapids.org/local_government/departments_g_-_v/public_works/program.php' },
       { label: 'Iowa Workforce Development — 2026 unemployment tax rates', url: 'https://workforce.iowa.gov/press-release/2025-09-05/unemployment-insurance-rates-iowa-employers-remain-lowest-possible-level-2026' },
+      { label: 'Iowa Department of Revenue — business permit registration', url: 'https://revenue.iowa.gov/businesses/business-registration' },
     ],
   },
   {
@@ -348,6 +355,7 @@ export const serviceAreas = [
     intro: [
       "Marion has grown quickly alongside Cedar Rapids, and its small businesses reflect that: contractors and trades busy with new construction, home-based businesses, and a lot of residents who own a rental or two.",
       'That mix means many Marion owners are doing their own books, hiring their first employee, or managing rental income for the first time. We handle bookkeeping, payroll and HR from our Cedar Rapids office next door.',
+      "For a contractor, that usually means job costs tracked by project and a clean handoff to your tax preparer. For a landlord, it means income and expenses split by property. For a first-time employer, it means withholding and unemployment accounts open before the first paycheck — not after a notice arrives.",
     ],
     localRules: [
       {
@@ -357,6 +365,10 @@ export const serviceAreas = [
       {
         title: 'Hiring your first Iowa employee',
         desc: "Before the first paycheck you'll need an Iowa withholding account, an Iowa Workforce Development unemployment account, and to report each new hire to the state within 15 days. We set all of it up with payroll.",
+      },
+      {
+        title: 'Sales tax is 7% in Marion',
+        desc: "Marion collects Iowa's 6% sales tax plus a 1% local option tax. Marion joined Cedar Rapids and Linn County in extending that local option through 2034, so if you sell taxable goods or services here, plan on 7% and a free Iowa sales tax permit before your first sale.",
       },
       {
         title: 'New construction employers',
@@ -379,10 +391,17 @@ export const serviceAreas = [
         answer:
           'Marion handles licensing by type rather than one general license. Call City Hall at 319-743-6301 to confirm what applies to your business; we can help you sort out the state registrations.',
       },
+      {
+        question: 'I just hired my first employee in Marion. What do I need?',
+        answer:
+          'An Iowa withholding permit through GovConnectIowa, an unemployment account with Iowa Workforce Development, and a new-hire report to the state within 15 days. We set these up as part of payroll and keep the filings on schedule after that.',
+      },
     ],
     sources: [
       { label: 'City of Marion — licenses and permits', url: 'https://cityofmarion.org/government/administration/city-clerk/licenses-permits/licensing-payments' },
       { label: 'Bloomberg Tax — Iowa 2026 unemployment tax rates', url: 'https://news.bloombergtax.com/payroll/iowa-releases-2026-unemployment-insurance-tax-rates' },
+      { label: 'The Gazette — Linn County cities extend local option sales tax through 2034', url: 'https://www.thegazette.com/?p=247701' },
+      { label: 'Iowa Department of Revenue — business permit registration', url: 'https://revenue.iowa.gov/businesses/business-registration' },
     ],
   },
 ];
