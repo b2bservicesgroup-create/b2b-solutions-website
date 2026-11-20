@@ -25,3 +25,11 @@
 # Trailing slashes (/faq/ -> /faq) are handled by the edge function in
 # netlify/edge-functions/trailing-slash.ts, because Netlify redirect rules
 # treat /faq and /faq/ as the same path and would loop.
+
+# ── Get Started ───────────────────────────────────────────────────────
+# Short address for the Zoho Creator Business Needs Assessment form.
+[[redirects]]
+  from = "/get-started"
+  to = "https://creatorapp.zohopublic.com/b2bservicesgroup663/business-needs-assessment/form-perma/Business_Assessment/nkReOO5wpASPhCD0BQ039EXQK4KTPk4Mq0R55y5Kb12km2snw9p1mBzUpzmGOVhOj5BRg0dm7tzqkzpuN3ZqZQdGPxybzNOGW0NB"
+  status = 302
+  force = true
