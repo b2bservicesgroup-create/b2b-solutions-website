@@ -25,8 +25,6 @@ You do not need all of it. Most small businesses will actively use somewhere bet
 
 **Zoho CRM.** The center of the platform. It tracks leads, contacts, companies, deals, and every email, call, and task tied to them. We build custom pipelines in CRM for clients all the time, from intake to proposal to onboarding. It is also the app most other Zoho apps connect to first.
 
-**Zoho Bigin.** A lighter, simpler CRM for very small teams that want a pipeline without the full setup. If CRM feels like too much, Bigin is the on-ramp.
-
 **Zoho Bookings.** Online appointment scheduling. Clients pick a time from your real availability, get reminders, and the booking lands in your calendar and CRM. We use it for consultations.
 
 **Zoho SalesIQ.** Website visitor tracking and live chat, so you can see who is on your site and talk to them while they are there.
@@ -64,8 +62,6 @@ You do not need all of it. Most small businesses will actively use somewhere bet
 **Zoho Checkout.** Payment pages you can send to customers without building a website.
 
 **Zoho Inventory.** Stock tracking, orders, and warehouses for product businesses.
-
-**Zoho Payroll.** Payroll processing, with availability and tax-filing features that vary by region and edition. Many of our clients pair their books with a dedicated payroll partner instead, so ask before assuming it fits your state.
 
 ## People and HR
 
