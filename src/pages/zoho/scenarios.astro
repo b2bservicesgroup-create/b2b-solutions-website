@@ -1,0 +1,250 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const BOOKING_URL = 'https://b2bservicesgroup.zohobookings.com/#/b2bservicesgroup';
+
+const scenarios = [
+  {
+    "title": "A retail store pulling sales from Square",
+    "who": "A small shop rings up every sale on Square. The owner likes how easy it is at the counter, but everything after the sale is manual.",
+    "before": [
+      "Sales are exported from Square as a spreadsheet once a week or once a month.",
+      "Totals are retyped into the accounting software, and mistakes are found weeks later.",
+      "Inventory is counted by hand, so the shop finds out an item is out of stock when a customer asks for it.",
+      "Customer emails sit in Square or in a separate list that rarely gets used."
+    ],
+    "after": [
+      "Square keeps running at the counter, and the sales data syncs into Zoho automatically using Zoho Flow and the available Square connection, so nothing is exported or retyped.",
+      "Zoho Books receives the sales and fees, and the owner sees up-to-date profit and loss at any time.",
+      "Zoho Inventory tracks stock levels and can alert the owner when it is time to reorder.",
+      "Customers go into the CRM and Zoho Campaigns, so you can send a sale announcement or a thank-you to your best customers in a few clicks.",
+      "Zoho Analytics puts best-selling items, slow days and monthly trends on one dashboard.",
+      "Prefer one system for everything? Zoho POS can replace Square at the counter, so sales, inventory and customers all live in the same Zoho ecosystem with no syncing needed. It is a separate product with its own subscription, so we will compare it with your current Square costs and features before suggesting a switch."
+    ],
+    "changed": "The shop can keep the register system it already likes, or move to Zoho POS if it wants everything under one roof. Either way, the data moves on its own, the books stay current, and the owner makes decisions from real numbers instead of last month's spreadsheet.",
+    "apps": "Zoho POS (optional), Flow, Books, Inventory, CRM, Campaigns, Analytics"
+  },
+  {
+    "title": "A roofing contractor on email, Word, DocuSign and QuickBooks",
+    "who": "A roofing company runs on tools it has used for years. Every job passes through the same chain of manual steps, and each step is a chance for something to get lost or mistyped.",
+    "before": [
+      "Leads arrive by phone, text and email, and follow-up depends on someone remembering.",
+      "Estimates and contracts are written in Word, then saved and emailed by hand.",
+      "Contracts are sent through DocuSign, a separate subscription with its own login.",
+      "After signing, the customer and job details are typed again into QuickBooks to create the invoice.",
+      "Signed contracts, photos and permits end up scattered across email, a laptop and a phone."
+    ],
+    "after": [
+      "Every lead lands in Zoho CRM, whether it came from the website form, a booking or a phone call, with automatic reminders to follow up.",
+      "The estimate is built from a template using the customer's information already in the CRM, so nothing is typed twice.",
+      "The contract goes out for signature through Zoho Sign, filled in from the CRM record, and the customer signs on their phone.",
+      "The signed contract files itself in that job's WorkDrive folder, alongside photos, permits and change orders.",
+      "When the deal is marked won, the customer and invoice are created in Zoho Books automatically, with no retyping. If the owner prefers to keep QuickBooks, we can sync it instead."
+    ],
+    "changed": "The roofer goes from five tools and repeated typing to one connected flow from first call to final invoice. Fewer mistakes, faster payment, and every job's paperwork is in one place that anyone on the team can find.",
+    "apps": "Zoho CRM, Sign, Writer, WorkDrive, Books, Forms"
+  },
+  {
+    "title": "A salon or studio that books clients by text and social media",
+    "who": "A busy solo or small-team studio takes appointments through text messages and Facebook or Instagram messages, with a paper or phone calendar as the system of record.",
+    "before": [
+      "Booking is a back-and-forth of messages, often late at night.",
+      "No-shows and double bookings happen because reminders are manual.",
+      "Payments are collected in one app and tracked in another, or on paper.",
+      "There is no easy way to reach past clients when the schedule has open slots."
+    ],
+    "after": [
+      "Clients book themselves on a Zoho Bookings page linked from the website and social profiles, seeing only times you are actually available.",
+      "Confirmations and reminders go out automatically by email, which reduces no-shows.",
+      "Each client becomes a CRM contact with their visit history.",
+      "Zoho Campaigns sends a note to past clients when you have openings or a seasonal promotion.",
+      "Invoices and payments are recorded in Zoho Books, so the owner can see income without a spreadsheet."
+    ],
+    "changed": "The owner stops spending evenings answering messages to schedule appointments. Booking, reminders and follow-up run on their own, and the schedule fills with less effort.",
+    "apps": "Zoho Bookings, CRM, Campaigns, Books, Social"
+  },
+  {
+    "title": "A bookkeeping and consulting firm onboarding new clients",
+    "who": "This is our own situation at B2B Solutions. A new client used to mean a long chain of emails, attachments and manual setup before any real work could begin.",
+    "before": [
+      "Intake information arrived by email and phone, in whatever format the client chose.",
+      "Proposals were written as documents and sent to be signed in a separate e-signature tool.",
+      "Folders for each new client were created by hand.",
+      "Client records lived in several places, and the team had to ask around to find the latest version."
+    ],
+    "after": [
+      "A new client completes an online intake form built in Zoho Creator, and the information goes straight into the CRM.",
+      "The consultation is booked online through Zoho Bookings.",
+      "The proposal is sent through Zoho Sign directly from the client's CRM record.",
+      "Client folders in WorkDrive and the books in Zoho Books are set up as part of the same workflow.",
+      "Client emails and documents are saved into the right folder, instead of sitting in one person's inbox."
+    ],
+    "changed": "Onboarding becomes a repeatable process instead of a scramble, and every team member sees the same up-to-date information. It is the same system we build for clients, because we depend on it ourselves.",
+    "apps": "Zoho Creator, CRM, Bookings, Sign, WorkDrive, Books"
+  },
+  {
+    "title": "A rental property owner managing leases and requests",
+    "who": "An owner with several rental units keeps leases in folders, takes maintenance requests by text, and tracks rent in a spreadsheet.",
+    "before": [
+      "Leases are printed or emailed, signed by hand, and filed in a drawer or a folder on a laptop.",
+      "Maintenance requests come by text and are easy to lose.",
+      "Rent and expenses are tracked in a spreadsheet and reconciled at tax time.",
+      "Renewal dates are remembered, or missed."
+    ],
+    "after": [
+      "Leases are sent and signed electronically through Zoho Sign and filed automatically in each property's WorkDrive folder.",
+      "Tenants submit maintenance requests through an online form, and each one becomes a tracked ticket in Zoho Desk with a status and a date.",
+      "Rent, repairs and other expenses are recorded in Zoho Books, organized by property.",
+      "Reminders for lease renewals and inspections are created automatically in the CRM."
+    ],
+    "changed": "Everything about each property is in one place, nothing depends on memory, and tax time becomes a matter of running a report instead of rebuilding the year from scratch.",
+    "apps": "Zoho Sign, WorkDrive, Desk, Forms, Books, CRM"
+  },
+  {
+    "title": "A home inspector on the road",
+    "who": "A solo inspector spends the day at properties and the evening on paperwork. Scheduling, agreements, reports and invoices are all handled in different places.",
+    "before": [
+      "Inspections are booked by phone and text, often with agents and buyers going back and forth on times.",
+      "The inspection agreement is emailed as a document and signed later, or on paper at the door.",
+      "Details are written on a checklist and typed into a report that night.",
+      "Invoices are created separately, and payment follow-up is done from memory.",
+      "Past clients and referring agents are not tracked, so repeat business depends on being remembered."
+    ],
+    "after": [
+      "Clients and agents book online through Zoho Bookings, and confirmations and reminders go out automatically.",
+      "The inspection agreement is sent through Zoho Sign at booking, so it is signed before the inspector arrives.",
+      "Zoho Forms or a custom Zoho Creator app captures findings on a phone or tablet at the property.",
+      "When the inspection is complete, the invoice is created in Zoho Books, and overdue invoices trigger reminders.",
+      "The CRM tracks referring agents and past clients, and Zoho Campaigns sends a thank-you or a seasonal reminder."
+    ],
+    "changed": "The inspector spends less of the evening on paperwork, and every client and referral source is tracked in one place. The work done at the property flows straight into the report, the invoice and the follow-up.",
+    "apps": "Zoho Bookings, Sign, Forms, Creator, Books, CRM, Campaigns"
+  },
+  {
+    "title": "A law or professional practice",
+    "who": "A small practice manages matters, deadlines and sensitive documents. Important information lives in email threads, personal folders and a paper calendar, and the staff has to ask around to find the latest version.",
+    "before": [
+      "New client information arrives by phone and email, then is copied into a document by hand.",
+      "Engagement letters are drafted in Word and sent to be signed in a separate tool.",
+      "Documents are saved in whichever folder the person handling them prefers.",
+      "Deadlines and follow-ups live on a calendar or in someone's head.",
+      "Billing is prepared separately from the matter, which creates extra typing and missed time."
+    ],
+    "after": [
+      "Prospective clients complete an intake form, and the information goes directly into Zoho CRM as a new matter.",
+      "The engagement letter is generated from a template and sent through Zoho Sign, and the signed copy files itself in the matter's WorkDrive folder.",
+      "Every document for a matter lives in one consistent folder structure with the right people given access.",
+      "Deadlines and follow-ups are created as tasks with reminders, so nothing depends on memory.",
+      "Time and billing flow into Zoho Books, and invoices are created from the same client record."
+    ],
+    "changed": "Everyone in the office sees the same client record, the same documents and the same deadlines. Because access is controlled by folder and by role, sensitive information stays with the people who need it. Practices in regulated fields should confirm any specific confidentiality or record-keeping requirements with their own professional rules.",
+    "apps": "Zoho CRM, Forms, Sign, Writer, WorkDrive, Books, Projects"
+  },
+  {
+    "title": "An online shop selling products",
+    "who": "An owner sells products through a website and a few marketplaces. Orders, stock counts, customer emails and the books are each handled by a different tool.",
+    "before": [
+      "Orders arrive from several places, and someone copies them into a spreadsheet to keep track.",
+      "Stock counts drift, and the shop sells items it no longer has.",
+      "Customer emails are exported from the store and uploaded to a separate email tool when time allows.",
+      "Sales and fees are entered into the accounting software at month end, if at all."
+    ],
+    "after": [
+      "Orders flow into Zoho Inventory, which keeps stock levels current across the places you sell.",
+      "The online store can run on Zoho Commerce, or stay on a platform you already use and sync into Zoho.",
+      "Customers are added to the CRM automatically, and Zoho Campaigns sends order follow-ups, restock notices and promotions.",
+      "Sales, shipping costs and fees post into Zoho Books, so the books stay current without month-end catch-up.",
+      "Zoho Analytics shows which products sell, which sit, and what each channel actually earns."
+    ],
+    "changed": "The owner stops copying data between tools and starts running the shop from one dashboard. Stock stays accurate, customers hear from you on a regular basis, and the books reflect what is really happening in the business.",
+    "apps": "Zoho Inventory, Commerce, CRM, Campaigns, Books, Analytics"
+  }
+];
+---
+
+<Layout
+  title="Zoho One in Real Life: Before & After"
+  description="See how real business situations, from retail stores using Square to roofing contractors using Word and DocuSign, work before and after Zoho One."
+>
+  <Header />
+
+  <section class="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <p class="text-blue-300 text-sm font-semibold uppercase tracking-wider mb-3">Zoho One</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Zoho One in Real Life</h1>
+        <p class="text-blue-100 text-lg leading-relaxed mb-8">
+          Software features are easy to list and hard to picture. Here are common business situations, how they work today with a patchwork of tools, and how the same work looks when it runs on Zoho One. Find the one that looks most like your business.
+        </p>
+        <a href={BOOKING_URL} class="inline-block bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">Book a Free Zoho Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Before and After</h2>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          These scenarios are based on the kinds of situations we see regularly, with details changed. Your business will be different, and the first step is always to understand how you work today.
+        </p>
+      </div>
+      <div class="space-y-10">
+        {scenarios.map((s) => (
+          <div class="border border-gray-200 rounded-2xl p-6 md:p-8">
+            <h3 class="text-2xl font-bold text-blue-900 mb-2">{s.title}</h3>
+            <p class="text-gray-600 leading-relaxed mb-6">{s.who}</p>
+            <div class="grid md:grid-cols-2 gap-5">
+              <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+                <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Before: how it works today</p>
+                <ul class="list-disc pl-5 space-y-2 text-gray-600 text-sm leading-relaxed">
+                  {s.before.map((i) => <li>{i}</li>)}
+                </ul>
+              </div>
+              <div class="bg-blue-50 border border-blue-100 rounded-xl p-5">
+                <p class="text-xs font-semibold uppercase tracking-wider text-blue-500 mb-2">After: running on Zoho One</p>
+                <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm leading-relaxed">
+                  {s.after.map((i) => <li>{i}</li>)}
+                </ul>
+              </div>
+            </div>
+            <p class="text-gray-800 font-medium leading-relaxed mt-6">{s.changed}</p>
+            <p class="text-gray-500 text-sm mt-3">Apps used: {s.apps}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">When Zoho One May Not Be the Right Fit</h2>
+      <p class="text-gray-600 text-lg leading-relaxed mb-4">
+        Zoho One is not the answer for every business. If you only need one narrow tool, if you rely on industry-specific software, or if only one or two people need access, a simpler setup may cost less and do the job just as well.
+      </p>
+      <p class="text-gray-600 text-lg leading-relaxed">
+        We will tell you plainly if that is your situation. In many cases we can suggest a hybrid, keeping the tools that already work and using Zoho only where it saves you the most time. Vendors also change plans and pricing, so we confirm current details with you before you commit.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white border-t border-gray-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Does One of These Look Like Your Business?</h2>
+      <p class="text-gray-600 text-lg mb-4">
+        Book a free consultation and tell us how you run things today. We will map out what it could look like on Zoho One and what it would cost, so you can decide with clear information and no obligation.
+      </p>
+      <p class="text-gray-600 mb-8">
+        You can also call <a href="tel:+13605292672" class="text-blue-700 font-semibold hover:underline">360-529-2672</a> (Washington) or <a href="tel:+13194510501" class="text-blue-700 font-semibold hover:underline">319-451-0501</a> (Iowa), or email <a href="mailto:info@b2bsolutions.biz" class="text-blue-700 font-semibold hover:underline">info@b2bsolutions.biz</a>.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href={BOOKING_URL} class="bg-blue-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-900 transition-colors">Book a Free Consultation</a>
+        <a href="/zoho" class="border-2 border-blue-800 text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 hover:text-white transition-colors">See Everything in Zoho One</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

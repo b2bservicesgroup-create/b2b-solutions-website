@@ -1,0 +1,270 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const BOOKING_URL = 'https://b2bservicesgroup.zohobookings.com/#/b2bservicesgroup';
+
+const groups = [
+  {
+    "heading": "Win and keep customers",
+    "intro": "These apps help you attract new business, stay in front of the people you already serve, and respond quickly when someone reaches out. They all share one contact list, so every conversation is tied to the right person.",
+    "apps": [
+      {
+        "name": "Zoho CRM",
+        "does": "Zoho CRM keeps every lead, client and deal in one place, so nothing lives only in someone's inbox or memory. Pipelines show where each opportunity stands, and automated reminders prompt you to follow up at the right time. We build it around how your business actually sells, with the fields, stages and views your team will really use."
+      },
+      {
+        "name": "Zoho Bookings",
+        "does": "Zoho Bookings gives clients a page where they pick a time that works for them, with no back-and-forth emails. It checks your calendar for availability, sends confirmations and reminders, and cuts down on no-shows. Each booking can create a record in your CRM automatically."
+      },
+      {
+        "name": "Zoho Campaigns",
+        "does": "Zoho Campaigns sends email newsletters, announcements and automated follow-up sequences to the contacts already in your CRM. You can split your list into groups so the right message reaches the right people. Reports show who opened and clicked, so you learn what is working."
+      },
+      {
+        "name": "Zoho Social",
+        "does": "Zoho Social lets you plan, schedule and publish posts to Facebook, Instagram, LinkedIn and other channels from one calendar. Scheduling a batch of posts ahead of time keeps your presence consistent even in busy weeks. Built-in analytics show which posts get attention."
+      },
+      {
+        "name": "Zoho SalesIQ",
+        "does": "Zoho SalesIQ adds live chat and a chatbot to your website so visitors can ask questions the moment they have them. The bot can answer common questions and collect contact details after hours. Chats and visitor details flow into your CRM as leads."
+      },
+      {
+        "name": "Zoho PageSense",
+        "does": "Zoho PageSense shows how visitors move through your website using heatmaps, recordings and funnel reports. You can test different headlines and buttons to see which brings in more inquiries. It replaces guesswork with real data about what your visitors do."
+      },
+      {
+        "name": "Zoho Desk",
+        "does": "Zoho Desk turns client questions and requests into tracked tickets, so nothing gets lost in a shared inbox. Each request can be assigned to the right person with a status and due date. Clients get consistent, timely answers, and you can see response times and workload."
+      }
+    ]
+  },
+  {
+    "heading": "Run the money",
+    "intro": "Getting paid and keeping accurate records should not mean retyping the same information in three places. These apps connect to your CRM and your signed documents, so a deal that closes can move straight into an invoice.",
+    "apps": [
+      {
+        "name": "Zoho Books",
+        "does": "Zoho Books handles invoicing, bills, bank feeds, reconciliation and financial reports in one place. It connects to Zoho CRM and Zoho Sign, so an accepted proposal can become an invoice without retyping. Reports such as profit and loss and the balance sheet are available whenever you or your tax preparer need them."
+      },
+      {
+        "name": "Zoho Expense",
+        "does": "Zoho Expense lets your team snap a photo of a receipt and submit it from their phone. Expense reports can be routed for approval, and mileage can be tracked as well. Approved expenses flow into your books, which saves hours of sorting at month end."
+      },
+      {
+        "name": "Zoho Sign",
+        "does": "Zoho Sign collects legally binding electronic signatures on contracts, proposals, engagement letters and agreements. Signers can sign from any device, and you can see exactly who has signed and who has not. Completed documents can be saved automatically into WorkDrive."
+      }
+    ]
+  },
+  {
+    "heading": "Organize your work",
+    "intro": "This is the everyday backbone of the business: email, files, documents, projects and team communication. Because everything lives in the same system, finding a file or a conversation takes seconds instead of a search through old emails.",
+    "apps": [
+      {
+        "name": "Zoho WorkDrive",
+        "does": "Zoho WorkDrive is secure file storage built for teams, with folders you can share with the right people and nobody else. Version history lets you recover earlier copies, and you can share files with clients by link. It works hand in hand with Zoho Mail, CRM and Sign, so documents land where they belong."
+      },
+      {
+        "name": "Zoho Mail",
+        "does": "Zoho Mail gives you ad-free business email on your own domain, with shared folders and aliases such as info@ or sales@. Calendar, contacts and tasks are built in. Important attachments can be saved straight into WorkDrive, so documents do not get trapped in an inbox."
+      },
+      {
+        "name": "Zoho Writer, Sheet and Show",
+        "does": "Writer, Sheet and Show are Zoho's word processor, spreadsheet and presentation tools. Several people can edit the same file at once, and they open and save Microsoft Office formats. Because they live inside WorkDrive, there is no more emailing versions back and forth."
+      },
+      {
+        "name": "Zoho Projects",
+        "does": "Zoho Projects organizes work into tasks, milestones and timelines with owners and due dates. It is useful for onboarding a new client, a build-out, or any job with several steps and several people. Time tracking and reports show where each project stands."
+      },
+      {
+        "name": "Zoho Forms and Survey",
+        "does": "Zoho Forms builds online forms for intake, applications and requests, and Zoho Survey collects feedback from clients and staff. Submissions can create CRM records, trigger an e-signature request or start a workflow. This replaces paper forms and emailed PDFs."
+      },
+      {
+        "name": "Zoho Cliq and Meeting",
+        "does": "Zoho Cliq is team chat with channels and direct messages, and Zoho Meeting handles video calls and webinars. Together they cover what many businesses pay for in separate chat and video subscriptions. Conversations stay connected to the rest of your Zoho data."
+      }
+    ]
+  },
+  {
+    "heading": "Automate and build",
+    "intro": "This is where Zoho One goes beyond a set of separate tools. Automation and custom apps let the system do the repetitive work for you, in the way your business actually operates.",
+    "apps": [
+      {
+        "name": "Zoho Flow",
+        "does": "Zoho Flow connects your apps so one event triggers the next step automatically, such as a new form submission creating a CRM record and sending a welcome email. It also connects Zoho to many outside tools. Routine copy-and-paste work disappears, and so do the mistakes that come with it."
+      },
+      {
+        "name": "Zoho Creator",
+        "does": "Zoho Creator is a platform for building custom business applications without starting from scratch. We use it for client onboarding, intake forms and request tracking built around your exact process. The apps run on the web and on mobile, and they connect to your CRM and other Zoho data."
+      },
+      {
+        "name": "Zoho Analytics",
+        "does": "Zoho Analytics pulls data from your Zoho apps into dashboards and reports. You can see sales, income, workload and trends in one view instead of checking each app separately. Visual reports make it easy to spot what is working and what is not."
+      },
+      {
+        "name": "Zoho Learn and Vault",
+        "does": "Zoho Learn is a place to document how your business runs, from step-by-step procedures to training courses, so knowledge does not live only in one person's head. Zoho Vault is a team password manager that keeps shared logins secure. Together they make onboarding new staff and protecting access much simpler."
+      }
+    ]
+  }
+];
+
+const doList = [
+  {
+    "title": "Account setup and security",
+    "text": "We set up your Zoho One account, users, permissions and email on your own domain. Security settings such as two-factor sign-in are configured from the start, so your data is protected on day one."
+  },
+  {
+    "title": "CRM build",
+    "text": "We design your lead and client tracking, sales pipelines and automated follow-ups around how you work. Your existing contacts are imported so you are not starting from an empty system."
+  },
+  {
+    "title": "Accounting connection",
+    "text": "We connect Zoho Books so invoicing and accounting tie directly to your clients and deals. This removes duplicate entry and gives you cleaner records."
+  },
+  {
+    "title": "E-signature and document filing",
+    "text": "We set up documents to be sent for signature and filed automatically in the right WorkDrive folder. Contracts and proposals stop living in email attachments."
+  },
+  {
+    "title": "Booking, intake and onboarding",
+    "text": "We create online booking pages, intake forms and onboarding workflows that capture the right information the first time. New clients get a smooth, professional start."
+  },
+  {
+    "title": "Email campaigns and social posting",
+    "text": "We launch email campaigns and social posting tied to your contact list. Your marketing stays consistent without becoming another full-time job."
+  },
+  {
+    "title": "Custom apps and automation",
+    "text": "We build custom apps in Zoho Creator and automate routine tasks with Flow. If you have a process that eats up time every week, there is usually a way to automate it."
+  },
+  {
+    "title": "Training and ongoing support",
+    "text": "We train you and your team, then stay available as your needs change. Zoho is easy to grow into, and we help you turn on new features at the pace that makes sense for you."
+  }
+];
+---
+
+<Layout
+  title="Zoho One Consulting & Setup"
+  description="Zoho One puts CRM, accounting, e-signatures, email, file storage, automation and more in one system for one price. B2B Solutions sets it up and runs it with you."
+>
+  <Header />
+
+  <section class="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <p class="text-blue-300 text-sm font-semibold uppercase tracking-wider mb-3">Zoho One</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Zoho One, Set Up and Running for Your Business</h1>
+        <p class="text-blue-100 text-lg leading-relaxed mb-8">
+          One system for your customers, books, documents, email and automation, instead of a pile of separate subscriptions that don't talk to each other. B2B Solutions runs on Zoho ourselves and builds it for clients every day. We handle the setup and the learning curve, so you can get back to running your business.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href={BOOKING_URL} class="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">Book a Free Zoho Consultation</a>
+          <a href="/zoho/scenarios" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors">See Real-Life Examples</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Is Zoho One?</h2>
+        <p class="text-gray-600 text-lg leading-relaxed mb-4">
+          Zoho One is a suite of more than 40 business apps that share one login, one set of contacts and one invoice. When a lead fills out your form, it lands in your CRM. When they sign your proposal, the signed copy files itself in the right folder and the invoice is created in your books. Nothing gets retyped.
+        </p>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          For a small business, the real value is not any single app. It is that everything already works together, so you are not paying for, learning and patching together a dozen different tools. Instead of separate subscriptions for signatures, project tracking, office software and file storage, you have one system and one bill. Curious how we use it ourselves? <a href="/about-zoho" class="text-blue-700 font-semibold hover:underline">See why we run B2B Solutions on Zoho One.</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What's Included, and What Each App Does</h2>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          Here is a plain-English look at the apps we use most often with clients, grouped by the job they do for your business.
+        </p>
+      </div>
+      <div class="space-y-12">
+        {groups.map((g) => (
+          <div>
+            <h3 class="text-2xl font-bold text-blue-900 mb-2">{g.heading}</h3>
+            <p class="text-gray-600 leading-relaxed mb-5 max-w-3xl">{g.intro}</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {g.apps.map((a) => (
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm">
+                  <h4 class="font-bold text-gray-900 text-lg mb-2">{a.name}</h4>
+                  <p class="text-gray-600 text-sm leading-relaxed">{a.does}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="text-gray-500 text-sm mt-10 max-w-3xl">
+        Zoho One includes many more apps than shown here. You do not need to use all of them. We will help you decide which ones are worth turning on for your business, and which can wait until you need them.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What B2B Solutions Can Do for You</h2>
+        <p class="text-gray-600 text-lg leading-relaxed">
+          Zoho is powerful, but that power can be overwhelming if you try to set it up alone. We do the configuration for you and tailor it to your business, so the system fits the way you work instead of making you change how you work.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        {doList.map((item) => (
+          <div class="bg-blue-50 border border-blue-100 rounded-xl p-6">
+            <h3 class="font-bold text-blue-900 text-lg mb-2">{item.title}</h3>
+            <p class="text-gray-700 text-sm leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 bg-blue-900 text-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Simple Pricing</h2>
+      <p class="text-5xl font-bold mb-1">$45</p>
+      <p class="text-blue-200 mb-6">per employee, per month</p>
+      <p class="text-blue-100 text-lg leading-relaxed mb-4">
+        That is Zoho's All-Employee plan, billed monthly, and it includes the entire suite for everyone on your team. For a small business, that means every employee gets access to the full set of apps for one predictable price, with no per-app charges to track.
+      </p>
+      <p class="text-blue-100 leading-relaxed">
+        Zoho licensing is billed by Zoho directly and is separate from B2B Solutions' setup and support fees. We will quote our work after a short conversation about what you need, so you know the full cost before anything begins. Zoho sets and may change its own pricing.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white border-t border-gray-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to See What Zoho Could Do for Your Business?</h2>
+      <p class="text-gray-600 text-lg mb-4">
+        Book a free consultation and we will talk through how you run things today, where your time is going, and which Zoho apps would make the biggest difference. There is no pressure and no obligation, just a clear picture of what is possible.
+      </p>
+      <p class="text-gray-600 mb-4">
+        Not sure Zoho is the right fit? <a href="/zoho/scenarios" class="text-blue-700 font-semibold hover:underline">See real before-and-after examples of businesses running on Zoho One.</a>
+      </p>
+      <p class="text-gray-600 mb-8">
+        You can also call <a href="tel:+13605292672" class="text-blue-700 font-semibold hover:underline">360-529-2672</a> (Washington) or <a href="tel:+13194510501" class="text-blue-700 font-semibold hover:underline">319-451-0501</a> (Iowa), or email <a href="mailto:info@b2bsolutions.biz" class="text-blue-700 font-semibold hover:underline">info@b2bsolutions.biz</a>.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href={BOOKING_URL} class="bg-blue-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-900 transition-colors">Book a Free Consultation</a>
+        <a href="/contact" class="border-2 border-blue-800 text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 hover:text-white transition-colors">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
