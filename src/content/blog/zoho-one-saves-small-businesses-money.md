@@ -36,7 +36,7 @@ For a team of five, you're easily looking at $400–$600+ per month — and that
 
 ## What Zoho One costs instead
 
-Zoho One's All-Employee plan is **$45 per user per month**, billed monthly. For that same five-person team, that's $225/month — for 50+ integrated applications covering every one of those categories above, plus HR, inventory, social media management, e-signature, analytics, and more.
+Zoho One's All-Employee plan is **$45 per user per month**, billed monthly, before applicable taxes (price as of November 27, 2026; Zoho may change it). For that same five-person team, that's $225/month — for 50+ integrated applications covering every one of those categories above, plus HR, inventory, social media management, e-signature, analytics, and more.
 
 That's not a typo. $225 a month replaces what many businesses are spending $400–$600 on — with better integration and far less administrative overhead.
 
